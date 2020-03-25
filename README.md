@@ -9,10 +9,12 @@
   - Payments.
   
 ### Technologies:
-####Frontend
+
+#### Frontend:
   - Next.js
   - Redux
-####Backend
+  
+#### Backend:
   - Node.js
   - Koa.js
   - PostgreSQL + Sequelize(?)
