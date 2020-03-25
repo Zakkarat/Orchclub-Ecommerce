@@ -9,9 +9,13 @@
   - Payments.
   
 ### Technologies:
+####Frontend
   - Next.js
   - Redux
-  - Express.js
+####Backend
+  - Node.js
+  - Koa.js
+  - PostgreSQL + Sequelize(?)
   
 ### Current issues:
   - DB managment is not decided yet. (Postgres + Sequelize or NoSQL MongoDB)
