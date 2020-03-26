@@ -17,9 +17,9 @@
 #### Backend:
   - Node.js
   - Koa.js
-  - PostgreSQL + Sequelize(?)
+  - PostgreSQL(?)
   
 ### Current issues:
-  - DB managment is not decided yet. (Postgres + Sequelize or NoSQL MongoDB)
+  - DB managment is not decided yet. (Postgres or NoSQL MongoDB)
   - Actual data parsing.
   
