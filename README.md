@@ -23,3 +23,5 @@
   - DB managment is not decided yet. (Postgres or NoSQL MongoDB)
   - Actual data parsing.
   
+### DBSchema:
+<img src="https://i.ibb.co/gZQBR6Y/Orchclub-Ecom.png"  alt="image" border="0">
