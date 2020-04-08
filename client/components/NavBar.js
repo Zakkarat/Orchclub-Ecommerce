@@ -6,7 +6,7 @@ import {
 
 const NavBar = () => {
     return (
-<MDBNavbar color="white" expand="md">
+<MDBNavbar color="white" expand="md" className="pt-3" fixed>
         <MDBNavbarBrand>
           <strong>OrchClub</strong>
         </MDBNavbarBrand>
@@ -15,7 +15,7 @@ const NavBar = () => {
           <MDBNavbarNav className="search">
             <MDBNavItem className="search">
             <MDBFormInline className="search" waves>
-                <div className="md-form my-0 search">
+                <div className="lg-form my-0 search">
                   <input className="form-control mr-lg-2 search" type="text" placeholder="Search" aria-label="Search" />
                 </div>
               </MDBFormInline>

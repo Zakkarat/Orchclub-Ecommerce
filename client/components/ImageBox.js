@@ -4,7 +4,7 @@ import { MDBCol } from 'mdbreact'
 const ImageBox = () => {
     return (
             <MDBCol md="5">
-                1
+                
             </MDBCol>
     )
 }
