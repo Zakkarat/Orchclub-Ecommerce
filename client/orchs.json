@@ -1,5 +1,5 @@
 {
-  "vandovye": [
+  "Вандовые": [
     {
       "text": "Aerides lawrenciae",
       "price": "520.00",
@@ -223,7 +223,7 @@
       "size": "B/S"
     }
   ],
-  "dendrobiumy": [
+  "Дендробиумы": [
     {
       "text": "Dendrobium aduncum",
       "price": "498.00",
@@ -813,7 +813,7 @@
       "size": "B/S"
     }
   ],
-  "drakuly-i-masdevallii": [
+  "Дракулы и масдеваллии": [
     {
       "text": "Dracula chimaera extra big",
       "price": "1080.00",
@@ -845,7 +845,7 @@
       "size": "B/S"
     }
   ],
-  "prirodnye-vidy-orkhidyei": [
+  "Природные виды орхидей": [
     {
       "text": "Aerangis articulata",
       "price": "450.00",
@@ -1975,7 +1975,7 @@
       "size": "B/S"
     }
   ],
-  "zigopetalyumy": [
+  "Зигопеталюмы": [
     {
       "text": "Pabstia modestior",
       "price": "1040.00",
@@ -1995,7 +1995,7 @@
       "size": "F/S"
     }
   ],
-  "katazetumy": [
+  "Катазетумы": [
     {
       "text": "Catanoches Jumbo Bard",
       "price": "978.00",
@@ -2315,7 +2315,7 @@
       "size": "B/S"
     }
   ],
-  "kattlyei-i-lelii": [
+  "Каттлеи и лелии": [
     {
       "text": "Brassanthe Maikai x Brassocattleya Star Ruby",
       "price": "345.00",
@@ -7387,7 +7387,7 @@
       "size": "F/S"
     }
   ],
-  "ontsidiumnye": [
+  "Онцидиумные": [
     {
       "text": "Ada aurantiaca",
       "price": "972.00",
@@ -7725,7 +7725,7 @@
       "size": "F/S"
     }
   ],
-  "pafiopedilumy": [
+  "Пафиопедилумы": [
     {
       "text": "Paphiopedilum Alma Gavaert 'H.B' x Paphiopedilum In-Charm White 'Chao Chou'",
       "price": "1313.00",
@@ -8687,7 +8687,7 @@
       "size": "B/S"
     }
   ],
-  "falenopsisy": [
+  "Фаленопсисы": [
     {
       "text": "Aerides houlletiana x Phalaenopsis equestris alba",
       "price": "675.00",
@@ -11647,7 +11647,7 @@
       "size": "NB/S"
     }
   ],
-  "tsimbidiumy": [
+  "Цимбидиумы": [
     {
       "text": "Cymbidium Cliff Hutchings",
       "price": "1504.00",

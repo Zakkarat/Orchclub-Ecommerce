@@ -1,19 +1,11 @@
 import Head from "next/head";
 import NavBar from "../components/NavBar";
 import "bootstrap-css-only/css/bootstrap.min.css";
-import {
-  MDBContainer,
-  MDBCol,
-  MDBCard,
-  MDBCardImage,
-  MDBCardBody,
-  MDBCardTitle,
-} from "mdbreact";
-import StackGrid from "react-stack-grid";
-import orchs from "../orchs.json";
 import '../stylesheets/cards.css'
 import '../stylesheets/nav.css'
 import Categories from "../components/Categories";
+import ImageStack from "../components/ImageStack";
+
 
 const Home = () => {
   return (
@@ -27,32 +19,7 @@ const Home = () => {
       </Head>
       <NavBar />
       <Categories />
-      <StackGrid
-        columnWidth={300}
-        gutterWidth={25}
-        gutterHeight={25}
-        duration={2000}
-        className="mt-5"
-      >
-        {orchs.pafiopedilumy
-          .filter((elem) => elem.image)
-          .map((elem, i) => (
-            <MDBCol key={i}>
-              <MDBCard className="orch-card">
-                <MDBCardImage
-                  className="img-fluid rounded"
-                  src={elem.image}
-                />
-                <MDBCardBody>
-                  <MDBCardTitle tag="h6" className="text-center">
-                    {elem.text}
-                  </MDBCardTitle>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-          ))
-          .sort(() => Math.random() - 0.5)}
-      </StackGrid>
+      <ImageStack></ImageStack>
     </>
   );
 };
