@@ -1,7 +1,6 @@
 const Router = require("koa-router");
 const auth = Router();
 const { pool } = require("../../config");
-const passport = require("../auth");
 const jwt = require("jsonwebtoken");
 
 const bcrypt = require("bcrypt");
@@ -18,14 +17,16 @@ auth.post("/auth/login", async (ctx, next) => {
   const { rows } = await pool.query(
     `SELECT "Id", "Password" FROM "Users" WHERE "Username" = '${username}'`
   );
+
   const dbUser = rows[0];
   if (!dbUser) ctx.throw(401, wrongUserPassMsg);
 
   if (await bcrypt.compare(password, dbUser.Password)) {
     const payload = { sub: dbUser.Id };
     const token = jwt.sign(payload, secret);
-    ctx.cookies.set('UID', token)
-    ctx.body = 'ok';
+
+    ctx.cookies.set("UID", token);
+    ctx.body = "ok";
   } else {
     ctx.throw(401, wrongUserPassMsg);
   }
@@ -33,6 +34,7 @@ auth.post("/auth/login", async (ctx, next) => {
 
 auth.post("/auth/register", async (ctx, next) => {
   const { username, password, country, city, adress, phone } = ctx.request.body;
+
   try {
     bcrypt
       .genSalt(saltRounds, (err, salt) => {
@@ -47,15 +49,6 @@ auth.post("/auth/register", async (ctx, next) => {
       .catch((err) => err);
   } catch {
     ctx.throw(401, "Wrong data");
-  }
-});
-
-auth.get("/auth/status", async (ctx) => {
-  if (ctx.isAuthenticated()) {
-    ctx.body = "Success!";
-  } else {
-    console.log("no log");
-    ctx.redirect("/auth/login");
   }
 });
 
