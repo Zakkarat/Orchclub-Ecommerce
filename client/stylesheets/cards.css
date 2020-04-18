@@ -1,0 +1,11 @@
+.orch-card {
+    width: 300px;
+    box-shadow: 0px 0px 1px #ababab;
+    transition: 1s;
+}
+
+.orch-card:hover {
+    cursor: pointer;
+    box-shadow: 3px 0px 20px #ababab;
+    transition: 300;
+}
