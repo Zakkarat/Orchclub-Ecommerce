@@ -6,7 +6,7 @@ import {
 
 const NavBar = () => {
     return (
-<MDBNavbar color="white" expand="md" className="pt-3" fixed>
+<MDBNavbar color="white" expand="md" className="pt-3">
         <MDBNavbarBrand>
           <strong>OrchClub</strong>
         </MDBNavbarBrand>
