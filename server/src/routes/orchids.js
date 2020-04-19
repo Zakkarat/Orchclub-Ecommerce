@@ -31,4 +31,23 @@ orchids.get("/orchids/putCategories", (ctx) => {
   );
 });
 
+orchids.get("/orchids/categories", async (ctx) => {
+    const {rows} = await pool.query(`SELECT * FROM "Category"`);
+    ctx.body = rows;
+})
+
+orchids.get("/orchids", async (ctx) => {
+    const {category} = ctx.request.query;
+    const {rows} = await pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image"
+    FROM public."Orchids" INNER JOIN "Category" ON "Orchids"."CategoryId" = "Category"."Id" WHERE "Category"."Name" = '${category}';`);
+    ctx.body = rows;
+})
+
+orchids.get("/orchid", async (ctx) => {
+  const {id} = ctx.request.query;
+  const {rows} = await pool.query(`SELECT "Orchids"."Name", "Orchids"."Image", "Orchids"."Price", "Orchids"."Stock", "Orchids"."Size"
+  FROM public."Orchids" INNER JOIN "Category" ON "Orchids"."CategoryId" = "Category"."Id" WHERE "Orchids"."Id"='${id}';`);
+  ctx.body = rows[0];
+})
+
 module.exports = orchids;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MDBCol, MDBRow, MDBMask, MDBView, MDBContainer, MDBIcon } from "mdbreact";
 import {
     Image,
@@ -8,36 +8,21 @@ import {
   ButtonBack,
   ButtonNext,
 } from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
-const categoriesObj = [
-  {
-    name: "Вандовые",
-    image:
-      "https://static.orchids.in.ua/img/renanthera-imschootiana-foto-4343.jpg",
-  },
-  {
-    name: "Дендробиумы",
-    image:
-      "https://static.orchids.in.ua/img/renanthera-imschootiana-foto-4343.jpg",
-  },
-  {
-    name: "Фаленопсис",
-    image:
-      "https://static.orchids.in.ua/img/renanthera-imschootiana-foto-4343.jpg",
-  },
-  {
-    name: "Вандовые",
-    image:
-      "https://static.orchids.in.ua/img/renanthera-imschootiana-foto-4343.jpg",
-  },
-  {
-    name: "Вандовые",
-    image:
-      "https://static.orchids.in.ua/img/renanthera-imschootiana-foto-4343.jpg",
-  },
-];
+import { connect } from 'react-redux';
 
-const Categories = () => {
+import "pure-react-carousel/dist/react-carousel.es.css";
+import {categoryChange} from '../redux/actions';
+
+
+const Categories = ({categoryChange}) => {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const category = async () => {
+      setCategories(await fetch("http://localhost:9000/orchids/categories").then(data => data.json())) 
+    };
+    category();
+  }, [])
+
   return (
     <MDBContainer className="mt-4">
       <MDBRow>
@@ -46,26 +31,26 @@ const Categories = () => {
           naturalSlideWidth={400}
           naturalSlideHeight={200}
           visibleSlides={3}
-          totalSlides={categoriesObj.length}
+          totalSlides={categories.length}
         >
           <ButtonBack className="slider-button align-self-center"><MDBIcon icon="angle-double-left" /></ButtonBack>
           <Slider className="w-100">
-            {categoriesObj.map((category) => (
+            {categories.length ? categories.map((category) => (
               <Slide>
                 <MDBCol className="w-100 h-100">
-                  <MDBView className="w-100 h-100 rounded">
+                  <MDBView className="w-100 h-100 rounded pointer" onClick={()=> categoryChange(category.Name)}>
                     <Image
-                      src={category.image}
+                      src={category.Image}
                       className="img-fluid img-category"
                       alt=""
                     />
                     <MDBMask className="flex-center" overlay="teal-light">
-                      <p className="white-text">{category.name}</p>
+                      <p className="white-text">{category.Name}</p>
                     </MDBMask>
                   </MDBView>
                   </MDBCol>
               </Slide>
-            ))}
+            )) : '' }
           </Slider>
           <ButtonNext className="slider-button align-self-center"><MDBIcon icon="angle-double-right" /></ButtonNext>
         </CarouselProvider>
@@ -74,4 +59,8 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+const mapDispatchToProps = {
+  categoryChange,
+};
+
+export default connect(null, mapDispatchToProps)(Categories);

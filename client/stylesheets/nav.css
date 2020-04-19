@@ -13,3 +13,15 @@
     box-shadow: 3px 0px 20px #ababab;
     transition: 500ms;
 }
+
+.pointer {
+    cursor: pointer;
+}
+
+.pl-275 {
+    padding-left: 0.96rem !important;
+}
+
+.black-dropdown {
+    color: black;
+}
