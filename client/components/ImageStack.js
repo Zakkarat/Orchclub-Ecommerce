@@ -50,7 +50,7 @@ const ImageStack = ({ filters }) => {
         monitorImagesLoaded={true}
       >
         {orchids
-          ? orchids
+          ? orchids.sort((a,b) => a.Id - b.Id)
               .filter((elem, i) => elem.Image && i < imageLimit)
               .map((elem, i) => (
                 <MDBCard className="orch-card" key={elem.Name} onClick={() => handleClick(elem.Id)}>

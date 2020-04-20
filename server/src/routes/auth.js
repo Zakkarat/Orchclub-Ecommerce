@@ -34,7 +34,6 @@ auth.post("/auth/login", async (ctx, next) => {
 
 auth.post("/auth/register", async (ctx, next) => {
   const { username, password, country, city, adress, phone } = ctx.request.body;
-
   try {
     bcrypt
       .genSalt(saltRounds, (err, salt) => {
@@ -43,10 +42,10 @@ auth.post("/auth/register", async (ctx, next) => {
             .query(
               `INSERT INTO "Users"("Username", "Password", "Type", "Country", "City", "Adress", "Phone") VALUES('${username}', '${hash}', 'User', '${country}', '${city}', '${adress}', '${phone}')`
             )
-            .catch((err) => err);
+            .catch((err) => console.log(err));
         });
       })
-      .catch((err) => err);
+      .catch((err) => console.log(err));
   } catch {
     ctx.throw(401, "Wrong data");
   }

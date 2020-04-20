@@ -29,7 +29,7 @@ const NavBar = () => {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="mr-5">
                 <MDBDropdownItem href="#!">Мои данные</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Корзина</MDBDropdownItem>
+                  <MDBDropdownItem href="payment">Корзина</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Мои заказы</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>

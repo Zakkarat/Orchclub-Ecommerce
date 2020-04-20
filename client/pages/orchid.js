@@ -1,13 +1,8 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
-import "bootstrap-css-only/css/bootstrap.min.css";
-import "../stylesheets/cards.css";
-import "../stylesheets/nav.css";
-import Categories from "../components/Categories";
-import ImageStack from "../components/ImageStack";
-import "../stylesheets/orchid.css";
 import {
   MDBContainer,
   MDBRow,
@@ -20,7 +15,14 @@ import {
   MDBIcon,
 } from "mdbreact";
 
-const Home = () => {
+import changeCart from '../helpers/cartManagement'
+
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "../stylesheets/cards.css";
+import "../stylesheets/nav.css";
+import "../stylesheets/orchid.css";
+
+const Orchid = () => {
   const router = useRouter();
 
   const [items, setItems] = useState(0);
@@ -33,18 +35,18 @@ const Home = () => {
           router.query.id
         }`
       ).then(async (data) => await data.json());
-      setOrchid(data);
+      setOrchid(data[0]);
     };
     getData();
   }, []);
 
-  const handleClick = ({target}) => {
+  const handleClick = ({ target }) => {
     const sign = target.innerText;
-    if (sign === '+' && items < orchid.Stock) {
-        setItems(items + 1)
+    if (sign === "+" && items < orchid.Stock) {
+      setItems(items + 1);
     }
-    if (sign === '-' && items !== 0) {
-        setItems(items - 1)
+    if (sign === "-" && items !== 0) {
+      setItems(items - 1);
     }
   };
   console.log(orchid);
@@ -61,8 +63,15 @@ const Home = () => {
         ></link>
       </Head>
       <NavBar />
+      <Link href="/">
+        <MDBIcon
+          style={{ fontSize: "36px" }}
+          className="mt-4 ml-5 pointer"
+          icon="chevron-circle-left"
+        />
+      </Link>
       <div className="orchid-cont">
-        <MDBContainer className="mt-5 d-flex justify-content-center">
+        <MDBContainer className="d-flex justify-content-center">
           <MDBCol xl="5">
             <MDBCard>
               <MDBCardTitle className="text-center pt-3">
@@ -91,13 +100,13 @@ const Home = () => {
                     В наличии: {orchid.Stock}
                   </h3>
                   <MDBRow className="d-flex justify-content-center">
-                    <MDBBtn
-                      color="black"
-                      className="text-white width-btn"
+                    <button
+                      className="btn bg-color-black text-white width-btn"
                       onClick={handleClick}
+                      waves={false}
                     >
                       -
-                    </MDBBtn>
+                    </button>
                     <div className="width-input form-group mb-0 d-flex align-items-center">
                       <input
                         type="text"
@@ -107,11 +116,26 @@ const Home = () => {
                         id="formGroupExampleInput"
                       />
                     </div>
-                    <MDBBtn color="black" className="text-white width-btn" onClick={handleClick}>
+                    <button
+                      className="btn bg-color-black text-white width-btn"
+                      onClick={handleClick}
+                      waves={false}
+                    >
                       +
-                    </MDBBtn>
+                    </button>
                   </MDBRow>
-                  <MDBBtn color="black" className="w-30 text-white align-self-center"><MDBIcon icon="cart-arrow-down" className="pr-2" style={{fontSize: "16px"}} />В корзину</MDBBtn>
+                  <MDBBtn
+                    color="black"
+                    className="w-30 text-white align-self-center"
+                    onClick={() => changeCart(router.query.id, items, localStorage)}
+                  >
+                    <MDBIcon
+                      icon="cart-arrow-down"
+                      className="pr-2"
+                      style={{ fontSize: "16px" }}
+                    />
+                    В корзину
+                  </MDBBtn>
                 </MDBCol>
               </MDBCardBody>
             </MDBCard>
@@ -122,4 +146,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Orchid;
