@@ -11,9 +11,11 @@ import {
 } from "mdbreact";
 import "../stylesheets/cart-items.css";
 import cartChange from "../helpers/cartManagement";
-import useFetch from "../hooks/useFetch";
+import {connect} from 'react-redux';
+import {setOverallPrice, changePaymentState} from "../redux/actions"
 
-const Cart = () => {
+
+const Cart = ({changePaymentState, setOverallPrice}) => {
   const [cart, setCart] = useState([]);
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart"));
@@ -52,6 +54,11 @@ const Cart = () => {
     newCart[i] = newItem;
     setCart(newCart.filter((elem) => elem.quantity !== 0));
   };
+
+  const initStateChange = () => {
+    setOverallPrice(cart.reduce((acc, curr) => acc + curr.quantity * curr.Price, 0));
+    changePaymentState(1);
+  }
 
   console.log(cart);
   return (
@@ -109,16 +116,20 @@ const Cart = () => {
         </MDBCard>
       ))}
       <MDBRow style={{ width: "40rem", marginTop: "2rem" }}>
-        <MDBCol className="d-flex justify-content-end">
+        <MDBCol className="d-flex justify-content-start pr-3">
           <h3 className="pt-2">
             Всего к оплате:{" "}
             {cart.reduce((acc, curr) => acc + curr.quantity * curr.Price, 0)}
           </h3>
         </MDBCol>
-        <MDBCol className="d-flex justify-content-end"><MDBBtn color="black" className="text-white font-input">Продолжить</MDBBtn></MDBCol>
+        <MDBCol className="d-flex justify-content-end"><MDBBtn color="black" onClick={initStateChange} className="text-white font-input">Продолжить</MDBBtn></MDBCol>
       </MDBRow>
     </MDBContainer>
   );
 };
 
-export default Cart;
+const mapDispatchToProps = {
+  setOverallPrice,changePaymentState
+}
+
+export default connect(null, mapDispatchToProps)(Cart);

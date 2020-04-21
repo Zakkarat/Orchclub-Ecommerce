@@ -3,12 +3,13 @@ import Head from "next/head";
 import NavBar from "../components/NavBar";
 import Cart from "../components/Cart";
 import{ connect} from "react-redux";
-import {PaymentDetails} from "../components/PaymentDetails"
+import PaymentDetails from "../components/PaymentDetails"
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "../stylesheets/orchid.css"
 
 
 const Payment = ({payment}) => {
+  console.log(payment)
     return (
         <>
       <Head>
@@ -22,7 +23,7 @@ const Payment = ({payment}) => {
         ></link>
       </Head>
       <NavBar />
-      {!payment ? <Cart></Cart> : <PaymentDetails></PaymentDetails>}
+      {!payment.stage ? <Cart></Cart> : <PaymentDetails price={payment.price}></PaymentDetails>}
         </>
     )
 }
