@@ -2,7 +2,6 @@ const Router = require("koa-router");
 const orchids = Router();
 const { pool } = require("../../config");
 const orchidsObj = require("../../orchs.json");
-const checkAuth = require('../middleware/checkAuth')
 
 
 orchids.get("/orchids/putOrchs", async (ctx) => {

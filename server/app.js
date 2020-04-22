@@ -12,6 +12,7 @@ const port = process.env.PORT || 9000;
 const usersRoutes = require('./src/routes/users.js');
 const authRoutes = require('./src/routes/auth.js');
 const orchidsRoutes = require('./src/routes/orchids.js');
+const ordersRoutes = require('./src/routes/orders.js');
 
 const app = new koa();
 app.use(cors({credentials: true}));
@@ -25,6 +26,7 @@ app.pool = Pool;
 app.use(usersRoutes.routes());
 app.use(authRoutes.routes());
 app.use(orchidsRoutes.routes());
+app.use(ordersRoutes.routes());
 
 
 const server = app.listen(port, () => {

@@ -7,8 +7,7 @@ module.exports = async (ctx, next) => {
     const token = ctx.headers.cookie.split('').splice(4).join('');
     let payload;
       payload = jwt.verify(token, secret);
-      const {rows} = await pool.query(`SELECT * from "Users" WHERE "Id"='${payload.sub}'`)
-      ctx.state.user = rows[0];
+      ctx.state.user = payload.sub;
       return next();
     } catch (e) {
         return ctx.throw(400, 'Invalid token, please log in again');

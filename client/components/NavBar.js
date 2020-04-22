@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link'
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -21,7 +22,7 @@ const NavBar = () => {
   return (
     <MDBNavbar color="white" expand="md" className="pt-3">
       <MDBNavbarBrand>
-        <strong>OrchClub</strong>
+        <Link href="/"><strong>OrchClub</strong></Link>
       </MDBNavbarBrand>
       <MDBNavbarToggler />
       <MDBCollapse id="navbarCollapse3" navbar>
@@ -52,7 +53,7 @@ const NavBar = () => {
                   <>
                     <MDBDropdownItem href="#!">Мои данные</MDBDropdownItem>
                     <MDBDropdownItem href="/payment">Корзина</MDBDropdownItem>
-                    <MDBDropdownItem href="#!">Мои заказы</MDBDropdownItem>
+                    <MDBDropdownItem href="/orders">Мои заказы</MDBDropdownItem>
                   </>
                 ) : (
                   <>
