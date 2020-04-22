@@ -21,7 +21,7 @@ const ImageStack = ({ filters }) => {
   useEffect(() => {
     const getData = async () => {
       const data = await fetch(
-        `http://localhost:9000/orchids?category=${filters.category}`
+        `http://localhost:9000/orchids?category=${filters.category}`, {credentials: "include"}
       ).then(async (data) => await data.json());
       setOrchids(data);
     };

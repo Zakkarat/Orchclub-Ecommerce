@@ -18,7 +18,7 @@ const Categories = ({categoryChange}) => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     const category = async () => {
-      setCategories(await fetch("http://localhost:9000/orchids/categories").then(data => data.json())) 
+      setCategories(await fetch("http://localhost:9000/orchids/categories", {credentials: "include"}).then(async data => await data.json())) 
     };
     category();
   }, [])

@@ -96,10 +96,10 @@ const PaymentDetails = ({price}) => {
         return (<MDBRow style={{ width: "40rem", marginTop: "2rem" }}><MDBCol className="d-flex justify-content-start pr-3">
         <h3 className="pt-2">
           Всего к оплате:{" "}
-          {paymentDetails === "1" ? Math.ceil(price + ((price / 100) * 2.75)) : price}
+          {paymentDetails === "1" ? Math.ceil(price + ((price / 100) * 2.75)) : price} грн.
         </h3>
       </MDBCol>
-      <MDBCol className="d-flex justify-content-end"><MDBBtn color="black" className="text-white font-input">Оплатить</MDBBtn></MDBCol></MDBRow>)
+      <MDBCol xl="3" className="d-flex justify-content-end"><MDBBtn color="black" className="text-white font-input">Оплатить</MDBBtn></MDBCol></MDBRow>)
       }
    }
   return (

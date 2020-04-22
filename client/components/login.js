@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MDBBtn,
   MDBCard,
   MDBCardBody,
   MDBInput,
   MDBCol,
-  MDBIcon,
-  MDBRow,
 } from "mdbreact";
+import {useRouter} from 'next/router'
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  
+  const router = useRouter();
   const makeLogin = async (e) => {
     e.preventDefault();
     const username = e.target.children[0].children[1].value;
@@ -22,9 +23,23 @@ const Login = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
       credentials: 'include'
+    }).then(({status}) => {
+      if(status === 200) {
+        router.replace('/');
+      } 
     });
   };
-
+  useEffect(() => {
+    const getAuth = async () => {
+      const {status} = await fetch(
+        `http://localhost:9000/auth/verify`, {credentials: 'include'}
+      );
+      if(status === 200) {
+        router.replace('/');
+      }
+    };
+    getAuth();
+  }, []);
   return (
     <MDBCol md="5" xl="4">
       <MDBCard id="classic-card">
@@ -68,5 +83,6 @@ const Login = () => {
     </MDBCol>
   );
 };
+
 
 export default Login;

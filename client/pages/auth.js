@@ -3,7 +3,8 @@ import Head from "next/head";
 import Login from "../components/login";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "../stylesheets/login.css";
-const Auth = () => {
+const Auth = (props) => {
+  console.log(props)
   return (
     <>
       <Head>
