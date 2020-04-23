@@ -17,11 +17,11 @@
 #### Backend:
   - Node.js
   - Koa.js
-  - PostgreSQL(?)
+  - PostgreSQL
+  - JWT
   
 ### Current issues:
-  - DB managment is not decided yet. (Postgres or NoSQL MongoDB)
-  - Actual data parsing.
+  - Image Loading is too slow for components to render
   
 ### DBSchema:
 <img src="https://i.ibb.co/gZQBR6Y/Orchclub-Ecom.png"  alt="image" border="0">
