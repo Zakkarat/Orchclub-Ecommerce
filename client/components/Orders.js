@@ -27,7 +27,7 @@ const Orders = () => {
       <MDBCol xl="5">Статус заказа: {elem.PaymentStatus}</MDBCol>
           </MDBRow>
         </MDBCardBody>
-      </MDBCard>)) : 'Заказов не найдено'}
+      </MDBCard>)) : ''}
     </MDBContainer>
   );
 };

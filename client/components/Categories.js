@@ -24,7 +24,7 @@ const Categories = ({categoryChange}) => {
   }, [])
 
   return (
-    <MDBContainer className="mt-4">
+    <MDBContainer style={{marginTop: "96px"}}>
       <MDBRow>
         <CarouselProvider
             className='w-100 d-flex'

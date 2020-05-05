@@ -22,6 +22,26 @@
     padding-left: 0.96rem !important;
 }
 
+.search {
+    cursor: text !important;
+}
+
+.navbar-collapse > ul {
+    justify-content: center !important;
+}
+
+.filters {
+    margin-top: 74px;
+}
+
+.price-block {
+    width: 64px !important;
+}
+
+.btn-nav {
+    background-color: #f1f1f1 !important;
+}
+
 .black-dropdown {
     color: black;
 }

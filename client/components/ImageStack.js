@@ -8,14 +8,12 @@ import {
   MDBCardBody,
   MDBCardTitle,
 } from "mdbreact";
-import StackGrid from "react-stack-grid";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Masonry from "react-masonry-component";
 import { connect } from "react-redux";
 
 const ImageStack = ({ filters }) => {
   const router = useRouter();
-
-  const [imageLimit, setImageLimit] = useState(50);
   const [orchids, setOrchids] = useState([]);
 
   useEffect(() => {
@@ -25,7 +23,6 @@ const ImageStack = ({ filters }) => {
       ).then(async (data) => await data.json());
       setOrchids(data);
     };
-    setImageLimit(25);
     getData();
     console.log(orchids);
   }, [filters]);
@@ -39,22 +36,17 @@ const ImageStack = ({ filters }) => {
   }
 
   return (
-    <>
-      <StackGrid
-        columnWidth={300}
-        gutterWidth={25}
-        gutterHeight={25}
-        duration={0}
-        appearDelay={500}
-        className="mt-5"
-        monitorImagesLoaded={true}
+    <div className="orchid-gallery mt-5 mx-auto">
+      <Masonry
+
+className={'mx-auto'}
       >
         {orchids
           ? orchids.sort((a,b) => a.Id - b.Id)
-              .filter((elem, i) => elem.Image && i < imageLimit)
+              .filter((elem, i) => elem.Image)
               .map((elem, i) => (
                 <MDBCard className="orch-card" key={elem.Name} onClick={() => handleClick(elem.Id)}>
-                  <LazyLoadImage
+                  <img
                     className="img-fluid rounded w-100 h-responsive"
                     effect="blur"
                     src={elem.Image}
@@ -67,9 +59,8 @@ const ImageStack = ({ filters }) => {
                 </MDBCard>
               ))
           : "loading"}
-      </StackGrid>
-      <button onClick={() => setImageLimit(imageLimit + 25)}></button>
-    </>
+      </Masonry>
+    </div>
   );
 };
 
