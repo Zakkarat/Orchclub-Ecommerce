@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import {useRouter} from "next/router";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -20,10 +21,17 @@ import {changeFilters} from  "../redux/actions";
 import {connect} from "react-redux";
 
 const NavBar = (props) => {
+  const router = useRouter();
   const isLogged = useFetch("http://localhost:9000/auth/verify");
-  const [size, setSize] = useState("0");
-  const [sort, setSort] = useState("0");
-  console.log(props);
+  const [size, setSize] = useState(props.filters.size ? props.filters.size : "");
+  const [sort, setSort] = useState(props.filters.sort ? props.filters.sort : "");
+  const [search, setSearch] = useState(props.filters.search ? props.filters.search : "")
+  const [priceRange, setPriceRange] = useState(props.filters.priceRange ? props.filters.priceRange : {min: 0, max: 5000})
+  const [secondBar, setSecondBar] = useState(false); 
+  const handleFilterChange = () => {
+    props.changeFilters({size, sort, priceRange, search})
+  }
+
   return (
     <>
       <MDBNavbar color="white" expand="md" className="pt-3 fixed-top">
@@ -34,11 +42,13 @@ const NavBar = (props) => {
         </MDBNavbarBrand>
         <MDBNavbarToggler />
         <MDBCollapse id="navbarCollapse3" navbar>
-          <MDBNavbarNav className="align-items-center">
+          {!router.pathname.slice(1) ? <MDBNavbarNav className="align-items-center ml-5 pl-5">
             <MDBNavItem className="search" xl="3">
               <MDBFormInline className="search" waves>
                 <div className="lg-form my-0 search">
                   <input
+                    value={search}
+                    onChange={({target}) => setSearch(target.value)}
                     className="form-control mr-lg-2 search text-center"
                     type="text"
                     placeholder="Search"
@@ -48,9 +58,12 @@ const NavBar = (props) => {
               </MDBFormInline>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBBtn className="btn-nav">Фильтр</MDBBtn>
+              <MDBBtn color="black" className="text-white" onClick={handleFilterChange}><MDBIcon icon="search"></MDBIcon></MDBBtn>
             </MDBNavItem>
-          </MDBNavbarNav>
+            <MDBNavItem>
+              <MDBBtn color="white" onClick={() => setSecondBar(!secondBar)} className="btn-nav">Фильтр</MDBBtn>
+            </MDBNavItem>
+          </MDBNavbarNav> : ''}
           <MDBNavbarNav right>
             <MDBNavItem className="mr-5">
               <MDBDropdown>
@@ -82,18 +95,22 @@ const NavBar = (props) => {
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBNavbar>
-      <MDBNavbar color="white" className="pt-3 fixed-top filters ">
+{secondBar ? <MDBNavbar color="white" className="pt-3 fixed-top filters ">
         <MDBNavbarNav className="flex-row justify-content-center search">
           <MDBNavItem className="d-flex align-items-center">
             Цена от &nbsp;
             <input
               className="form-control search text-center price-block p-0"
-              type="text"
+              type="number"
+              value={priceRange.min}
+              onChange={({target}) => setPriceRange(Object.assign({}, priceRange, {min: parseInt(target.value)}))}
             ></input>{" "}
             &nbsp; до &nbsp;
             <input
               className="form-control search text-center price-block p-0"
-              type="text"
+              type="number"
+              value={priceRange.max}
+              onChange={({target}) => setPriceRange(Object.assign({}, priceRange, {max: parseInt(target.value)}))}
             ></input>
             &nbsp; грн.
           </MDBNavItem>
@@ -101,35 +118,35 @@ const NavBar = (props) => {
             Размер:&nbsp;
             <select
               value={size}
-              onChange={(target) => setSize(target.value)}
+              onChange={({target}) => setSize(target.value)}
               className="browser-default custom-select"
             >
-              <option value="0">Не выбрано</option>
-              <option value="1">F/S</option>
-              <option value="2">B/S</option>
-              <option value="3">NB/S</option>
-              <option value="4">S/S</option>
+              <option value="">Не выбрано</option>
+              <option value="F/S">F/S</option>
+              <option value="B/S">B/S</option>
+              <option value="NB/S">NB/S</option>
+              <option value="S/S">S/S</option>
             </select>
           </MDBNavItem>
           <MDBNavItem className="d-flex align-items-center">
             Сортировать:&nbsp;
             <select
               value={sort}
-              onChange={(target) => setSort(target.value)}
+              onChange={({target}) => setSort(target.value)}
               className="browser-default custom-select"
             >
-              <option value="0">Не выбрано</option>
-              <option value="1">Алфавит ↑</option>
-              <option value="2">Алфавит ↓</option>
-              <option value="3">Цена ↑</option>
-              <option value="4">Цена ↓</option>
+              <option value="">Не выбрано</option>
+              <option value="Алфавит ↑">Алфавит ↑</option>
+              <option value="Алфавит ↓">Алфавит ↓</option>
+              <option value="Цена ↑">Цена ↑</option>
+              <option value="Цена ↓">Цена ↓</option>
             </select>
           </MDBNavItem>
           <MDBNavItem>
-              <MDBBtn color="black" className="text-white">Подтвердить</MDBBtn>
+              <MDBBtn color="black" className="text-white" onClick={handleFilterChange}>Подтвердить</MDBBtn>
             </MDBNavItem>
         </MDBNavbarNav>
-      </MDBNavbar>
+      </MDBNavbar>: ''}
     </>
   );
 };
@@ -138,8 +155,8 @@ const mapDispatchToProps = {
   changeFilters
 }
 
-const mapStateToProps = ({filters}) => {
+const mapStateToProps = ({filters}) => ({
   filters
-}
+})
  
 export default connect(mapStateToProps,mapDispatchToProps)(NavBar);

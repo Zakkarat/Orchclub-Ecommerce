@@ -15,7 +15,7 @@ const Orders = () => {
     const ordersData = useFetch('http://localhost:9000/orders/userOrders');
     console.log(ordersData);
   return (
-    <MDBContainer className="d-flex align-items-center flex-column mt-5">
+    <MDBContainer className="d-flex align-items-center flex-column " style={{marginTop: "96px"}}>
       {ordersData.data ? ordersData.data.map(elem => (<MDBCard
         className="d-flex flex-row"
         style={{ width: "45rem", marginTop: "1rem" }}

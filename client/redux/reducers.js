@@ -2,7 +2,7 @@
 import {combineReducers} from "redux";
 import {CATEGORY_CHANGE, CHANGE_PAYMENT_STATE, SET_OVERALL_PRICE, CHANGE_FILTERS} from "./actions";
 
-const filters = (state = {category: "Вандовые", sort: "", priceRange: "", size: ""}, action) => {
+const filters = (state = {category: "Вандовые", sort: "", priceRange: {min: 0, max: 5000}, size: "", search: ""}, action) => {
     switch(action.type) {
         case CATEGORY_CHANGE:
             return Object.assign({}, state, action.payload);

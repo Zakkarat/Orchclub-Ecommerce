@@ -7,7 +7,7 @@ export const CHANGE_FILTERS = "CHANGE_FILTERS";
 
 export const categoryChange = (category) => ({
     type: CATEGORY_CHANGE,
-    payload: category
+    payload: {category}
 })
 
 export const changePaymentState = (stage) => ({

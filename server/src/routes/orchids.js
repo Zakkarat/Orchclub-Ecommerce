@@ -32,7 +32,7 @@ orchids.get("/orchids/categories", async (ctx) => {
 
 orchids.get("/orchids", async (ctx) => {
     const {category} = ctx.request.query;
-    const {rows} = await pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image"
+    const {rows} = await pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image", "Orchids"."Price", "Orchids"."Size"
     FROM public."Orchids" INNER JOIN "Category" ON "Orchids"."CategoryId" = "Category"."Id" WHERE "Category"."Name" = '${category}';`);
     ctx.body = rows;
 })

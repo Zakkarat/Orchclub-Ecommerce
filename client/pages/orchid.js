@@ -65,8 +65,8 @@ const Orchid = () => {
       <NavBar />
       <Link href="/">
         <MDBIcon
-          style={{ fontSize: "36px" }}
-          className="mt-4 ml-5 pointer"
+          style={{ fontSize: "36px", marginTop: "96px"}}
+          className="ml-5 pointer"
           icon="chevron-circle-left"
         />
       </Link>

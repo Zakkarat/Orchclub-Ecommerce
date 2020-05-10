@@ -62,7 +62,7 @@ const Cart = ({changePaymentState, setOverallPrice}) => {
 
   console.log(cart);
   return (
-    <MDBContainer className="d-flex align-items-center flex-column mt-5">
+    <MDBContainer className="d-flex align-items-center flex-column" style={{marginTop: "96px"}}>
       {cart.map((item, i) => (
         <MDBCard
           className="d-flex flex-row"
