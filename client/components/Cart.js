@@ -7,7 +7,6 @@ import {
   MDBCardTitle,
   MDBBtn,
   MDBIcon,
-  MDBBtnGroup,
 } from "mdbreact";
 import "../stylesheets/cart-items.css";
 import cartChange from "../helpers/cartManagement";
@@ -59,8 +58,6 @@ const Cart = ({changePaymentState, setOverallPrice}) => {
     setOverallPrice(cart.reduce((acc, curr) => acc + curr.quantity * curr.Price, 0));
     changePaymentState(1);
   }
-
-  console.log(cart);
   return (
     <MDBContainer className="d-flex align-items-center flex-column" style={{marginTop: "96px"}}>
       {cart.map((item, i) => (
@@ -95,7 +92,7 @@ const Cart = ({changePaymentState, setOverallPrice}) => {
               </div>
               <button
                 className="btn bg-color-black text-white width-btn"
-                onClick={({ target }) => handleClick(i, "+")}
+                onClick={() => handleClick(i, "+")}
               >
                 +
               </button>

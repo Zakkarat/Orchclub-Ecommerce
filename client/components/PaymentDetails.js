@@ -10,7 +10,6 @@ import {
   MDBIcon,
   MDBInput,
 } from "mdbreact";
-import payment from "../pages/payment";
 
 const PaymentDetails = ({ price }) => {
   const [deliveryType, setDeliveryType] = useState("0");
@@ -84,14 +83,12 @@ const PaymentDetails = ({ price }) => {
               <option value="1">Оплата картой</option>
               <option value="2">Оплата за реквизитами</option>
             </select>
-            {paymentDetails === "1" ? (
+            {paymentDetails === "1" && (
               <p className="text-muted text-left font-small">
                 Данные платежи производятся с комиссией 2.75% от вашего заказа.
                 В данном случае стоимость повышена на{" "}
                 {Math.ceil((price / 100) * 2.75)} грн.
               </p>
-            ) : (
-              ""
             )}
           </MDBCol>
         </MDBRow>

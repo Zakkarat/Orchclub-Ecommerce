@@ -1,10 +1,14 @@
 import React from "react";
 import Head from "next/head";
-import Login from "../components/login";
+import { useRouter } from "next/router";
+import Login from "../components/Login";
+// import Register from './Register'
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "../stylesheets/login.css";
-const Auth = (props) => {
-  console.log(props)
+
+const Auth = () => {
+  const router = useRouter();
+  console.log(router.pathname)
   return (
     <>
       <Head>

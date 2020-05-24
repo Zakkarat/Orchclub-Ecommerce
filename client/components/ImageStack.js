@@ -39,7 +39,7 @@ const ImageStack = ({ filters }) => {
     <div className="orchid-gallery mt-5 mx-auto">
       <Masonry className={"mx-auto"}>
         {orchids
-          ? orchids
+         && orchids
               .sort((a, b) => {
                 const { sort } = filters;
                 if (!sort) {
@@ -69,11 +69,11 @@ const ImageStack = ({ filters }) => {
               .filter(
                 (elem) => filters.search ? elem.Name.split(' ').some(word => word.toLowerCase().match(new RegExp(filters.search.toLowerCase()), "ig") ) : true
               )
-              .filter((elem, i) => elem.Image)
-              .map((elem, i) => (
+              .filter((elem) => elem.Image)
+              .map((elem) => (
                 <MDBCard
                   className="orch-card"
-                  key={elem.Name}
+                  key={elem.Id}
                   onClick={() => handleClick(elem.Id)}
                 >
                   <img
@@ -87,8 +87,7 @@ const ImageStack = ({ filters }) => {
                     </MDBCardTitle>
                   </MDBCardBody>
                 </MDBCard>
-              ))
-          : "loading"}
+              ))}
       </Masonry>
     </div>
   );

@@ -10,6 +10,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "imagesloaded": "^4.1.4",
+    "material-ui": "^0.20.2",
     "mdbreact": "^4.25.3",
     "next": "9.2.2",
     "next-compose-plugins": "^2.2.0",

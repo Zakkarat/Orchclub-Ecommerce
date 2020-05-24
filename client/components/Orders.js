@@ -4,9 +4,6 @@ import {
   MDBCard,
   MDBRow,
   MDBCol,
-  MDBCardTitle,
-  MDBBtn,
-  MDBIcon,
   MDBCardBody,
 } from "mdbreact";
 import useFetch from "../hooks/useFetch";
@@ -16,7 +13,7 @@ const Orders = () => {
     console.log(ordersData);
   return (
     <MDBContainer className="d-flex align-items-center flex-column " style={{marginTop: "96px"}}>
-      {ordersData.data ? ordersData.data.map(elem => (<MDBCard
+      {ordersData.data && ordersData.data.map(elem => (<MDBCard
         className="d-flex flex-row"
         style={{ width: "45rem", marginTop: "1rem" }}
       >
@@ -27,7 +24,7 @@ const Orders = () => {
       <MDBCol xl="5">Статус заказа: {elem.PaymentStatus}</MDBCol>
           </MDBRow>
         </MDBCardBody>
-      </MDBCard>)) : ''}
+      </MDBCard>))}
     </MDBContainer>
   );
 };

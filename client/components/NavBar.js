@@ -84,7 +84,7 @@ const NavBar = (props) => {
                   ) : (
                     <>
                       <MDBDropdownItem href="/auth">Войти</MDBDropdownItem>
-                      <MDBDropdownItem href="payment">
+                      <MDBDropdownItem href="/auth/register">
                         Зарегистрироваться
                       </MDBDropdownItem>
                     </>
@@ -95,7 +95,7 @@ const NavBar = (props) => {
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBNavbar>
-{secondBar ? <MDBNavbar color="white" className="pt-3 fixed-top filters ">
+{secondBar && <MDBNavbar color="white" className="pt-3 fixed-top filters ">
         <MDBNavbarNav className="flex-row justify-content-center search">
           <MDBNavItem className="d-flex align-items-center">
             Цена от &nbsp;
@@ -146,7 +146,7 @@ const NavBar = (props) => {
               <MDBBtn color="black" className="text-white" onClick={handleFilterChange}>Подтвердить</MDBBtn>
             </MDBNavItem>
         </MDBNavbarNav>
-      </MDBNavbar>: ''}
+      </MDBNavbar>}
     </>
   );
 };

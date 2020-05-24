@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MDBCol, MDBRow, MDBMask, MDBView, MDBContainer, MDBIcon } from "mdbreact";
 import {
-    Image,
+  Image,
   CarouselProvider,
   Slider,
   Slide,
@@ -9,7 +9,6 @@ import {
   ButtonNext,
 } from "pure-react-carousel";
 import { connect } from 'react-redux';
-
 import "pure-react-carousel/dist/react-carousel.es.css";
 import {categoryChange} from '../redux/actions';
 
@@ -35,8 +34,8 @@ const Categories = ({categoryChange}) => {
         >
           <ButtonBack className="slider-button align-self-center"><MDBIcon icon="angle-double-left" /></ButtonBack>
           <Slider className="w-100">
-            {categories.length ? categories.map((category) => (
-              <Slide>
+            {categories.length && categories.map((category) => (
+              <Slide key={category.Name}>
                 <MDBCol className="w-100 h-100">
                   <MDBView className="w-100 h-100 rounded pointer" onClick={()=> categoryChange(category.Name)}>
                     <Image
@@ -50,7 +49,7 @@ const Categories = ({categoryChange}) => {
                   </MDBView>
                   </MDBCol>
               </Slide>
-            )) : '' }
+            ))}
           </Slider>
           <ButtonNext className="slider-button align-self-center"><MDBIcon icon="angle-double-right" /></ButtonNext>
         </CarouselProvider>
