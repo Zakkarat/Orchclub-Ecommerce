@@ -13,3 +13,7 @@ body,
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.font-size-fix {
+  font-size: 1.75rem;
+}

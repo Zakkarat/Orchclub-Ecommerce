@@ -2,112 +2,113 @@ import React, {useState} from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBInput, MDBCol, MDBIcon, MDBRow } from 'mdbreact';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
-import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { KeyboardDatePicker } from "@material-ui/pickers";
-import 'react-day-picker/lib/style.css';
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 150,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+import cities from '../libs/ua-cities.json';
+import setValue from '../helpers/setValue';
+import {useRouter} from 'next/router';
 
 const Card = () => {
-  const classes = useStyles();
-  const [selectedDate, handleDateChange] = useState(new Date());
-  const [age, setAge] = React.useState('');
-  const [country, setCountry] = React.useState('');
-  const [city, setCity] = React.useState('');
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-  const handleChangeC = (event) => {
-    setCountry(event.target.value);
-  };
-  const handleChangeCity = (event) => {
-    setCity(event.target.value);
-  };
+  const router = useRouter();
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [region, setRegion] = useState('');
+  const [city, setCity] = useState('');
+  const [adress, setAdress] = useState('');
+  const [phone, setPhone] = useState('+380');
+  const [error, setError] = useState(false);
+
+  const handleValidPhone = (e) => {
+    const newPhone = e.target.value;
+    if(newPhone.length < 14 && newPhone.length > 3 ) {
+      setValue(e, setPhone);
+    }
+  }
+
+  const handleSubmit = async ({target}) => {
+    target.disabled = true;
+    await fetch("http://localhost:9000/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, password, region, city, adress, phone }),
+      credentials: 'include'
+    }).then(({status}) => {
+      if(status === 200) {
+        router.replace('/');
+      } else {
+        setError(true);
+        target.disabled = false;
+      }
+    });
+  }
+
   return (
-    <MDBCol md="2" xl="3">
+    <MDBCol lg="6" xl="3">
       <MDBCard id="classic-card">
         <MDBCardBody className="black-text">
-          <h3 className="text-center"> Реєстрація:
+          <h3 className="text-center"> Регистрация:
           </h3>
           <hr className="hr-light" />
           <MDBInput
             className="black-text"
             iconClass="black-text"
-            label="Ваше Ім'я"
+            label="Ваше имя"
             icon="user"
+            value={name}
+            onChange={(e) => setValue(e, setName)}
           />
-        <MDBCol className="d-flex align-content-center px-0"><MDBIcon far className="pt-4" icon="calendar-alt ic-32" /><KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
-          id="date-picker-inline"
-          label="Дата народження"
-          value={selectedDate}
-          className="ml-3 w-100"
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        /></MDBCol>
-       <MDBCol className="d-flex align-content-center px-0"><MDBIcon className="pt-3" icon="transgender-alt ic-32" /><FormControl className="ml-3 w-100">
-        <InputLabel id="demo-simple-select-label">Стать</InputLabel>
+          <MDBInput
+            className="black-text"
+            iconClass="black-text"
+            label="Ваш пароль"
+            icon="lock"
+            type="password"
+            value={password}
+            onChange={(e) => setValue(e, setPassword)}
+          />
+      <MDBCol className="d-flex align-content-center px-0"><MDBIcon className="pt-3 ic-32 font-size-fix" icon="mountain" /><FormControl className="ml-2 w-100">
+        <InputLabel id="demo-simple-select-label">Регион</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          onChange={handleChangeC}
+          value={region}
+          onChange={(e) => setValue(e, setRegion)}
         >
-          <MenuItem value={1}>Чоловік</MenuItem>
-          <MenuItem value={2}>Жінка</MenuItem>
-          <MenuItem value={3}>Не знаю</MenuItem>
+          {cities[0].regions.map((region, i) => <MenuItem key={i} value={region.name}>{region.name}</MenuItem>)}
         </Select>
       </FormControl></MDBCol>
-      <MDBCol className="d-flex align-content-center px-0 mt-3"><MDBIcon className="pt-3 ic-32" icon="globe-americas " /><FormControl className="ml-3 w-100">
-        <InputLabel id="demo-simple-select-label">Країна</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={country}
-          onChange={handleChange}
-        >
-          <MenuItem value={1}>Україна</MenuItem>
-          <MenuItem value={2}>Албанія</MenuItem>
-          <MenuItem value={3}>Гондурас</MenuItem>
-        </Select>
-      </FormControl></MDBCol>
-      <MDBCol className="d-flex align-content-center px-0 mt-3"><MDBIcon className="pt-3 ic-32" icon="city" /><FormControl className="ml-2 w-100">
-        <InputLabel id="demo-simple-select-label">Місто</InputLabel>
-        <Select
+      <MDBCol className="d-flex align-content-center px-0 mt-3"><MDBIcon className="pt-3 ic-32 font-size-fix" icon="city" /><FormControl className="ml-2 w-100">
+        <InputLabel id="demo-simple-select-label">Город</InputLabel>
+        <Select disabled={!region ? true : false}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={city}
-          onChange={handleChangeCity}
+          onChange={(e) => setValue(e, setCity)}
         >
-          <MenuItem value={1}>Київ</MenuItem>
-          <MenuItem value={2}>Житомир</MenuItem>
-          <MenuItem value={3}>Хмельницьк</MenuItem>
+          {region && cities[0].regions.filter(elem => elem.name === region)[0].cities.map((city, i) => <MenuItem key={i} value={city.name}>{city.name}</MenuItem>)}
         </Select>
       </FormControl></MDBCol>
       <MDBInput
             className="black-text mb-2"
             iconClass="black-text"
-            label="Ваш пароль"
-            icon="lock"
-            type="password"
+            label="Ваш адресс"
+            icon="map-signs"
+            type="text"
+            value={adress}
+            onChange={(e) => setValue(e, setAdress)}
           />
+      <MDBInput
+            className="black-text mb-2"
+            iconClass="black-text"
+            label="Ваш телефон"
+            icon="phone"
+            type="phone"
+            value={phone}
+            onChange={(e) => handleValidPhone(e)}
+          />
+          {error && <p className="text-center text-danger">Проверьте правильность введенных данных.</p>}
           <div className="text-center mt-4 white-text">
-            <MDBBtn color="black" className="white-text">Зареєструватися</MDBBtn>
+            <MDBBtn color="black" onClick={handleSubmit} className="white-text">Зареєструватися</MDBBtn>
           </div>
         </MDBCardBody>
       </MDBCard>

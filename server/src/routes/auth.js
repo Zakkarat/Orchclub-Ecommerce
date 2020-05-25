@@ -34,14 +34,14 @@ auth.post("/auth/login", async (ctx, next) => {
 });
 
 auth.post("/auth/register", async (ctx, next) => {
-  const { username, password, country, city, adress, phone } = ctx.request.body;
+  const { name, password, region, city, adress, phone } = ctx.request.body;
   try {
     bcrypt
       .genSalt(saltRounds, (err, salt) => {
         bcrypt.hash(password, salt, async (err, hash) => {
           await pool
             .query(
-              `INSERT INTO "Users"("Username", "Password", "Type", "Country", "City", "Adress", "Phone") VALUES('${username}', '${hash}', 'User', '${country}', '${city}', '${adress}', '${phone}')`
+              `INSERT INTO "Users"("Username", "Password", "Type", "Region", "City", "Adress", "Phone") VALUES('${name}', '${hash}', 'User', '${region}', '${city}', '${adress}', '${phone}')`
             )
             .catch((err) => console.log(err));
         });
@@ -50,6 +50,7 @@ auth.post("/auth/register", async (ctx, next) => {
   } catch {
     ctx.throw(401, "Wrong data");
   }
+  ctx.body = "ok";
 });
 
 auth.get("/auth/verify", checkAuth, (ctx) => {

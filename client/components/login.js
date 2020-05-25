@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   MDBBtn,
   MDBCard,
@@ -6,19 +7,19 @@ import {
   MDBInput,
   MDBCol,
 } from "mdbreact";
-import {useRouter} from 'next/router'
-
+import {useRouter} from 'next/router';
+import setValue from '../helpers/setValue';
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+  const [error, setError] = useState(false);
+
   const router = useRouter();
   const makeLogin = async (e) => {
-    e.preventDefault();
-    const username = e.target.children[0].children[1].value;
-    const password = e.target.children[1].children[1].value;
-    const data = await fetch("http://localhost:9000/auth/login", {
+    const btn = e.target;
+    btn.disabled = true;
+    await fetch("http://localhost:9000/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -26,7 +27,10 @@ const Login = () => {
     }).then(({status}) => {
       if(status === 200) {
         router.replace('/');
-      } 
+      }
+        console.log(e)
+        btn.disabled = false;
+        setError(true);
     });
   };
   useEffect(() => {
@@ -41,19 +45,18 @@ const Login = () => {
     getAuth();
   }, []);
   return (
-    <MDBCol md="5" xl="4">
+    <MDBCol lg="6" xl="3">
       <MDBCard id="classic-card">
         <MDBCardBody className="black-text">
           <h3 className="text-center"> Увійти в систему:</h3>
           <hr className="hr-light" />
-          <form onSubmit={makeLogin}>
             <MDBInput
               className="black-text"
               iconClass="black-text"
               label="Ваш логін"
               icon="user-alt"
               value={username}
-              onChange={({ value }) => setUsername(value)}
+              onChange={(e) => setValue(e, setUsername)}
             />
             <MDBInput
               className="black-text"
@@ -61,23 +64,22 @@ const Login = () => {
               label="Ваш пароль"
               icon="lock"
               type="password"
-              value={password}
-              onChange={({ value }) => setPassword(value)}
+              onChange={(e) => setValue(e, setPassword)}
             />
+            {error && <p className="text-center text-danger">Проверьте правильность введенных данных.</p>}
             <div className="text-center mt-4 white-text d-flex flex-column justify-content-center">
               <MDBCol className="text-center">
-                <MDBBtn color="black" className="white-text" type="submit">
+                <MDBBtn color="black" className="white-text" onClick={makeLogin}>
                   Увійти
                 </MDBBtn>
               </MDBCol>
               <MDBCol className="black-text text-center mt-3">
                 Немає облікового запису?{" "}
                 <a className="blue-text underline">
-                  <u>Створіть його!</u>
+                  <u><Link href="/auth/register"><a>Створіть його!</a></Link></u>
                 </a>
               </MDBCol>
             </div>
-          </form>
         </MDBCardBody>
       </MDBCard>
     </MDBCol>

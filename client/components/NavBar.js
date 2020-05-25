@@ -83,7 +83,7 @@ const NavBar = (props) => {
                     </>
                   ) : (
                     <>
-                      <MDBDropdownItem href="/auth">Войти</MDBDropdownItem>
+                      <MDBDropdownItem href="/auth/login">Войти</MDBDropdownItem>
                       <MDBDropdownItem href="/auth/register">
                         Зарегистрироваться
                       </MDBDropdownItem>
