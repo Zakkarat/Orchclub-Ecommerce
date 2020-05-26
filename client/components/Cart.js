@@ -33,7 +33,9 @@ const Cart = ({changePaymentState, setOverallPrice}) => {
         })
       );
     };
+    if(cart) {
     getData();
+    }
   }, []);
 
   const handleClick = (i, sign) => {
@@ -60,7 +62,7 @@ const Cart = ({changePaymentState, setOverallPrice}) => {
   }
   return (
     <MDBContainer className="d-flex align-items-center flex-column" style={{marginTop: "96px"}}>
-      {cart.map((item, i) => (
+      {cart && cart.map((item, i) => (
         <MDBCard
           className="d-flex flex-row"
           style={{ width: "40rem", marginTop: "1rem" }}
@@ -119,7 +121,7 @@ const Cart = ({changePaymentState, setOverallPrice}) => {
             {cart.reduce((acc, curr) => acc + curr.quantity * curr.Price, 0)}
           </h3>
         </MDBCol>
-        <MDBCol className="d-flex justify-content-end"><MDBBtn color="black" onClick={initStateChange} className="text-white font-input">Продолжить</MDBBtn></MDBCol>
+        <MDBCol className="d-flex justify-content-end"><MDBBtn color="black" onClick={initStateChange} disabled={!cart ? false : true} className="text-white font-input">Продолжить</MDBBtn></MDBCol>
       </MDBRow>
     </MDBContainer>
   );
