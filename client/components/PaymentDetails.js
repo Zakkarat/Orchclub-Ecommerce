@@ -8,14 +8,24 @@ import {
   MDBCardBody,
   MDBBtn,
   MDBIcon,
-  MDBInput,
 } from "mdbreact";
+import setValue from '../helpers/setValue';
 
 const PaymentDetails = ({ price }) => {
   const [deliveryType, setDeliveryType] = useState("0");
   const [NPdepartment, setNPDepartment] = useState(0);
   const [takeAway, setTakeAway] = useState(0);
   const [paymentDetails, setPaymentDetails] = useState(0);
+
+  const handlePayClick = async (e) => {
+    console.log(localStorage.getItem('cart'))
+    await fetch('http://localhost:9000/orders/createOrder', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart: JSON.parse(localStorage.getItem('cart')), deliveryInfo: { deliveryType, NPdepartment, takeAway, paymentDetails }, overall: price }),
+      credentials: 'include'}
+    )
+  }
 
   const deliveryDetails = () => {
     if (deliveryType === "1") {
@@ -28,7 +38,7 @@ const PaymentDetails = ({ price }) => {
           <MDBCol>
             <select
               value={NPdepartment}
-              onChange={({ target }) => setNPDepartment(target.value)}
+              onChange={(e) => setValue(e, setNPDepartment)}
               className="browser-default custom-select"
             >
               <option value="0">Не выбрано</option>
@@ -49,7 +59,7 @@ const PaymentDetails = ({ price }) => {
           <MDBCol>
             <select
               value={takeAway}
-              onChange={({ target }) => setTakeAway(target.value)}
+              onChange={(e) => setValue(e, setTakeAway)}
               className="browser-default custom-select"
             >
               <option value="0">Не выбрано</option>
@@ -76,7 +86,7 @@ const PaymentDetails = ({ price }) => {
           <MDBCol>
             <select
               value={paymentDetails}
-              onChange={({ target }) => setPaymentDetails(target.value)}
+              onChange={(e) => setValue(e, setPaymentDetails)}
               className="browser-default custom-select"
             >
               <option value="0">Не выбрано</option>
@@ -95,15 +105,7 @@ const PaymentDetails = ({ price }) => {
       );
     }
   };
-  const handlePayClick = async (e) => {
-    console.log(localStorage.getItem('cart'))
-    await fetch('http://localhost:9000/orders/createOrder', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cart: JSON.parse(localStorage.getItem('cart')), deliveryInfo: { deliveryType, NPdepartment, takeAway, paymentDetails }, overall: price }),
-      credentials: 'include'}
-    )
-  }
+
 
   const overall = () => {
     if (paymentDetails) {
@@ -181,7 +183,7 @@ const PaymentDetails = ({ price }) => {
                     {" "}
                     <select
                       value={deliveryType}
-                      onChange={({ target }) => setDeliveryType(target.value)}
+                      onChange={(e) => setValue(e, setDeliveryType)}
                       className="browser-default custom-select"
                     >
                       <option value="0">Не выбрано</option>

@@ -34,7 +34,7 @@ const Categories = ({categoryChange}) => {
         >
           <ButtonBack className="slider-button align-self-center"><MDBIcon icon="angle-double-left" /></ButtonBack>
           <Slider className="w-100">
-            {categories.length && categories.map((category) => (
+            {categories && categories.map((category) => (
               <Slide key={category.Name}>
                 <MDBCol className="w-100 h-100">
                   <MDBView className="w-100 h-100 rounded pointer" onClick={()=> categoryChange(category.Name)}>

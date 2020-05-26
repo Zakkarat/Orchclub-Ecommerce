@@ -19,6 +19,8 @@ import {
 import useFetch from "../hooks/useFetch";
 import {changeFilters} from  "../redux/actions";
 import {connect} from "react-redux";
+import setValue from '../helpers/setValue';
+
 
 const NavBar = (props) => {
   const router = useRouter();
@@ -118,7 +120,7 @@ const NavBar = (props) => {
             Размер:&nbsp;
             <select
               value={size}
-              onChange={({target}) => setSize(target.value)}
+              onChange={(e) => setValue(e, setSize)}
               className="browser-default custom-select"
             >
               <option value="">Не выбрано</option>
@@ -132,7 +134,7 @@ const NavBar = (props) => {
             Сортировать:&nbsp;
             <select
               value={sort}
-              onChange={({target}) => setSort(target.value)}
+              onChange={(e) => setValue(e, setSort)}
               className="browser-default custom-select"
             >
               <option value="">Не выбрано</option>

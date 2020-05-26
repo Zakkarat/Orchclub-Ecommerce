@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import Link from 'next/link'
 import {
-  MDBContainer,
-  MDBCol,
   MDBCard,
-  MDBCardImage,
   MDBCardBody,
   MDBCardTitle,
 } from "mdbreact";
 import Masonry from "react-masonry-component";
 import { connect } from "react-redux";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const ImageStack = ({ filters }) => {
-  const router = useRouter();
   const [orchids, setOrchids] = useState([]);
-  console.log(filters);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       const data = await fetch(
         `http://localhost:9000/orchids?category=${filters.category}`,
         { credentials: "include" }
@@ -27,18 +26,14 @@ const ImageStack = ({ filters }) => {
     console.log(orchids);
   }, [filters]);
 
-  const handleClick = (id) => {
-    console.log(id);
-    router.push({
-      pathname: "/orchid",
-      query: { id: id },
-    });
-  };
 
   return (
     <div className="orchid-gallery mt-5 mx-auto">
-      <Masonry className={"mx-auto"}>
-        {orchids
+      <Masonry className="mx-auto d-flex justify-content-center"
+        onImagesLoaded={() => setLoading(false)}
+        options={{transitionDuration: 0}}
+      >
+        {!loading ? orchids
          && orchids
               .sort((a, b) => {
                 const { sort } = filters;
@@ -71,23 +66,27 @@ const ImageStack = ({ filters }) => {
               )
               .filter((elem) => elem.Image)
               .map((elem) => (
+                
                 <MDBCard
                   className="orch-card"
                   key={elem.Id}
-                  onClick={() => handleClick(elem.Id)}
                 >
+                  <Link href={`/orchid?id=${elem.Id}`}>
+                  <a>
                   <img
                     className="img-fluid rounded w-100 h-responsive"
                     effect="blur"
                     src={elem.Image}
                   />
                   <MDBCardBody>
-                    <MDBCardTitle tag="h6" className="text-center">
+                    <MDBCardTitle tag="h6" className="text-center undecorate">
                       {elem.Name}
                     </MDBCardTitle>
                   </MDBCardBody>
+                  </a>
+                  </Link>
                 </MDBCard>
-              ))}
+              )) : <div className="position-relative"><CircularProgress disableShrink></CircularProgress></div>}
       </Masonry>
     </div>
   );
