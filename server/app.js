@@ -20,7 +20,6 @@ app.use(session(app));
 
 app.use(json({ pretty: true, spaces: 4 }));
 
-app.keys = ["secret key"];
 app.pool = Pool;
 app.use(usersRoutes.routes());
 app.use(authRoutes.routes());

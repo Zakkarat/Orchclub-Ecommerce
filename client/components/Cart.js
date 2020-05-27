@@ -8,7 +8,6 @@ import {
   MDBBtn,
   MDBIcon,
 } from "mdbreact";
-import "../stylesheets/cart-items.css";
 import cartChange from "../helpers/cartManagement";
 import { connect } from "react-redux";
 import { setOverallPrice, changePaymentState } from "../redux/actions";

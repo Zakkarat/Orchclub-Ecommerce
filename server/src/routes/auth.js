@@ -5,13 +5,12 @@ const jwt = require("jsonwebtoken");
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const secret = process.env.JWT_SECRET || "secret";
+const secret = process.env.JWT_SECRET;
 const wrongUserPassMsg = "Incorrect username and/or password.";
 const checkAuth = require("../middleware/checkAuth");
 
-auth.post("/auth/login", async (ctx, next) => {
+auth.post("/auth/login", async (ctx) => {
   const { username, password } = ctx.request.body;
-  console.log(ctx.request.body);
   if (!username) ctx.throw(422, "Username required.");
   if (!password) ctx.throw(422, "Password required.");
 
@@ -33,7 +32,7 @@ auth.post("/auth/login", async (ctx, next) => {
   }
 });
 
-auth.post("/auth/register", async (ctx, next) => {
+auth.post("/auth/register", async (ctx) => {
   const { name, password, region, city, adress, phone } = ctx.request.body;
   try {
     bcrypt
