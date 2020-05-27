@@ -29,7 +29,9 @@ const NavBar = (props) => {
   const [sort, setSort] = useState(props.filters.sort ? props.filters.sort : "");
   const [search, setSearch] = useState(props.filters.search ? props.filters.search : "")
   const [priceRange, setPriceRange] = useState(props.filters.priceRange ? props.filters.priceRange : {min: 0, max: 5000})
-  const [secondBar, setSecondBar] = useState(false); 
+  const [secondBar, setSecondBar] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  
   const handleFilterChange = () => {
     props.changeFilters({size, sort, priceRange, search})
   }
@@ -42,8 +44,8 @@ const NavBar = (props) => {
             <strong>OrchClub</strong>
           </Link>
         </MDBNavbarBrand>
-        <MDBNavbarToggler />
-        <MDBCollapse id="navbarCollapse3" navbar>
+        <MDBNavbarToggler onClick={() => setIsOpen(!isOpen)} />
+        <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
           {!router.pathname.slice(1) ? <MDBNavbarNav className="align-items-center ml-5 pl-5">
             <MDBNavItem className="search" xl="3">
               <MDBFormInline className="search" waves>

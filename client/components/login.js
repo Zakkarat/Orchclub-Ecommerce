@@ -27,10 +27,10 @@ const Login = () => {
     }).then(({status}) => {
       if(status === 200) {
         router.replace('/');
-      }
-        console.log(e)
+      } else {
         btn.disabled = false;
         setError(true);
+      }
     });
   };
   useEffect(() => {
