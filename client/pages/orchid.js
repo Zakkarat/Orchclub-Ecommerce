@@ -14,7 +14,7 @@ import {
   MDBIcon,
 } from "mdbreact";
 
-import changeCart from '../helpers/cartManagement'
+import changeCart from "../helpers/cartManagement";
 
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "../stylesheets/cards.css";
@@ -64,7 +64,7 @@ const Orchid = () => {
       <NavBar />
       <Link href="/">
         <MDBIcon
-          style={{ fontSize: "36px", marginTop: "96px"}}
+          style={{ fontSize: "36px", marginTop: "96px" }}
           className="ml-5 pointer"
           icon="chevron-circle-left"
         />
@@ -126,7 +126,9 @@ const Orchid = () => {
                   <MDBBtn
                     color="black"
                     className="w-30 text-white align-self-center"
-                    onClick={() => changeCart(router.query.id, items, localStorage)}
+                    onClick={() =>
+                      changeCart(router.query.id, items, localStorage)
+                    }
                   >
                     <MDBIcon
                       icon="cart-arrow-down"

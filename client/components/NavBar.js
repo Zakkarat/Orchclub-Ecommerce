@@ -45,7 +45,12 @@ const NavBar = (props) => {
 
   return (
     <>
-      <MDBNavbar color="white" light expand="md" className="pt-3 fixed-top pointer">
+      <MDBNavbar
+        color="white"
+        light
+        expand="md"
+        className="pt-3 fixed-top pointer"
+      >
         <MDBNavbarBrand>
           <Link href="/">
             <strong>OrchClub</strong>
@@ -100,7 +105,6 @@ const NavBar = (props) => {
                 <MDBDropdownMenu className="mr-5">
                   {isLogged.status === 200 ? (
                     <>
-                      <MDBDropdownItem href="#!">Мои данные</MDBDropdownItem>
                       <MDBDropdownItem href="/payment">Корзина</MDBDropdownItem>
                       <MDBDropdownItem href="/orders">
                         Мои заказы
@@ -123,9 +127,18 @@ const NavBar = (props) => {
         </MDBCollapse>
       </MDBNavbar>
       {secondBar && (
-        <MDBNavbar expand="lg" color="white" className="pt-3 fixed-top filters ">
+        <MDBNavbar
+          expand="lg"
+          color="white"
+          className="pt-3 fixed-top filters "
+        >
           <MDBNavbarNav className="flex-row justify-content-center search">
-            <MDBCollapse id="navbarCollapse3" className="d-flex flex-column" isOpen={secondBar} navbar>
+            <MDBCollapse
+              id="navbarCollapse3"
+              className="d-flex flex-column"
+              isOpen={secondBar}
+              navbar
+            >
               <MDBNavItem className="d-flex align-items-center py-2">
                 Цена от &nbsp;
                 <input

@@ -6,8 +6,6 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "../../stylesheets/auth.css";
 
 const Auth = () => {
-  const router = useRouter();
-  console.log(router.pathname)
   return (
     <>
       <Head>

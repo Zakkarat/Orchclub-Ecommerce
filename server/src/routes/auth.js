@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const secret = process.env.JWT_SECRET || "secret";
 const wrongUserPassMsg = "Incorrect username and/or password.";
-const checkAuth = require('../middleware/checkAuth')
+const checkAuth = require("../middleware/checkAuth");
 
 auth.post("/auth/login", async (ctx, next) => {
   const { username, password } = ctx.request.body;
@@ -55,6 +55,6 @@ auth.post("/auth/register", async (ctx, next) => {
 
 auth.get("/auth/verify", checkAuth, (ctx) => {
   ctx.status = 200;
-})
+});
 
 module.exports = auth;

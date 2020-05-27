@@ -9,7 +9,7 @@ import {
   MDBBtn,
   MDBIcon,
 } from "mdbreact";
-import setValue from '../helpers/setValue';
+import setValue from "../helpers/setValue";
 
 const PaymentDetails = ({ price }) => {
   const [deliveryType, setDeliveryType] = useState("0");
@@ -18,14 +18,18 @@ const PaymentDetails = ({ price }) => {
   const [paymentDetails, setPaymentDetails] = useState(0);
 
   const handlePayClick = async (e) => {
-    console.log(localStorage.getItem('cart'))
-    await fetch('http://localhost:9000/orders/createOrder', {
+    console.log(localStorage.getItem("cart"));
+    await fetch("http://localhost:9000/orders/createOrder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cart: JSON.parse(localStorage.getItem('cart')), deliveryInfo: { deliveryType, NPdepartment, takeAway, paymentDetails }, overall: price }),
-      credentials: 'include'}
-    )
-  }
+      body: JSON.stringify({
+        cart: JSON.parse(localStorage.getItem("cart")),
+        deliveryInfo: { deliveryType, NPdepartment, takeAway, paymentDetails },
+        overall: price,
+      }),
+      credentials: "include",
+    });
+  };
 
   const deliveryDetails = () => {
     if (deliveryType === "1") {
@@ -106,7 +110,6 @@ const PaymentDetails = ({ price }) => {
     }
   };
 
-
   const overall = () => {
     if (paymentDetails) {
       return (
@@ -121,7 +124,11 @@ const PaymentDetails = ({ price }) => {
             </h3>
           </MDBCol>
           <MDBCol xl="3" className="d-flex justify-content-end">
-            <form onSubmit={handlePayClick} action="https://www.portmone.com.ua/gateway/" method="post">
+            <form
+              onSubmit={handlePayClick}
+              action="https://www.portmone.com.ua/gateway/"
+              method="post"
+            >
               <input type="hidden" name="payee_id" value="1185" />
               <input
                 type="hidden"

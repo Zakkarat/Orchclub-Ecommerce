@@ -1,3 +1,3 @@
-export default ((e, setCallback) => {
-    setCallback(e.target.value);
-})
+export default (e, setCallback) => {
+  setCallback(e.target.value);
+};
