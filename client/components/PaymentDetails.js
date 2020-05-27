@@ -165,7 +165,7 @@ const PaymentDetails = ({ price }) => {
       />
       <MDBContainer className="d-flex justify-content-center mt-2">
         <MDBCol xl="5">
-          <MDBCard style={{ width: "40rem", marginTop: "2rem" }}>
+          <MDBCard style={{ marginTop: "2rem" }}>
             <MDBCardTitle className="text-center pt-3">
               Детали заказа
             </MDBCardTitle>

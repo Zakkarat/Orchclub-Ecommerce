@@ -15,7 +15,10 @@ import {categoryChange} from '../redux/actions';
 
 const Categories = ({categoryChange}) => {
   const [categories, setCategories] = useState([]);
+  const [windowWidth, setWindowWidth] = useState('');
+
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
     const category = async () => {
       setCategories(await fetch("http://localhost:9000/orchids/categories", {credentials: "include"}).then(async data => await data.json())) 
     };
@@ -26,10 +29,10 @@ const Categories = ({categoryChange}) => {
     <MDBContainer style={{marginTop: "96px"}}>
       <MDBRow>
         <CarouselProvider
-            className='w-100 d-flex'
+          className='w-100 d-flex'
           naturalSlideWidth={400}
           naturalSlideHeight={200}
-          visibleSlides={3}
+          visibleSlides={windowWidth < 993 ? windowWidth < 769 ? 1 : 2 : 3}
           totalSlides={categories.length}
         >
           <ButtonBack className="slider-button align-self-center"><MDBIcon icon="angle-double-left" /></ButtonBack>

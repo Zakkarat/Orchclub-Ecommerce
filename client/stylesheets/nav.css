@@ -34,6 +34,12 @@
     margin-top: 74px;
 }
 
+@media screen and (max-width: 768px) {
+    .filters {
+        margin-top: 204px;
+    }
+}
+
 .price-block {
     width: 64px !important;
 }
@@ -44,4 +50,8 @@
 
 .black-dropdown {
     color: black;
+}
+
+.w-275-px {
+    width: 275px !important;
 }
