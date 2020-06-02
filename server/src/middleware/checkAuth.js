@@ -5,6 +5,7 @@ module.exports = async (ctx, next) => {
   try {
     const token = ctx.headers.cookie.split("").splice(4).join("");
     let payload = jwt.verify(token, secret);
+    console.log(payload);
     ctx.state.user = payload.sub;
     return next();
   } catch (e) {

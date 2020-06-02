@@ -27,6 +27,9 @@ orchids.get("/orchid", async (ctx) => {
   } = await pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image", "Orchids"."Price", "Orchids"."Stock", "Orchids"."Size"
   FROM public."Orchids" INNER JOIN "Category" ON "Orchids"."CategoryId" = "Category"."Id" WHERE ${queryCondition};`);
   ctx.body = rows;
+  if(!rows.length) { 
+    ctx.status = 404;
+  }
 });
 
 module.exports = orchids;
