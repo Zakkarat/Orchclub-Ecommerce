@@ -23,7 +23,7 @@ import setValue from "../helpers/setValue";
 
 const NavBar = (props) => {
   const router = useRouter();
-  const isLogged = useFetch("http://localhost:9000/auth/verify");
+  const isLogged = useFetch("https://orchclub-ecommerce.herokuapp.com/auth/verify");
   const [size, setSize] = useState(
     props.filters.size ? props.filters.size : ""
   );

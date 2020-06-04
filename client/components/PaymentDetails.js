@@ -19,7 +19,7 @@ const PaymentDetails = ({ price }) => {
 
   const handlePayClick = async (e) => {
     console.log(localStorage.getItem("cart"));
-    await fetch("http://localhost:9000/orders/createOrder", {
+    await fetch("https://orchclub-ecommerce.herokuapp.com/orders/createOrder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

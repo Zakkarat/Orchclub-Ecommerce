@@ -27,7 +27,7 @@ const Categories = ({ categoryChange }) => {
     setWindowWidth(window.innerWidth);
     const category = async () => {
       setCategories(
-        await fetch("http://localhost:9000/orchids/categories", {
+        await fetch("https://orchclub-ecommerce.herokuapp.com/orchids/categories", {
           credentials: "include",
         }).then(async (data) => await data.json())
       );

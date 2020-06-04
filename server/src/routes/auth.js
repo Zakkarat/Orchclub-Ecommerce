@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const secret = process.env.JWT_SECRET;
+const secret = process.env.JWT_SECRET || 'secret';
 const wrongUserPassMsg = "Incorrect username and/or password.";
 const checkAuth = require("../middleware/checkAuth");
 
@@ -50,6 +50,7 @@ auth.post("/auth/register", async (ctx) => {
   } catch {
     ctx.throw(401, "Wrong data");
   }
+  ctx.status = 200;
   ctx.body = "ok";
 });
 

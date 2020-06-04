@@ -35,7 +35,7 @@ const Card = () => {
 
   const handleSubmit = async ({ target }) => {
     target.disabled = true;
-    await fetch("http://localhost:9000/auth/register", {
+    await fetch("https://orchclub-ecommerce.herokuapp.com/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, password, region, city, adress, phone }),

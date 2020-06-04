@@ -3,7 +3,7 @@ import { MDBContainer, MDBCard, MDBRow, MDBCol, MDBCardBody } from "mdbreact";
 import useFetch from "../hooks/useFetch";
 
 const Orders = () => {
-  const ordersData = useFetch("http://localhost:9000/orders/userOrders");
+  const ordersData = useFetch("https://orchclub-ecommerce.herokuapp.com/orders/userOrders");
   console.log(ordersData);
   return (
     <MDBContainer

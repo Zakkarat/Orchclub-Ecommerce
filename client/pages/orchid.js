@@ -30,7 +30,7 @@ const Orchid = () => {
   useEffect(() => {
     const getData = async () => {
       const data = await fetch(
-        `http://localhost:9000/${router.pathname.slice(1)}?id=${
+        `https://orchclub-ecommerce.herokuapp.com/${router.pathname.slice(1)}?id=${
           router.query.id
         }`
       ).then(async (data) => await data.json());

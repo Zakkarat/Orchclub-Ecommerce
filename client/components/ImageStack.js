@@ -13,7 +13,7 @@ const ImageStack = ({ filters }) => {
     const getData = async () => {
       setLoading(true);
       const data = await fetch(
-        `http://localhost:9000/orchids?category=${filters.category}`,
+        `https://orchclub-ecommerce.herokuapp.com/orchids?category=${filters.category}`,
         { credentials: "include" }
       ).then(async (data) => await data.json());
       setOrchids(data);

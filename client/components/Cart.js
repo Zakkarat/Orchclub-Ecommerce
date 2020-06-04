@@ -18,7 +18,7 @@ const Cart = ({ changePaymentState, setOverallPrice }) => {
     const cart = JSON.parse(localStorage.getItem("cart"));
     const getData = async () => {
       const data = await fetch(
-        `http://localhost:9000/orchid?id=${cart
+        `https://orchclub-ecommerce.herokuapp.com/orchid?id=${cart
           .map((elem) => elem.item)
           .join(",")}`
       ).then(async (data) => await data.json());
