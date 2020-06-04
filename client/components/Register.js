@@ -41,12 +41,7 @@ const Card = () => {
       body: JSON.stringify({ name, password, region, city, adress, phone }),
       credentials: "include",
     }).then(({ status }) => {
-      if (status === 200) {
         router.replace("/");
-      } else {
-        setError(true);
-        target.disabled = false;
-      }
     });
   };
 

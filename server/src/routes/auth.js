@@ -43,10 +43,10 @@ auth.post("/auth/register", async (ctx) => {
             .query(
               `INSERT INTO "Users"("Username", "Password", "Type", "Region", "City", "Adress", "Phone") VALUES('${name}', '${hash}', 'User', '${region}', '${city}', '${adress}', '${phone}')`
             )
-            .catch((err) => err);
+            .catch((err) => console.log(err));
         });
       })
-      .catch((err) => err);
+      .catch((err) => console.log(err));
   } catch {
     ctx.throw(401, "Wrong data");
   }

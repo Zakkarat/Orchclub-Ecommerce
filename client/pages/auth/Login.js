@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Login from "../../components/Login";
+import Login from "../../components/login";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "../../stylesheets/auth.css";
 
