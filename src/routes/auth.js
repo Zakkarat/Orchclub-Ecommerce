@@ -50,6 +50,7 @@ auth.post("/auth/register", async (ctx) => {
   } catch {
     ctx.throw(401, "Wrong data");
   }
+  ctx.status = 200;
   ctx.body = "ok";
 });
 
