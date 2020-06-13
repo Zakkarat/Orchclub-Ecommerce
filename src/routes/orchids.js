@@ -1,19 +1,14 @@
 const Router = require("koa-router");
 const orchids = Router();
-const { pool } = require("../../config");
+const orchidQueries = require("../db/queries/orchidQueries")
 
 orchids.get("/orchids/categories", async (ctx) => {
-  const { rows } = await pool.query(`SELECT * FROM "Category"`);
-  ctx.body = rows;
+  ctx.body = await orchidQueries.getCategories();
 });
 
 orchids.get("/orchids", async (ctx) => {
   const { category } = ctx.request.query;
-  const {
-    rows,
-  } = await pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image", "Orchids"."Price", "Orchids"."Size"
-    FROM public."Orchids" INNER JOIN "Category" ON "Orchids"."CategoryId" = "Category"."Id" WHERE "Category"."Name" = '${category}';`);
-  ctx.body = rows;
+  ctx.body = await orchidQueries.getOrchids(category);
 });
 
 orchids.get("/orchid", async (ctx) => {
@@ -22,12 +17,8 @@ orchids.get("/orchid", async (ctx) => {
     .split(",")
     .map((id) => `"Orchids"."Id"='${id}'`)
     .join(" or ");
-  const {
-    rows,
-  } = await pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image", "Orchids"."Price", "Orchids"."Stock", "Orchids"."Size"
-  FROM public."Orchids" INNER JOIN "Category" ON "Orchids"."CategoryId" = "Category"."Id" WHERE ${queryCondition};`);
-  ctx.body = rows;
-  if(!rows.length) { 
+  ctx.body = await orchidQueries.getOrchid(queryCondition);
+  if(!ctx.body.length) { 
     ctx.status = 404;
   }
 });
