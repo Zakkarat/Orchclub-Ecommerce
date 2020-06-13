@@ -1,19 +1,9 @@
 const Router = require("koa-router");
-const orders = Router();
-const { pool } = require("../db/config");
+const orders = Router({prefix: '/orders'});
 const checkAuth = require("../middleware/checkAuth");
-const ordersQueries = require("../db/queries/ordersQueries");
+const ordersControllers = require("../controllers/ordersControllers")
 
-orders.get("/orders/userOrders", checkAuth, async (ctx) => {
-  const { user } = ctx.state;
-  ctx.body = ordersQueries.getUserOrder(user);
-});
-
-orders.post("/orders/createOrder", checkAuth, async (ctx) => {
-  const { user } = ctx.state;
-  const { cart, deliveryInfo, overall } = ctx.request.body;
-  const orderId = await ordersQuery.putOrder(user, deliveryInfo, overall);
-  await ordersQueries.putItemsInOrder(orderId, cart);
-});
+orders.get("/userOrders", checkAuth, ordersControllers.userOrders);
+orders.post("/createOrder", checkAuth, ordersControllers.createOrders);
 
 module.exports = orders;
