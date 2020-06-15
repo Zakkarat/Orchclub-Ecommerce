@@ -24,9 +24,7 @@
     "react-dom": "16.13.0",
     "react-lazy-load-image-component": "^1.4.3",
     "react-masonry-component": "^6.2.1",
-    "react-masonry-layout": "^0.4.0",
     "react-redux": "^7.2.0",
-    "react-stack-grid": "^0.7.1",
     "redux": "^4.0.5"
   }
 }
