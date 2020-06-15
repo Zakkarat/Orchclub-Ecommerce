@@ -9,7 +9,6 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "../stylesheets/orchid.css";
 
 const Payment = ({ payment }) => {
-  console.log(payment);
   return (
     <>
       <Head>

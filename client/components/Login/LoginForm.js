@@ -1,0 +1,61 @@
+import React from "react";
+import setValue from "../../helpers/setValue";
+import { MDBBtn, MDBCard, MDBCardBody, MDBInput, MDBCol } from "mdbreact";
+import Link from "next/link";
+
+const LoginForm = ({
+  username,
+  setUsername,
+  setPassword,
+  error,
+  makeLogin,
+}) => (
+  <div>
+    <MDBCard id="classic-card">
+      <MDBCardBody className="black-text">
+        <h3 className="text-center"> Войти в систему:</h3>
+        <hr className="hr-light" />
+        <MDBInput
+          className="black-text"
+          iconClass="black-text"
+          label="Ваш логін"
+          icon="user-alt"
+          value={username}
+          onChange={(e) => setValue(e, setUsername)}
+        />
+        <MDBInput
+          className="black-text"
+          iconClass="black-text"
+          label="Ваш пароль"
+          icon="lock"
+          type="password"
+          onChange={(e) => setValue(e, setPassword)}
+        />
+        {error && (
+          <p className="text-center text-danger">
+            Проверьте правильность введенных данных.
+          </p>
+        )}
+        <div className="text-center mt-4 white-text d-flex flex-column justify-content-center">
+          <MDBCol className="text-center">
+            <MDBBtn color="black" className="white-text" onClick={makeLogin}>
+              Увійти
+            </MDBBtn>
+          </MDBCol>
+          <MDBCol className="black-text text-center mt-3">
+            Нету учетной записи?{" "}
+            <a className="blue-text underline">
+              <u>
+                <Link href="/auth/register">
+                  <a>Создайте тут!</a>
+                </Link>
+              </u>
+            </a>
+          </MDBCol>
+        </div>
+      </MDBCardBody>
+    </MDBCard>
+  </div>
+);
+
+export default LoginForm;

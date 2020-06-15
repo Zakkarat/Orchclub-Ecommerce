@@ -1,5 +1,5 @@
 import withRedux from "next-redux-wrapper";
-import { createStore, compose } from "redux";
+import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "../redux/reducers";
 import "bootstrap-css-only/css/bootstrap.min.css";

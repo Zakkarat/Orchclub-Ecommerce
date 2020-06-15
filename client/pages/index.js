@@ -21,7 +21,7 @@ const Home = () => {
       </Head>
       <NavBar />
       <Categories />
-      <ImageStack></ImageStack>
+      <ImageStack />
     </>
   );
 };
