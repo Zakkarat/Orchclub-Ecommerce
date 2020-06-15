@@ -5,7 +5,7 @@ import { changeFilters } from "../../redux/actions";
 import { connect } from "react-redux";
 
 import MainNavBar from "./MainNavBar";
-import FilterNavBar from "./filterNavBar";
+import FilterNavBar from "./FilterNavBar";
 
 const NavBar = (props) => {
   const router = useRouter();

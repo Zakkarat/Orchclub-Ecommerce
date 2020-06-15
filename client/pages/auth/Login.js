@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Login from "../../components/login";
+import Login from "../../components/Login";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "../../stylesheets/auth.css";
 
