@@ -25,7 +25,7 @@ const login = async (ctx) => {
 const register = async (ctx) => {
     const { name, password, region, city, adress, phone } = ctx.request.body;
       await bcrypt
-        .genSalt(saltRounds, (err, salt) => {
+        .genSalt(saltRounds, async (err, salt) => {
           await bcrypt.hash(password, salt, async (err, hash) => {
             await authQueries.register(name, hash, region, city, adress, phone)
           });
