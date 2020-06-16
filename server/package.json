@@ -15,7 +15,6 @@
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "kcors": "^2.2.2",
-    "knex": "^0.20.13",
     "koa": "^2.11.0",
     "koa-body": "^4.1.1",
     "koa-bodyparser": "^4.3.0",
