@@ -24,23 +24,20 @@ const login = async (ctx) => {
 
 const register = async (ctx) => {
     const { name, password, region, city, adress, phone } = ctx.request.body;
-    try {
-      bcrypt
+      await bcrypt
         .genSalt(saltRounds, (err, salt) => {
-          bcrypt.hash(password, salt, async (err, hash) => {
+          await bcrypt.hash(password, salt, async (err, hash) => {
             await authQueries.register(name, hash, region, city, adress, phone)
           });
         })
-        .catch((err) => console.log(err));
-    } catch {
-      ctx.throw(401, "Wrong data");
-    }
+        .catch((err) =>  ctx.throw(401, "Wrong data"));
     ctx.status = 200;
     ctx.body = "ok";
 }
 
 const verify = (ctx) => {
     ctx.status = 200;
+    ctx.body = "ok";
 }
 
 module.exports = {
