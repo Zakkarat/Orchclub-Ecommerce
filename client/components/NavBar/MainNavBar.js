@@ -20,6 +20,7 @@ const MainNavbar = ({
   isLogged,
   router,
   isOpen,
+  setIsOpen,
   search,
   setSearch,
   handleFilterChange,
