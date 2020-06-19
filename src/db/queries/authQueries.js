@@ -11,8 +11,7 @@ const register = async (name, hash, region, city, adress, phone) => {
     await pool
     .query(
       `INSERT INTO "Users"("Username", "Password", "Type", "Region", "City", "Adress", "Phone") VALUES('${name}', '${hash}', 'User', '${region}', '${city}', '${adress}', '${phone}')`
-    )
-    .catch((err) => console.log(err));
+    ).catch(err => { throw err })
 }
 
 module.exports = {
