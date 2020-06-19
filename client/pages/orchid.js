@@ -1,12 +1,13 @@
 import Head from "next/head";
 import NavBar from "../components/NavBar";
+import OrchidComp from "../components/Orchid";
+
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "../stylesheets/cards.css";
 import "../stylesheets/nav.css";
-import Categories from "../components/Categories";
-import ImageStack from "../components/ImageStack";
+import "../stylesheets/orchid.css";
 
-const Home = () => {
+const Orchid = () => {
   return (
     <>
       <Head>
@@ -20,10 +21,9 @@ const Home = () => {
         ></link>
       </Head>
       <NavBar />
-      <Categories />
-      <ImageStack />
+      <OrchidComp />
     </>
   );
 };
 
-export default Home;
+export default Orchid;

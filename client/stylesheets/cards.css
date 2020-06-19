@@ -1,0 +1,61 @@
+.orch-card {
+  width: 22%;
+  margin: 1%;
+  box-shadow: 0px 0px 1px #ababab;
+  transition: 1s;
+}
+
+.orch-card:hover {
+  cursor: pointer;
+  box-shadow: 3px 0px 20px #ababab;
+  transition: 300;
+}
+
+.orchid-gallery {
+  max-width: 86rem;
+}
+
+@media screen and (max-width: 1330px) {
+  .orchid-gallery {
+    max-width: 69rem;
+  }
+  .orch-card {
+    width: 29%;
+    margin: 2%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .orchid-gallery {
+    max-width: 48rem;
+  }
+  .orch-card {
+    width: 46%;
+    margin: 2%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .orchid-gallery {
+    max-width: 34rem;
+  }
+  .orch-card {
+    width: 90%;
+    margin: 5%;
+  }
+}
+
+.spinner-pos {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none !important;
+}

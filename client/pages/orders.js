@@ -1,12 +1,12 @@
+import React from "react";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
+import ProtectedRoute from "../HOC/ProtectedRoute";
+import Orders from "../components/Orders";
 import "bootstrap-css-only/css/bootstrap.min.css";
-import "../stylesheets/cards.css";
-import "../stylesheets/nav.css";
-import Categories from "../components/Categories";
-import ImageStack from "../components/ImageStack";
+import "../stylesheets/orchid.css";
 
-const Home = () => {
+const Order = () => {
   return (
     <>
       <Head>
@@ -20,10 +20,11 @@ const Home = () => {
         ></link>
       </Head>
       <NavBar />
-      <Categories />
-      <ImageStack />
+      <ProtectedRoute>
+        <Orders></Orders>
+      </ProtectedRoute>
     </>
   );
 };
 
-export default Home;
+export default Order;

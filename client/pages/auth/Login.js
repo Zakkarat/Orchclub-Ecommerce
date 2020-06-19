@@ -1,12 +1,10 @@
+import React from "react";
 import Head from "next/head";
-import NavBar from "../components/NavBar";
+import Login from "../../components/Login";
 import "bootstrap-css-only/css/bootstrap.min.css";
-import "../stylesheets/cards.css";
-import "../stylesheets/nav.css";
-import Categories from "../components/Categories";
-import ImageStack from "../components/ImageStack";
+import "../../stylesheets/auth.css";
 
-const Home = () => {
+const Auth = () => {
   return (
     <>
       <Head>
@@ -19,11 +17,11 @@ const Home = () => {
           rel="stylesheet"
         ></link>
       </Head>
-      <NavBar />
-      <Categories />
-      <ImageStack />
+      <div className="bg-login d-flex align-items-center justify-content-center">
+        <Login></Login>
+      </div>
     </>
   );
 };
 
-export default Home;
+export default Auth;
