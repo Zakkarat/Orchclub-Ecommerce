@@ -12,6 +12,7 @@ const Card = () => {
   const [city, setCity] = useState("");
   const [adress, setAdress] = useState("");
   const [phone, setPhone] = useState("+380");
+  const [error, setError] = useState(false);
 
   const handleValidPhone = (e) => {
     const newPhone = e.target.value;
@@ -20,14 +21,21 @@ const Card = () => {
     }
   };
 
-  const handleSubmit = async ({ target }) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { target } = e;
     target.disabled = true;
+    if([name, password, region, city, adress, phone].every(elem => elem !== "") ) {
+      target.disabled = false;
+      setError(true);
+      return
+    }
     await fetch("https://orchclub-ecommerce.herokuapp.com/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, password, region, city, adress, phone }),
       credentials: "include",
-    }).then(() => {
+    }).then(({status}) => {
       if (status === 200) {
         router.replace("/");
       } else {
@@ -53,6 +61,8 @@ const Card = () => {
         phone={phone}
         handleValidPhone={handleValidPhone}
         handleSubmit={handleSubmit}
+        error={error}
+        setError={setError}
       ></RegisterForm>
     </MDBCol>
   );

@@ -28,12 +28,16 @@ const RegisterForm = ({
   phone,
   handleValidPhone,
   handleSubmit,
+  error,
+  setError,
 }) => (
   <MDBCard id="classic-card">
     <MDBCardBody className="black-text">
+    <form>
       <h3 className="text-center"> Регистрация:</h3>
       <hr className="hr-light" />
       <MDBInput
+        validate
         className="black-text"
         iconClass="black-text"
         label="Ваше имя"
@@ -42,6 +46,7 @@ const RegisterForm = ({
         onChange={(e) => setValue(e, setName)}
       />
       <MDBInput
+      validate
         className="black-text"
         iconClass="black-text"
         label="Ваш пароль"
@@ -59,6 +64,7 @@ const RegisterForm = ({
             id="demo-simple-select"
             value={region}
             onChange={(e) => setValue(e, setRegion)}
+            required
           >
             {cities[0].regions.map((region, i) => (
               <MenuItem key={i} value={region.name}>
@@ -68,11 +74,14 @@ const RegisterForm = ({
           </Select>
         </FormControl>
       </MDBCol>
+      
       <MDBCol className="d-flex align-content-center px-0 mt-3">
+
         <MDBIcon className="pt-3 ic-32 font-size-fix" icon="city" />
         <FormControl className="ml-2 w-100">
           <InputLabel id="demo-simple-select-label">Город</InputLabel>
           <Select
+          required
             disabled={!region ? true : false}
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -91,6 +100,7 @@ const RegisterForm = ({
         </FormControl>
       </MDBCol>
       <MDBInput
+      required
         className="black-text mb-2"
         iconClass="black-text"
         label="Ваш адресс"
@@ -100,6 +110,7 @@ const RegisterForm = ({
         onChange={(e) => setValue(e, setAdress)}
       />
       <MDBInput
+      required
         className="black-text mb-2"
         iconClass="black-text"
         label="Ваш телефон"
@@ -108,11 +119,17 @@ const RegisterForm = ({
         value={phone}
         onChange={(e) => handleValidPhone(e)}
       />
+      {error && (
+        <p className="text-center text-danger">
+          Проверьте правильность введенных данных.
+        </p>
+      )}
       <div className="text-center mt-4 white-text">
-        <MDBBtn color="black" onClick={handleSubmit} className="white-text">
+        <MDBBtn color="black" type="submit" onClick={handleSubmit} className="white-text">
           Подтвердить
         </MDBBtn>
       </div>
+      </form>
     </MDBCardBody>
   </MDBCard>
 );
