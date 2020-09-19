@@ -1,11 +1,17 @@
 # Orchclub E-commerce V2.0
 
+###V2.0
+New version will add fetures like User and Admin panel for manipulating data throught client.
+Code refactoring includes Typescript implementation and new project structure.
+UX/UI improvement includes new design and some minor problems to be solved.
+Orders information must be fully viewed and manipulated.
+
 ### MVP:
   - Code refactoring
   - Admin panel
   - User panel
   - Orders full description and manipulation
-  - Improve UX
+  - Improve UX/UI
   
 ### Technologies:
 
