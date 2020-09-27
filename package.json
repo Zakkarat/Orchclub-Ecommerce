@@ -1,0 +1,19 @@
+{
+  "name": "orchclub-ecommerce",
+  "version": "1.0.0",
+  "description": "### V2.0 New version will add fetures like User and Admin panel for manipulating data throught client.<br/> Code refactoring includes Typescript implementation and new project structure.<br/> UX/UI improvement includes new design and some minor problems to be solved.<br/> Orders information must be fully viewed and manipulated.",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zakkarat/Orchclub-Ecommerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zakkarat/Orchclub-Ecommerce/issues"
+  },
+  "homepage": "https://github.com/Zakkarat/Orchclub-Ecommerce#readme"
+}
