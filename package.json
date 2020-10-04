@@ -5,6 +5,7 @@
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
+    "install": "cd server && npm install && cd .. && cd client && npm install",
     "ci:server": "cd ./server && npm ci",
     "ci:client": "cd ./client && npm ci",
     "ci": "npm run ci:server && npm run ci:client",
