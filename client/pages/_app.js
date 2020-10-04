@@ -1,3 +1,4 @@
+import React from "react";
 import withRedux from "next-redux-wrapper";
 import { createStore } from "redux";
 import { Provider } from "react-redux";

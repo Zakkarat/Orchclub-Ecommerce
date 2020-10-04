@@ -1,10 +1,19 @@
 {
   "name": "orchclub-ecommerce",
   "version": "1.0.0",
-  "description": "### V2.0 New version will add fetures like User and Admin panel for manipulating data throught client.<br/> Code refactoring includes Typescript implementation and new project structure.<br/> UX/UI improvement includes new design and some minor problems to be solved.<br/> Orders information must be fully viewed and manipulated.",
-  "main": "index.js",
+  "description": "- Grid-based design.\r   - Sign in/Sign up + Account managment.\r   - Cart management.\r   - Payments.",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
-    "test": ""
+    "install": "cd server && npm install && cd .. && cd client && npm install",
+    "ci:server": "cd ./server && npm ci",
+    "ci:client": "cd ./client && npm ci",
+    "ci": "npm run ci:server && npm run ci:client",
+    "test": "echo no tests yet",
+    "build": "cd client && npm run build",
+    "lint:client": "cd client && npm run lint",
+    "lint:server": "cd server && npm run lint",
+    "lint": "npm run lint:client && npm run lint:server"
   },
   "repository": {
     "type": "git",

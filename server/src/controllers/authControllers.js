@@ -3,7 +3,6 @@ const saltRounds = 10;
 const secret = process.env.JWT_SECRET || "secret";
 const jwt = require("jsonwebtoken");
 const authQueries = require("../db/queries/authQueries");
-const { rejects } = require("assert");
 
 const login = async (ctx) => {
   const { username, password } = ctx.request.body;
@@ -25,18 +24,15 @@ const login = async (ctx) => {
 
 const register = async (ctx) => {
   const { name, password, region, city, adress, phone } = ctx.request.body;
-  const salt = await bcrypt
-    .genSalt(saltRounds)
-    .catch((err) => {
-      throw err;
-    });
-  const hash = await bcrypt
-    .hash(password, salt);
+  const salt = await bcrypt.genSalt(saltRounds).catch((err) => {
+    throw err;
+  });
+  const hash = await bcrypt.hash(password, salt);
   await authQueries
     .register(name, hash, region, city, adress, phone)
     .catch((err) => {
-      console.log(err)
-      ctx.throw(401, "Wrong data")
+      console.log(err);
+      ctx.throw(401, "Wrong data");
     });
   ctx.status = 200;
   ctx.body = "ok";

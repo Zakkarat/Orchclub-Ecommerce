@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
 import "bootstrap-css-only/css/bootstrap.min.css";
