@@ -27,4 +27,9 @@ jobs:
     - run: npm run ci
     - run: npm run lint
     - run: npm run test
+      env: 
+        AWS_ACCESS_KEY_ID: AKIAI634W2AOFL7Q3EPA
+        AWS_SECRET_ACCESS_KEY: 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
+        DATABASE_URL: postgres://uxbuvhokbbocan:826a1d23fbb6b89baadb9e23d44d3f408b7ab17c513ce2b6cf1e2d5cae1bd1a8@ec2-54-246-90-10.eu-west-1.compute.amazonaws.com:5432/dbit7n0ojntpd7
+        JWT_SECRET: secret
     - run: npm run build    
