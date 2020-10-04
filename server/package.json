@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./app.js",
-    "test": "mocha ./src/test/"
+    "test": "mocha ./src/test/",
+    "lint": "eslint ./"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +31,11 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "mocha": "^7.2.0"
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-chai-friendly": "^0.6.0",
+    "eslint-plugin-mocha": "^8.0.0",
+    "mocha": "^7.2.0",
+    "prettier": "^2.1.2"
   }
 }

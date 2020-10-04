@@ -1,6 +1,6 @@
 const Router = require("koa-router");
 const orchids = Router();
-const orchidControllers = require("../controllers/orchidControllers")
+const orchidControllers = require("../controllers/orchidControllers");
 
 orchids.get("/orchids/categories", orchidControllers.categories);
 orchids.get("/orchids", orchidControllers.orchids);

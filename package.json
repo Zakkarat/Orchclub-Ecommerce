@@ -1,0 +1,27 @@
+{
+  "name": "orchclub-ecommerce",
+  "version": "1.0.0",
+  "description": "- Grid-based design.\r   - Sign in/Sign up + Account managment.\r   - Cart management.\r   - Payments.",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "ci:server": "cd ./server && npm ci",
+    "ci:client": "cd ./client && npm ci",
+    "ci": "npm run ci:server && npm run ci:client",
+    "test": "cd server && npm run test",
+    "build": "cd client && npm run build",
+    "lint:client": "cd client && npm run lint",
+    "lint:server": "cd server && npm run lint",
+    "lint": "npm run lint:client && npm run lint:server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zakkarat/Orchclub-Ecommerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zakkarat/Orchclub-Ecommerce/issues"
+  },
+  "homepage": "https://github.com/Zakkarat/Orchclub-Ecommerce#readme"
+}
