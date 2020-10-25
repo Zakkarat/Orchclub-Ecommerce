@@ -9,7 +9,7 @@
     "ci:server": "cd ./server && npm ci",
     "ci:client": "cd ./client && npm ci",
     "ci": "npm run ci:server && npm run ci:client",
-    "test": "echo no tests yet",
+    "test": "cd ./server && npm run test",
     "build": "cd client && npm run build",
     "lint:client": "cd client && npm run lint",
     "lint:server": "cd server && npm run lint",
