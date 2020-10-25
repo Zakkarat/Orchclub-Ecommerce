@@ -1,24 +1,12 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const app = require("../../app");
-const port = process.env.PORT || 9000;
 
 chai.use(chaiHttp);
 chai.should();
 
 
 describe("/POST auth/login", () => {
-    let server;
-
-    beforeEach(function (done) {
-        server = app.listen(port);
-        server.once('listening', () => done());
-    });
-
-    afterEach(function (done) {
-        server.close(done);
-    });
-
     it("Checks a success auth", (done) => {
         chai
             .request(app)

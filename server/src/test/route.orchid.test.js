@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 chai.should();
 
-describe("/GET auth/login", () => {
+describe("/GET /orchids", () => {
   it("Checks if json returned with all orchids", (done) => {
     chai
       .request(app)
