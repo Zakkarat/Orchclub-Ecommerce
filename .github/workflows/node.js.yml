@@ -38,7 +38,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm run ci
     - run: npm run lint
-    - run: npm config set strict-ssl false
+    - run: docker-compose build --build-arg PG_HOST=${{ secrets.DB_HOST }} --build-arg PG_PASSWORD=${{ secrets.DB_PASSWORD }} --build-arg PG_DB=${{ secrets.DB_DATABASE }} --build-arg PG_USER=${{ secrets.DB_USER }} server
     - run: npm run test
       env:
         DB_USER: ${{ secrets.DB_USER }}
