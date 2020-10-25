@@ -24,6 +24,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: npm run ci
+    - run: npm run lint
+    - run: npm run test
       env:
         DB_USER: ${{ secrets.DB_USER }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -31,7 +34,4 @@ jobs:
         DB_PORT: ${{ secrets.DB_PORT }}
         DB_DATABASE: ${{ secrets.DB_DATABASE }}
         JWT_SECRET: ${{ secrets.JWT_SECRET }}
-    - run: npm run ci
-    - run: npm run lint
-    - run: npm run test
     - run: npm run build    
