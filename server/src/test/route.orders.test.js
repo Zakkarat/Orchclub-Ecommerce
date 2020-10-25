@@ -3,6 +3,7 @@ const chaiHttp = require("chai-http");
 const app = require("../../app");
 
 chai.use(chaiHttp);
+chai.should()
 
 describe("/GET orders/userOrders", () => {
     it("Checks if token threw an error", (done) => {
