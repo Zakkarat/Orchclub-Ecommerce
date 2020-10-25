@@ -51,4 +51,5 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
         NODE_ENV: ${{ secrets.NODE_ENV }}
+        NODE_TLS_REJECT_UNAUTHORIZED: 0
     - run: npm run build    
