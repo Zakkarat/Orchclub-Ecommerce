@@ -10,12 +10,12 @@ chai.should();
 describe("/POST auth/login", () => {
     let server;
 
-    before(function (done) {
+    beforeEach(function (done) {
         server = app.listen(port);
         server.once('listening', () => done());
     });
 
-    after(function (done) {
+    afterEach(function (done) {
         server.close(done);
     });
 
