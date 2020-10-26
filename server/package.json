@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon ./app.js",
     "test": "mocha ./src/test/",
-    "coverage": "nyc --reporter=html mocha ./src/test/",
+    "coverage:html": "nyc --reporter=html mocha ./src/test/",
+    "coverage:text": "nyc --reporter=text mocha ./src/test/",
     "lint": "eslint ./"
   },
   "author": "",
