@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./app.js",
-    "test": "mocha ./src/test/",
-    "coverage:html": "nyc --reporter=html mocha ./src/test/",
-    "coverage:text": "nyc --reporter=text mocha ./src/test/",
-    "lint": "eslint ./"
+    "test": "mocha test/",
+    "coverage:html": "nyc --reporter=html mocha test/",
+    "coverage:text": "nyc --reporter=text mocha test/",
+    "lint": "eslint ./",
+    "mutode": "mutode"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +32,8 @@
     "pg": "^8.0.0"
   },
   "devDependencies": {
+    "@stryker-mutator/core": "^4.1.0",
+    "@stryker-mutator/mocha-runner": "^4.1.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "eslint": "^7.10.0",
@@ -39,6 +42,7 @@
     "eslint-plugin-mocha": "^8.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^7.2.0",
+    "mutode": "^1.4.2",
     "nyc": "^15.1.0",
     "prettier": "^2.1.2"
   }
