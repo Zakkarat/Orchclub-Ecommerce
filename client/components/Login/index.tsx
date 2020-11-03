@@ -41,16 +41,16 @@ const Login = () => {
     getAuth();
   }, []);
   return (
-    <MDBCol lg="6" xl="3">
-      <LoginForm
-        username={username}
-        password={password}
-        setPassword={setPassword}
-        setUsername={setUsername}
-        makeLogin={makeLogin}
-        error={error}
-      />
-    </MDBCol>
+      <MDBCol lg="6" xl="3">
+        <LoginForm
+            username={username}
+            password={password}
+            setPassword={setPassword}
+            setUsername={setUsername}
+            makeLogin={makeLogin}
+            error={error}
+        />
+      </MDBCol>
   );
 };
 

@@ -5,7 +5,7 @@ const secret = process.env.JWT_SECRET || 'secret';
 
 module.exports = async (ctx:Context, next:Next) => {
   try {
-    const token = ctx.headers.cookie.split("").splice(4).join("");
+    const token = ctx.headers.cookie.split("=")[3]
     let payload = jwt.verify(token, secret);
     ctx.state.user = payload.sub;
     return next();
