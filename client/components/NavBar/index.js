@@ -10,7 +10,7 @@ import FilterNavBar from "./FilterNavBar";
 const NavBar = (props) => {
   const router = useRouter();
   const isLogged = useFetch(
-    "https://orchclub-ecommerce.herokuapp.com/auth/verify"
+    "http://localhost:9000/auth/verify"
   );
   const [size, setSize] = useState(
     props.filters.size ? props.filters.size : ""
