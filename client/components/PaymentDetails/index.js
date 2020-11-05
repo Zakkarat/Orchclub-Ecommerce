@@ -18,8 +18,8 @@ const PaymentDetails = ({ price }) => {
   const [takeAway, setTakeAway] = useState(0);
   const [paymentDetails, setPaymentDetails] = useState(0);
 
-  const handlePayClick = async (e) => {
-    await fetch("https://orchclub-ecommerce.herokuapp.com/orders/createOrder", {
+  const handlePayClick = async () => {
+    await fetch("http://localhost:9000/orders/createOrder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -44,7 +44,7 @@ const PaymentDetails = ({ price }) => {
             <MDBCardTitle className="text-center pt-3">
               Детали заказа
             </MDBCardTitle>
-            <hr className="my-0"></hr>
+            <hr className="my-0"/>
             <MDBCardBody className="pt-0 p-0">
               <MDBCol className="text-center d-flex align-content-center justify-content-center flex-column mt-2 mb-2">
                 <DeliveryType
