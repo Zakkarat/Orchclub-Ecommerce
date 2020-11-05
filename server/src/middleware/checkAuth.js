@@ -3,9 +3,10 @@ const secret = process.env.JWT_SECRET;
 
 module.exports = async (ctx, next) => {
   try {
-    const token = ctx.headers.cookie.split("").splice(4).join("");
+    console.log(ctx.headers.cookie.split(";"))
+    const token = ctx.headers.cookie.split(";").filter(elem => elem[0] === 'U' || elem[1] === 'U')[0].split('=')[1]
+    console.log(token)
     let payload = jwt.verify(token, secret);
-    console.log(payload);
     ctx.state.user = payload.sub;
     return next();
   } catch (e) {

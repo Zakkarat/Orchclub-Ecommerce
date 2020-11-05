@@ -15,6 +15,8 @@ const login = async (ctx) => {
     const payload = { sub: dbUser.Id };
 
     ctx.cookies.set("UID", jwt.sign(payload, secret));
+    ctx.cookies.set("SameSite", 'None');
+    ctx.cookies.set("Secure", true);
     ctx.status = 200;
     ctx.body = "ok";
   } else {

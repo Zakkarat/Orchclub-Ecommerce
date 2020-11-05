@@ -5,7 +5,7 @@ import OrderList from "./OrderList";
 
 const Orders = () => {
   const ordersData = useFetch(
-    "https://orchclub-ecommerce.herokuapp.com/orders/userOrders"
+    "http://localhost:9000/orders/userOrders"
   );
   return (
     <MDBContainer

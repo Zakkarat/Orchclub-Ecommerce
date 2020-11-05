@@ -1,9 +1,11 @@
 import React from "react";
 import { MDBCard, MDBRow, MDBCol, MDBCardBody } from "mdbreact";
 
-const OrderList = ({ ordersData }) => (
+const OrderList = ({ ordersData }) => {
+  console.log(ordersData)
+  return (
   <>
-    {ordersData.data.map((elem, i) => (
+    {Object.keys(ordersData.data).map((elem, i) => (
       <MDBCard
         className="d-flex flex-row"
         style={{ width: "45rem", marginTop: "1rem" }}
@@ -19,6 +21,6 @@ const OrderList = ({ ordersData }) => (
       </MDBCard>
     ))}
   </>
-);
+)};
 
 export default OrderList;
