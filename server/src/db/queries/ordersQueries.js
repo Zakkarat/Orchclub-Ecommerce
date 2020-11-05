@@ -19,6 +19,8 @@ const putOrder = async (user, deliveryInfo, overall) => {
       }', 'В ожидании оплаты', '${user}', '${overall}') RETURNING "Id"`
     )
     .catch((err) => console.log(err));
+  console.log('rows: ', rows);
+  console.log('other: ', user, deliveryInfo, overall);
   return rows[0].Id;
 };
 
