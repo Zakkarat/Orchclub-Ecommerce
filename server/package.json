@@ -9,7 +9,7 @@
     "coverage:html": "nyc --reporter=html mocha test/",
     "coverage:text": "nyc --reporter=text mocha test/",
     "lint": "eslint ./",
-    "mutode": "mutode"
+    "mutode": "env-cmd mutode"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "bcrypt": "4.0.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "env-cmd": "^10.1.0",
     "jsonwebtoken": "^8.5.1",
     "kcors": "^2.2.2",
     "koa": "^2.11.0",
@@ -30,6 +31,7 @@
     "koa-pg": "^1.0.0",
     "koa-router": "^8.0.8",
     "koa-session": "^5.13.1",
+    "mutode": "^1.4.2",
     "path": "^0.12.7",
     "pg": "^8.0.0",
     "ts-node": "^9.1.1",

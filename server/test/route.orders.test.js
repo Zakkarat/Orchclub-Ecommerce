@@ -60,37 +60,27 @@ describe("/POST orders/createOrder", () => {
             });
     });
 
-    after(async() => {
-      await pool.query(`DELETE FROM "OrderItems" WHERE "Quantity"=99`)
-      await pool.query(`DELETE FROM "Orders" WHERE "Overall"='9999'`)
+
+    it("Checks a success ordering without takeAway and NPDepartment", (done) => {
+        chai
+            .request(app)
+            .post(`/orders/createOrder`)
+            .set("Cookie", `UID=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJpYXQiOjE2MDQ1ODY1OTl9.K2uZnEpFUvfyFzdU3GkkbWBFZKSQbKtzgCfbagb_K9s;`)
+            .send({
+                user: "Merilend",
+                deliveryInfo: {
+                    deliveryType: "1",
+                    paymentDetails: "1",
+                },
+                overall: "8888",
+                cart: [
+                    {item: "2", quantity: 88}
+                ],
+            })
+            .end((err, res) => {
+                res.status.should.be.equal(200);
+                done();
+            });
     });
 
-    // it("Checks wrong delivery info error", (done) => {
-    //   chai
-    //       .request(app)
-    //       .post(`/orders/createOrder`)
-    //       .set("Cookie", `UID=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJpYXQiOjE2MDQ1ODY1OTl9.K2uZnEpFUvfyFzdU3GkkbWBFZKSQbKtzgCfbagb_K9s;`)
-    //       .send({
-    //         user: "Merilend",
-    //         deliveryInfo: {
-    //           deliveryType: "404",
-    //           takeAway: "-10",
-    //           NPdepartment: "5",
-    //           paymentDetails: "8",
-    //         },
-    //         overall: "-1000",
-    //       })
-    //       .end((err, res) => {
-    //         res.status.should.be.equal(401);
-    //         res.should.have
-    //             .property("text")
-    //             .that.eql("Wrong data");
-    //         done();
-    //       });
-    // });
-    //
-    // after(async() => {
-    //   //await pool.query(`DELETE FROM "OrderItems" WHERE "Quantity"=99`)
-    //   await pool.query(`DELETE FROM "Orders" WHERE "Overall"='-1000'`)
-    // });
 });

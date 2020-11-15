@@ -62,31 +62,6 @@ describe("/POST auth/login", () => {
 });
 
 describe("/POST auth/register", () => {
-
-    // it("Checks a success register", (done) => {
-    //     chai
-    //         .request(app)
-    //         .post(`/auth/register`)
-    //         .set("Accept", "application/json")
-    //         .send({
-    //             name: "Zakkaray5764",
-    //             password: "heh",
-    //             region: "Kirovohradska oblast",
-    //             city: "Lviv",
-    //             adress: "Darnitsa",
-    //             phone: "0623424429",
-    //         })
-    //         .end((err, res) => {
-    //             res.status.should.be.equal(200);
-    //             done();
-    //         })
-    // })
-    //
-    // after(async() => {
-    //     await pool.query(`DELETE FROM "Users" WHERE "Username"='Zakkaray5764'`)
-    // })
-
-
     it("Checks an error for non unique username", (done) => {
         chai
             .request(app)

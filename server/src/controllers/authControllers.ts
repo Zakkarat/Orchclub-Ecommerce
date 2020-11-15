@@ -2,7 +2,7 @@ import {Context} from "koa";
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const secret = process.env.JWT_SECRET || "secret";
+const secret = process.env.JWT_SECRET;
 const jwt = require("jsonwebtoken");
 const authQueries = require("../db/queries/authQueries");
 
