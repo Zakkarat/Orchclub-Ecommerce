@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
+import {IFetchResult} from "../interfaces/hooks/IUseFetch";
 
-const useFetch = (url) => {
-  const [fetchResult, setFetchResult] = useState({
+const useFetch = (url:string) => {
+  const preFetchResult:IFetchResult= {
     isLoaded: false,
     error: null,
-  });
+  }
+  const [fetchResult, setFetchResult] = useState(preFetchResult);
 
   useEffect(() => {
-    const newFetchResult = {};
+    const newFetchResult = fetchResult;
     fetch(url, { credentials: "include" })
       .then((result) => {
         newFetchResult.status = result.status;

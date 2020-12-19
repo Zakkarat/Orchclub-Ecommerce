@@ -6,29 +6,32 @@ import { connect } from "react-redux";
 
 import MainNavBar from "./MainNavBar";
 import FilterNavBar from "./FilterNavBar";
+import {IFilters, INavBarProps} from "../../interfaces/components/INavBarProps";
 
-const NavBar = (props) => {
+const NavBar = ({filters, changeFilters}:INavBarProps) => {
   const router = useRouter();
   const isLogged = useFetch(
     "https://orchclub-ecommerce.herokuapp.com/auth/verify"
   );
+
   const [size, setSize] = useState(
-    props.filters.size ? props.filters.size : ""
+    filters.size ? filters.size : ""
   );
   const [sort, setSort] = useState(
-    props.filters.sort ? props.filters.sort : ""
+    filters.sort ? filters.sort : ""
   );
   const [search, setSearch] = useState(
-    props.filters.search ? props.filters.search : ""
+    filters.search ? filters.search : ""
   );
   const [priceRange, setPriceRange] = useState(
-    props.filters.priceRange ? props.filters.priceRange : { min: 0, max: 5000 }
+    filters.priceRange ? filters.priceRange : { min: 0, max: 5000 }
   );
   const [secondBar, setSecondBar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleFilterChange = () => {
-    props.changeFilters({ size, sort, priceRange, search });
+  const handleFilterChange = ():void => {
+    const filters:IFilters = { size, sort, priceRange, search }
+    changeFilters(filters);
   };
 
   return (
@@ -64,7 +67,7 @@ const mapDispatchToProps = {
   changeFilters,
 };
 
-const mapStateToProps = ({ filters }) => ({
+const mapStateToProps = ({ filters }:{filters:IFilters}) => ({
   filters,
 });
 

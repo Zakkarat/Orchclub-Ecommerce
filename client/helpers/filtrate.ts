@@ -1,4 +1,7 @@
-export default (orchids, filters) => {
+import IOrchid from "../interfaces/IOrchid";
+import {IFilters} from "../interfaces/components/INavBarProps";
+
+export default (orchids:IOrchid[], filters:IFilters) => {
   return orchids
     .sort((a, b) => {
       const { sort } = filters;
@@ -17,6 +20,7 @@ export default (orchids, filters) => {
       if (sort === "Цена ↓") {
         return a.Price - b.Price;
       }
+      return 0;
     })
     .filter((elem) => (filters.size ? filters.size === elem.Size : true))
     .filter(
@@ -29,7 +33,7 @@ export default (orchids, filters) => {
         ? elem.Name.split(" ").some((word) =>
             word
               .toLowerCase()
-              .match(new RegExp(filters.search.toLowerCase()), "ig")
+              .match(new RegExp(filters.search.toLowerCase(), "ig"))
           )
         : true
     )

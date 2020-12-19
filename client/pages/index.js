@@ -18,9 +18,9 @@ const Home = () => {
           href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         />
         <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css"
-          rel="stylesheet"
-        ></link>
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css"
+    rel="stylesheet"
+    />
           <meta name="description" content="Meta description for orchclub" />
       </Head>
       <NavBar />

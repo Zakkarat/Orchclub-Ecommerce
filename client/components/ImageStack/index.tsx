@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Masonry from "react-masonry-component";
 import { connect } from "react-redux";
 import ImageList from "./ImageList";
+import {IImageStackProps} from "../../interfaces/components/IImageStackProps";
 
-const ImageStack = ({ filters }) => {
+const ImageStack = ({ filters }:IImageStackProps) => {
   const [orchids, setOrchids] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +18,6 @@ const ImageStack = ({ filters }) => {
       setOrchids(data);
     };
     getData();
-    console.log(orchids);
   }, [filters]);
 
   return (
@@ -33,7 +33,7 @@ const ImageStack = ({ filters }) => {
   );
 };
 
-const mapStateToProps = ({ filters }) => ({
+const mapStateToProps = ({ filters }:IImageStackProps) => ({
   filters,
 });
 

@@ -7,6 +7,7 @@ import {
   MDBBtn,
   MDBCollapse,
 } from "mdbreact";
+import {IFilterNavBarProps, IPriceRange} from "../../interfaces/components/INavBarProps";
 
 const FilterNavBar = ({
   secondBar,
@@ -17,7 +18,7 @@ const FilterNavBar = ({
   priceRange,
   setPriceRange,
   handleFilterChange,
-}) => (
+}:IFilterNavBarProps) => (
   <MDBNavbar expand="lg" color="white" className="pt-3 fixed-top filters ">
     <MDBNavbarNav className="flex-row justify-content-center search">
       <MDBCollapse
@@ -29,30 +30,31 @@ const FilterNavBar = ({
         <MDBNavItem className="d-flex align-items-center py-2">
           Цена от &nbsp;
           <input
-            className="form-control search text-center price-block p-0"
-            type="number"
-            value={priceRange.min}
-            onChange={({ target }) =>
-              setPriceRange(
-                Object.assign({}, priceRange, {
-                  min: parseInt(target.value),
-                })
-              )
-            }
-          ></input>{" "}
+    className="form-control search text-center price-block p-0"
+    type="number"
+    value={priceRange.min}
+    onChange={({target}) =>
+        setPriceRange(
+            Object.assign({}, priceRange, {
+                min: parseInt(target.value),
+            })
+        )
+    }
+    />{" "}
           &nbsp; до &nbsp;
           <input
-            className="form-control search text-center price-block p-0"
-            type="number"
-            value={priceRange.max}
-            onChange={({ target }) =>
-              setPriceRange(
-                Object.assign({}, priceRange, {
-                  max: parseInt(target.value),
-                })
-              )
-            }
-          ></input>
+    className="form-control search text-center price-block p-0"
+    type="number"
+    value={priceRange.max}
+    onChange={({target}) => {
+        const range:IPriceRange = Object.assign({}, priceRange, {
+            max: parseInt(target.value),
+        })
+        setPriceRange(
+            range
+        )
+    }}
+    />
           &nbsp; грн.
         </MDBNavItem>
         <MDBNavItem className="d-flex align-items-center py-2 w-275-px">
@@ -85,7 +87,7 @@ const FilterNavBar = ({
         </MDBNavItem>
         <MDBNavItem>
           <MDBBtn
-            color="black"
+              color='dark'
             className="text-white"
             onClick={handleFilterChange}
           >

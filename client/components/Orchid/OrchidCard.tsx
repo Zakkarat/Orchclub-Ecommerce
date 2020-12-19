@@ -9,20 +9,21 @@ import {
     MDBIcon,
   } from "mdbreact";
   import changeCart from "../../helpers/cartManagement";
+import {IOrchidCardProps} from "../../interfaces/components/IOrchid";
 
-const OrchidCard = ({ orchid, handleClick, items, router}) => (
+const OrchidCard = ({ orchid, handleClick, items, router}:IOrchidCardProps) => (
   <MDBCard>
     <MDBCardTitle className="text-center pt-3">{orchid.Name}</MDBCardTitle>
-    <hr className="my-0"></hr>
+    <hr className="my-0"/>
     <MDBCardBody className="pt-0 p-0">
       <MDBCol className="px-0">
         <img
-          className="w-100"
-          style={{ maxHeight: "500px" }}
-          src={orchid.Image}
-        ></img>
+    className="w-100"
+    style={{maxHeight: "500px"}}
+    src={orchid.Image}
+    />
       </MDBCol>
-      <hr></hr>
+      <hr/>
       <MDBCol className="text-center d-flex align-content-center justify-content-center flex-column">
         <h3 className="h3-responsive align-self-center">
           {" "}
@@ -38,9 +39,7 @@ const OrchidCard = ({ orchid, handleClick, items, router}) => (
         <MDBRow className="d-flex justify-content-center">
           <button
             className="btn bg-color-black text-white width-btn"
-            onClick={handleClick}
-            waves={false}
-          >
+            onClick={handleClick}>
             -
           </button>
           <div className="width-input form-group mb-0 d-flex align-items-center">
@@ -55,13 +54,12 @@ const OrchidCard = ({ orchid, handleClick, items, router}) => (
           <button
             className="btn bg-color-black text-white width-btn"
             onClick={handleClick}
-            waves={false}
           >
             +
           </button>
         </MDBRow>
         <MDBBtn
-          color="black"
+          color="dark"
           className="w-30 text-white align-self-center"
           onClick={() => changeCart(router.query.id, items, localStorage)}
         >

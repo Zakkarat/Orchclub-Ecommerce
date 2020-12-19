@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import {NextRouter} from "next/router";
 
-const useAuth = (router) => {
+const useAuth = (router:NextRouter) => {
   useEffect(() => {
     const getAuth = async () => {
       await fetch(`https://orchclub-ecommerce.herokuapp.com/auth/verify`, {

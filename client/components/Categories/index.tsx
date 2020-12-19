@@ -5,10 +5,11 @@ import Carousel from "./Carousel";
 import { connect } from "react-redux";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { categoryChange } from "../../redux/actions";
+import {ICategoriesProps} from "../../interfaces/components/ICategoriesProps";
 
-const Categories = ({ categoryChange }) => {
+const Categories = ({ categoryChange }:ICategoriesProps) => {
   const [categories, setCategories] = useState([]);
-  const [windowWidth, setWindowWidth] = useState("");
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);

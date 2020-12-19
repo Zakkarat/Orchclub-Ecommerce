@@ -15,6 +15,7 @@ import {
   MDBDropdownItem,
   MDBIcon,
 } from "mdbreact";
+import {IMainNavBarProps} from "../../interfaces/components/INavBarProps";
 
 const MainNavbar = ({
   isLogged,
@@ -26,7 +27,7 @@ const MainNavbar = ({
   handleFilterChange,
   secondBar,
   setSecondBar,
-}) => (
+}:IMainNavBarProps) => (
   <MDBNavbar color="white" light expand="md" className="pt-3 fixed-top pointer">
     <MDBNavbarBrand>
       <Link href="/">
@@ -51,18 +52,18 @@ const MainNavbar = ({
               </div>
             </MDBFormInline>
             <MDBBtn
-              color="black"
+              color="dark"
               className="text-white"
               onClick={handleFilterChange}
             >
-              <MDBIcon icon="search"></MDBIcon>
+              <MDBIcon icon="search"/>
             </MDBBtn>
           </MDBNavItem>
           <MDBNavItem>
             <MDBBtn
-              color="white"
-              onClick={() => setSecondBar(!secondBar)}
-              className="btn-nav"
+                color="dark"
+                onClick={() => setSecondBar(!secondBar)}
+                className="btn-nav"
             >
               Фильтр
             </MDBBtn>

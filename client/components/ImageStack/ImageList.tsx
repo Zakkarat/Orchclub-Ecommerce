@@ -3,8 +3,9 @@ import filtrate from "../../helpers/filtrate";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Link from "next/link";
 import { MDBCard, MDBCardBody, MDBCardTitle } from "mdbreact";
+import {IImageListProps} from "../../interfaces/components/IImageStackProps";
 
-const ImageList = ({ orchids, filters, loading }) => (
+const ImageList = ({ orchids, filters, loading }:IImageListProps) => (
   <>
     {!loading ? (
       orchids &&
@@ -14,7 +15,6 @@ const ImageList = ({ orchids, filters, loading }) => (
             <a>
               <img
                 className="img-fluid rounded w-100 h-responsive"
-                effect="blur"
                 src={elem.Image}
                 alt={elem.Name}
               />

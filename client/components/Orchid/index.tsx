@@ -1,15 +1,16 @@
-import React from "react";
+import React, {SyntheticEvent} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { MDBContainer, MDBCol, MDBIcon } from "mdbreact";
 import OrchidCard from "./OrchidCard";
+import IOrchid from "../../interfaces/IOrchid";
 
 const Orchid = () => {
   const router = useRouter();
 
   const [items, setItems] = useState(0);
-  const [orchid, setOrchid] = useState({});
+  const [orchid, setOrchid] = useState({} as IOrchid);
 
   useEffect(() => {
     const getData = async () => {
@@ -23,9 +24,10 @@ const Orchid = () => {
     getData();
   }, []);
 
-  const handleClick = ({ target }) => {
+  const handleClick = (e:SyntheticEvent<HTMLButtonElement, Event>) => {
+    const target:HTMLButtonElement = e.target as HTMLButtonElement;
     const sign = target.innerText;
-    if (sign === "+" && items < orchid.Stock) {
+    if (sign === "+" &&  orchid.Stock && items < orchid.Stock) {
       setItems(items + 1);
     }
     if (sign === "-" && items !== 0) {

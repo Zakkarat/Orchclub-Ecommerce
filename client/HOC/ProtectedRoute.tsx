@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useRouter, Router } from "next/router";
+import React, {FunctionComponent} from "react";
+import { useRouter } from "next/router";
 import useAuth from "../hooks/useAuth";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute:FunctionComponent = ({ children }) => {
   const router = useRouter();
   useAuth(router);
   return <div>{children}</div>;

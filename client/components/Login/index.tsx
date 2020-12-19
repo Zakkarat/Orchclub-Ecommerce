@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, SyntheticEvent} from "react";
 import { MDBCol } from "mdbreact";
 import { useRouter } from "next/router";
 import LoginForm from "./LoginForm";
@@ -9,8 +9,8 @@ const Login = () => {
   const [error, setError] = useState(false);
 
   const router = useRouter();
-  const makeLogin = async (e) => {
-    const btn = e.target;
+  const makeLogin = async (e:SyntheticEvent<HTMLButtonElement, Event>) => {
+    const btn = e.target as HTMLButtonElement;
     btn.disabled = true;
     await fetch("https://orchclub-ecommerce.herokuapp.com/auth/login", {
       method: "POST",
