@@ -25,7 +25,7 @@ const Carousel = ({ categories, categoryChange }) => (
                 <Image
                   src={category.Image}
                   className="img-fluid img-category"
-                  alt=""
+                  alt={category.Name}
                 />
                 <MDBMask className="flex-center" overlay="teal-light">
                   <p className="white-text">{category.Name}</p>

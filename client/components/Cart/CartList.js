@@ -22,6 +22,7 @@ const CartList = ({ cart, handleClick }) => (
               src={item.Image}
               className="rounded-left"
               style={{ width: "13rem", height: "230px" }}
+              alt={item.Name}
             ></img>
           </MDBCol>
           <MDBCol className="d-flex flex-column justify-content-center align-items-center">

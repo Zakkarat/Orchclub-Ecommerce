@@ -16,6 +16,7 @@ const ImageList = ({ orchids, filters, loading }) => (
                 className="img-fluid rounded w-100 h-responsive"
                 effect="blur"
                 src={elem.Image}
+                alt={elem.Name}
               />
               <MDBCardBody>
                 <MDBCardTitle tag="h6" className="text-center undecorate">

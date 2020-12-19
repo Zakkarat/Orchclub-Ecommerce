@@ -11,7 +11,9 @@ const Home = () => {
   return (
     <>
       <Head>
-        <link
+          <title>Orchclub</title>
+
+          <link
           rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         />
@@ -19,6 +21,7 @@ const Home = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css"
           rel="stylesheet"
         ></link>
+          <meta name="description" content="Meta description for orchclub" />
       </Head>
       <NavBar />
       <Categories />
