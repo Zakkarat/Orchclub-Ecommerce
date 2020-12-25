@@ -12,7 +12,7 @@ const Login = () => {
   const makeLogin = async (e:SyntheticEvent<HTMLButtonElement, Event>) => {
     const btn = e.target as HTMLButtonElement;
     btn.disabled = true;
-    await fetch("https://orchclub-ecommerce.herokuapp.com/auth/login", {
+    await fetch("http://localhost:9000/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -29,7 +29,7 @@ const Login = () => {
   useEffect(() => {
     const getAuth = async () => {
       const { status } = await fetch(
-        `https://orchclub-ecommerce.herokuapp.com/auth/verify`,
+        `http://localhost:9000/auth/verify`,
         {
           credentials: "include",
         }

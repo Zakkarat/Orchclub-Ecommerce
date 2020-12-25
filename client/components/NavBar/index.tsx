@@ -11,7 +11,7 @@ import {IFilters, INavBarProps} from "../../interfaces/components/INavBarProps";
 const NavBar = ({filters, changeFilters}:INavBarProps) => {
   const router = useRouter();
   const isLogged = useFetch(
-    "https://orchclub-ecommerce.herokuapp.com/auth/verify"
+    "http://localhost:9000/auth/verify"
   );
 
   const [size, setSize] = useState(
