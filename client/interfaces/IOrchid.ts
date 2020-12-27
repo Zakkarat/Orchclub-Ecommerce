@@ -5,4 +5,5 @@ export default interface IOrchid {
     Price:number,
     Size:string
     Stock?:number
+    quantity?:number
 }

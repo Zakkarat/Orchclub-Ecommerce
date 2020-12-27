@@ -1,7 +1,5 @@
-import IOrchid from "../interfaces/IOrchid";
-
-export default (id:number, items:IOrchid[], localStorage:Storage) => {
-    const item = localStorage.getItem("cart");
+export default (id:number, items:number, localStorage:Storage) => {
+    const item = localStorage.getItem("cart") ? localStorage.getItem("cart") : "{}";
     if (item) {
         localStorage.setItem(
             "cart",

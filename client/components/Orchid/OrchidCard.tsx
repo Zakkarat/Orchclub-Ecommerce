@@ -9,7 +9,7 @@ import {
     MDBIcon,
   } from "mdbreact";
   import changeCart from "../../helpers/cartManagement";
-import {IOrchidCardProps} from "../../interfaces/components/IOrchid";
+import {IOrchidCardProps} from "../../interfaces/components/IOrchidProps";
 
 const OrchidCard = ({ orchid, handleClick, items, router}:IOrchidCardProps) => (
   <MDBCard>
@@ -61,7 +61,7 @@ const OrchidCard = ({ orchid, handleClick, items, router}:IOrchidCardProps) => (
         <MDBBtn
           color="dark"
           className="w-30 text-white align-self-center"
-          onClick={() => changeCart(router.query.id, items, localStorage)}
+          onClick={() => changeCart(Number(router.query.id), items, localStorage)}
         >
           <MDBIcon
             icon="cart-arrow-down"

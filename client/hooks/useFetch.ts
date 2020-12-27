@@ -10,7 +10,8 @@ const useFetch = (url:string) => {
 
   useEffect(() => {
     const newFetchResult = fetchResult;
-    fetch(url, { credentials: "include" })
+    const load = async () =>
+    await fetch(url, { credentials: "include" })
       .then((result) => {
         newFetchResult.status = result.status;
         newFetchResult.isLoaded = result.ok;
@@ -25,6 +26,7 @@ const useFetch = (url:string) => {
       .then(() => {
         setFetchResult(newFetchResult);
       });
+    load();
   }, []);
 
   return fetchResult;

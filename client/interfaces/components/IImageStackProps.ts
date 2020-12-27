@@ -8,5 +8,5 @@ export interface IImageStackProps {
 export interface IImageListProps {
     orchids:IOrchid[]
     filters:IFilters
-    loading: boolean
+    loading:boolean
 }

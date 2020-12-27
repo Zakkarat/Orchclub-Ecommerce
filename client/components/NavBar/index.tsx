@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { useRouter } from "next/router";
-import useFetch from "../../hooks/useFetch";
 import { changeFilters } from "../../redux/actions";
 import { connect } from "react-redux";
 
@@ -10,10 +9,8 @@ import {IFilters, INavBarProps} from "../../interfaces/components/INavBarProps";
 
 const NavBar = ({filters, changeFilters}:INavBarProps) => {
   const router = useRouter();
-  const isLogged = useFetch(
-    "http://localhost:9000/auth/verify"
-  );
 
+  const [isLogged, setIsLogged] = useState(false);
   const [size, setSize] = useState(
     filters.size ? filters.size : ""
   );
@@ -33,6 +30,21 @@ const NavBar = ({filters, changeFilters}:INavBarProps) => {
     const filters:IFilters = { size, sort, priceRange, search }
     changeFilters(filters);
   };
+
+  useEffect(() => {
+    const getAuth = async () => {
+      const { status } = await fetch(
+          `http://localhost:9000/auth/verify`,
+          {
+            credentials: "include",
+          }
+      );
+      if (status === 200) {
+        setIsLogged(true);
+      }
+    };
+    getAuth();
+  }, []);
 
   return (
     <>

@@ -75,11 +75,11 @@ const MainNavbar = ({
           <MDBDropdown>
             <MDBDropdownToggle className="black-dropdown" nav caret>
               <span className="mr-2">
-                <MDBIcon icon="user"></MDBIcon>
+                <MDBIcon icon="user"/>
               </span>
             </MDBDropdownToggle>
             <MDBDropdownMenu className="mr-5">
-              {isLogged.status === 200 ? (
+              {isLogged ? (
                 <>
                   <MDBDropdownItem href="/payment">Корзина</MDBDropdownItem>
                   <MDBDropdownItem href="/orders">Мои заказы</MDBDropdownItem>

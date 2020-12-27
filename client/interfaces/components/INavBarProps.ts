@@ -1,7 +1,6 @@
 import {changeFilters} from "../../types/actions";
 import React, {SetStateAction} from "react";
 import {NextRouter} from "next/router";
-import {IFetchResult} from "../hooks/IUseFetch";
 
 export interface INavBarProps {
     filters: IFilters,
@@ -21,7 +20,7 @@ export interface IFilterNavBarProps{
 }
 
 export interface IMainNavBarProps {
-    isLogged:IFetchResult,
+    isLogged:boolean,
     router:NextRouter,
     isOpen:boolean,
     setIsOpen:React.Dispatch<SetStateAction<boolean>>,

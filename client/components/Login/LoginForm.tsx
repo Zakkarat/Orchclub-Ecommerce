@@ -2,7 +2,7 @@ import React from "react";
 import setValue from "../../helpers/setValue";
 import { MDBBtn, MDBCard, MDBCardBody, MDBInput, MDBCol } from "mdbreact";
 import Link from "next/link";
-import {ILoginFormProps} from "../../interfaces/components/ILogin";
+import {ILoginFormProps} from "../../interfaces/components/ILoginProps";
 
 const LoginForm = ({
   username, password,
