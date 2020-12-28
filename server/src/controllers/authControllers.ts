@@ -3,7 +3,7 @@ import {storage} from "../db/config";
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const secret = process.env.JWT_SECRET;
+const secret = process.env.JWT_SECRET || 'secret';
 const jwt = require("jsonwebtoken");
 
 const login = async (ctx:Context) => {

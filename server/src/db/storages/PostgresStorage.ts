@@ -60,7 +60,7 @@ export default class PostgresStorage implements IStorage {
         return rows;
     };
 
-    putOrder = async (user:string, deliveryInfo:IDeliveryInfo, overall:string) => {
+    putOrder = async (user:number, deliveryInfo:IDeliveryInfo, overall:string) => {
         const result = await this.pool
             .query(
                 `INSERT INTO "Orders"("DeliveryType", "TakeAwayId", "NPDeliveryId", "PaymentMethod", "PaymentStatus", "UserId", "Overall") VALUES('${
