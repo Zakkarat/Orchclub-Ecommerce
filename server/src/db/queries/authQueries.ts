@@ -1,5 +1,4 @@
 import {pool} from "../config";
-
 const login = async (username:string) => {
   const { rows } = await pool.query(
     `SELECT "Id", "Password" FROM "Users" WHERE "Username" = '${username}'`
@@ -12,7 +11,7 @@ const register = async (name:string, hash:string, region:string, city:string, ad
     .query(
       `INSERT INTO "Users"("Username", "Password", "Type", "Region", "City", "Adress", "Phone") VALUES('${name}', '${hash}', 'User', '${region}', '${city}', '${adress}', '${phone}')`
     )
-    .catch((err) => {
+    .catch((err:Error) => {
       throw err;
     });
 };

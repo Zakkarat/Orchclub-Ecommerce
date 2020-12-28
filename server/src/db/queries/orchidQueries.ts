@@ -1,12 +1,10 @@
 import {pool} from "../config";
-
 const getCategories = async () => {
   const { rows } = await pool.query(`SELECT * FROM "Category"`);
   return rows;
 };
 
 const getOrchid = async (queryCondition:string) => {
-  console.log(queryCondition);
   const {
     rows,
   } = await pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image", "Orchids"."Price", "Orchids"."Stock", "Orchids"."Size"

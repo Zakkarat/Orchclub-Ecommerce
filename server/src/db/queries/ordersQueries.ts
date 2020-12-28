@@ -29,7 +29,7 @@ const putItemsInOrder = async (orderId:number, cart:ICartItem[]) => {
       .query(
         `INSERT INTO "OrderItems"("OrderId", "ItemId", "Quantity") VALUES('${orderId}', '${cart[i].item}', '${cart[i].quantity}')`
       )
-      .catch((err) => console.log(err));
+      .catch((err:Error) => console.log(err));
   }
 };
 

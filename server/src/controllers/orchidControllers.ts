@@ -1,23 +1,22 @@
 import {Context} from "koa";
-
-const orchidQueries = require("../db/queries/orchidQueries")
+import {storage} from "../db/config";
 
 const categories = async (ctx:Context) => {
-    ctx.body = await orchidQueries.getCategories();
+    ctx.body = await storage.getCategories();
 }
 
 const orchids = async (ctx:Context) => {
     const { category } = ctx.request.query;
-    ctx.body = await orchidQueries.getOrchids(category);
+    ctx.body = await storage.getOrchids(category);
 }
 
 const orchid = async (ctx:Context) => {
-    const { id } = ctx.request.query;
-    const queryCondition = id
+    const query = ctx.request.query;
+    const queryCondition = query.id
       .split(",")
       .map((id:string) => `"Orchids"."Id"='${id}'`)
       .join(" or ");
-    ctx.body = await orchidQueries.getOrchid(queryCondition);
+    ctx.body = await storage.getOrchid(queryCondition);
     if(!ctx.body.length) { 
       ctx.status = 404;
     }

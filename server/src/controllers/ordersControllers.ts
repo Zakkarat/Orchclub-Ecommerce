@@ -1,17 +1,19 @@
 import {Context} from "koa";
+import {storage} from "../db/config";
 
-const ordersQueries = require("../db/queries/ordersQueries");
 
 const userOrders = async (ctx:Context) => {
   const { user } = ctx.state;
-  ctx.body = await ordersQueries.getUserOrder(user);
+  console.log(await storage.getUserOrder(user));
+  ctx.body = await storage.getUserOrder(user);
 };
 
 const createOrders = async (ctx:Context) => {
   const { user } = ctx.state;
   const { cart, deliveryInfo, overall } = ctx.request.body;
-  const orderId = await ordersQueries.putOrder(user, deliveryInfo, overall);
-  await ordersQueries.putItemsInOrder(orderId, cart);
+  const orderId = await storage.putOrder(user, deliveryInfo, overall);
+  // @ts-ignore
+  await storage.putItemsInOrder(orderId, cart);
   ctx.status = 200;
   ctx.body = "ok";
 };

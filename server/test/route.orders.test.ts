@@ -1,7 +1,8 @@
+import {Response} from "koa";
+
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const app = require("../app");
-const { pool } = require("../db/config");
 
 chai.use(chaiHttp);
 chai.should()
@@ -12,7 +13,7 @@ describe("/GET orders/userOrders", () => {
             .request(app)
             .get(`/orders/userOrders`)
             .set("Cookie", `UID=${process.env.token};`)
-            .end((err, res) => {
+            .end((_:Error, res:Response) => {
                 res.status.should.be.equal(400);
                 res.should.have
                     .property("text")
@@ -27,7 +28,7 @@ describe("/POST orders/createOrder", () => {
         chai
             .request(app)
             .post(`/orders/createOrder`)
-            .end((err, res) => {
+            .end((_:Error, res:Response) => {
                 res.status.should.be.equal(400);
                 res.should.have
                     .property("text")
@@ -54,7 +55,7 @@ describe("/POST orders/createOrder", () => {
                   {item: "1", quantity: 99}
                 ],
             })
-            .end((err, res) => {
+            .end((_:Error, res:Response) => {
                 res.status.should.be.equal(200);
                 done();
             });
@@ -77,7 +78,7 @@ describe("/POST orders/createOrder", () => {
                     {item: "2", quantity: 88}
                 ],
             })
-            .end((err, res) => {
+            .end((_:Error, res:Response) => {
                 res.status.should.be.equal(200);
                 done();
             });

@@ -1,12 +1,10 @@
 const koa = require("koa");
 const bodyParser = require("koa-bodyparser");
 const session = require("koa-session");
-const { Pool } = require("./config");
 const json = require("koa-json");
 const cors = require("kcors");
 const port = process.env.PORT || 9000;
 
-const usersRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const orchidsRoutes = require("./routes/orchids");
 const ordersRoutes = require("./routes/orders");
@@ -18,7 +16,6 @@ app.use(session(app));
 
 app.use(json({ pretty: true, spaces: 4 }));
 
-app.use(usersRoutes.routes());
 app.use(authRoutes.routes());
 app.use(orchidsRoutes.routes());
 app.use(ordersRoutes.routes());
