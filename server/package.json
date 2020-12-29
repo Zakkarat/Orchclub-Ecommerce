@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon",
     "test": "mocha -r ts-node/register './test/*.test.ts'",
-    "coverage:html": "nyc --reporter=html mocha test/",
-    "coverage:text": "nyc --reporter=text mocha test/",
+    "coverage:html": "nyc --reporter=html npm run test",
+    "coverage:text": "nyc --reporter=text npm run test",
     "lint": "eslint ./",
     "mutode": "env-cmd mutode"
   },

@@ -25,7 +25,9 @@ export default class PostgresStorage implements IStorage {
     registerUser = async (name:string, hash:string, region:string, city:string, adress:string, phone:number) => {
         await this.pool
             .query(
-                `INSERT INTO "Users"("Username", "Password", "Type", "Region", "City", "Adress", "Phone") VALUES('${name}', '${hash}', 'User', '${region}', '${city}', '${adress}', '${phone}')`
+                `INSERT INTO "Users"
+                ("Username", "Password", "Type", "Region", "City", "Adress", "Phone") 
+                VALUES('${name}', '${hash}', 'User', '${region}', '${city}', '${adress}', '${phone}')`
             )
             .catch((err:Error) => {
                 throw err;
@@ -37,7 +39,8 @@ export default class PostgresStorage implements IStorage {
         return rows;
     };
 
-    getOrchid = async (queryCondition:string) => {
+    getOrchid = async (id:string[]) => {
+        const queryCondition = id.map((id:string) => `"Orchids"."Id"='${id}'`).join(" or ");
         const {
             rows,
         } = await this.pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image", "Orchids"."Price", "Orchids"."Stock", "Orchids"."Size"
@@ -74,7 +77,7 @@ export default class PostgresStorage implements IStorage {
         return result.rows[0].Id;
     };
 
-    putItemsInOrder = async (orderId:number, cart:ICartItem[]) => {
+    putItemsInOrder = async (orderId:string, cart:ICartItem[]) => {
         for (let i = 0; i < cart.length; i++) {
             await this.pool
                 .query(

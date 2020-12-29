@@ -2,7 +2,7 @@ import {MongoClient} from 'mongodb';
 import {IDeliveryInfo} from "../../interfaces/IDeliveryInfo";
 import ICartItem from "../../interfaces/ICartItem";
 import {IStorage} from "../../interfaces/IStorage";
-// import {IOrder} fxrom "../../interfaces/IOrder";
+import IOrchid from "../../interfaces/IOrchid";
 
 export default class MongoStorage implements IStorage{
     private readonly pool;
@@ -43,24 +43,23 @@ export default class MongoStorage implements IStorage{
         });
     };
 
-    // @ts-ignore
-    getOrchid = async (queryCondition:string) => {
-        return queryCondition
-        //   const {
-        //       rows,
-        //   } = await pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image", "Orchids"."Price", "Orchids"."Stock", "Orchids"."Size"
-        // FROM public."Orchids" INNER JOIN "Category" ON "Orchids"."CategoryId" = "Category"."Id" WHERE ${queryCondition};`);
-        //   return rows;
+    getOrchid = async (id:string[]) => {
+        return this.pool.then(async (client) => {
+            const db = client.db('orchclub-ecommerce');
+            const collection = db.collection("Orchids");
+            const orchids = await collection.find().toArray();
+            return orchids.filter(elem => id.some(itemId => parseInt(itemId) === elem.Id));
+        });
     };
     //
-    // @ts-ignore
     getOrchids = async (category:string) => {
-        return category
-        // const {
-        //     rows,
-        // } = await pool.query(`SELECT "Orchids"."Id", "Orchids"."Name", "Orchids"."Image", "Orchids"."Price", "Orchids"."Size"
-        // FROM public."Orchids" INNER JOIN "Category" ON "Orchids"."CategoryId" = "Category"."Id" WHERE "Category"."Name" = '${category}';`);
-        // return rows;
+        return this.pool.then(async (client) => {
+            const db = client.db('orchclub-ecommerce');
+            const collection = db.collection("Orchids");
+            const filterCategory = await db.collection("Category").findOne({name: category});
+            const orchids:IOrchid[] = await collection.find({CategoryId: filterCategory.Id}).toArray();
+            return orchids;
+        });
     };
 
     getUserOrder = async (user:number) => {
@@ -71,11 +70,11 @@ export default class MongoStorage implements IStorage{
             });
     };
 
-    // @ts-ignore
     putOrder = async (user:number, deliveryInfo:IDeliveryInfo, overall:string) => {
         return this.pool.then(async (client) => {
             const db = client.db('orchclub-ecommerce');
             const collection = db.collection("Orders");
+            let orderId:string = "";
             await collection.insertOne({
                 DeliveryType: deliveryInfo.deliveryType,
                 NPDeliveryId: deliveryInfo.NPdepartment ? deliveryInfo.NPdepartment : "0",
@@ -85,17 +84,18 @@ export default class MongoStorage implements IStorage{
                 UserId: user,
                 Overall: overall
             }, (_:Error, docsInserted) => {
-                console.log(docsInserted);
+                orderId = docsInserted.insertedId;
             });
+            return orderId;
         });
     };
 
-    putItemsInOrder = async (orderId:number, cart:ICartItem[]) => {
+    putItemsInOrder = async (orderId:string, cart:ICartItem[]) => {
         for (let i = 0; i < cart.length; i++) {
             this.pool.then(async (client) => {
                 const db = client.db('orchclub-ecommerce');
                 const collection = db.collection("OrderItems");
-                await collection.findOne({
+                await collection.insertOne({
                     OrderId: orderId,
                     ItemId: cart[i].item,
                     Quantity: cart[i].quantity

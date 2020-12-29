@@ -11,13 +11,13 @@ export interface IStorage {
 
     getCategories:() => Promise<ICategory[]>;
 
-    getOrchid:(queryCondition:string) => Promise<IOrchid[]>;
+    getOrchid:(queryCondition:string[]) => Promise<IOrchid[]>;
 
     getOrchids:(category:string) => Promise<IOrchid[]>;
 
     getUserOrder:(user:number) => Promise<IOrder[]>;
 
-    putOrder:(user:number, deliveryInfo:IDeliveryInfo, overall:string) => Promise<number>
+    putOrder:(user:number, deliveryInfo:IDeliveryInfo, overall:string) => Promise<string>
 
-    putItemsInOrder:(orderId:number, cart:ICartItem[]) => Promise<void>;
+    putItemsInOrder:(orderId:string, cart:ICartItem[]) => Promise<void>;
 }

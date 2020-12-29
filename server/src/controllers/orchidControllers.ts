@@ -14,8 +14,6 @@ const orchid = async (ctx:Context) => {
     const query = ctx.request.query;
     const queryCondition = query.id
       .split(",")
-      .map((id:string) => `"Orchids"."Id"='${id}'`)
-      .join(" or ");
     ctx.body = await storage.getOrchid(queryCondition);
     if(!ctx.body.length) { 
       ctx.status = 404;
