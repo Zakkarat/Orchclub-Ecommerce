@@ -2,15 +2,16 @@ import React from "react";
 import setValue from "../../helpers/setValue";
 import { MDBBtn, MDBCard, MDBCardBody, MDBInput, MDBCol } from "mdbreact";
 import Link from "next/link";
-import {ILoginFormProps} from "../../interfaces/components/ILoginProps";
+import { ILoginFormProps } from "../../interfaces/components/ILoginProps";
 
 const LoginForm = ({
-  username, password,
+  username,
+  password,
   setUsername,
   setPassword,
   error,
   makeLogin,
-}:ILoginFormProps) => (
+}: ILoginFormProps) => (
   <div>
     <MDBCard id="classic-card">
       <MDBCardBody className="black-text">
@@ -19,7 +20,7 @@ const LoginForm = ({
         <MDBInput
           className="black-text"
           iconClass="black-text"
-          label="Ваш логін"
+          label="Ваш логин"
           icon="user-alt"
           value={username}
           onChange={(e) => setValue(e, setUsername)}
@@ -41,7 +42,7 @@ const LoginForm = ({
         <div className="text-center mt-4 white-text d-flex flex-column justify-content-center">
           <MDBCol className="text-center">
             <MDBBtn color="dark" className="white-text" onClick={makeLogin}>
-              Увійти
+              Войти
             </MDBBtn>
           </MDBCol>
           <MDBCol className="black-text text-center mt-3">
@@ -49,7 +50,7 @@ const LoginForm = ({
             <a className="blue-text underline">
               <u>
                 <Link href="/auth/register">
-                  <a>Создайте тут!</a>
+                  <a style={{ color: "blue" }}> Создайте тут!</a>
                 </Link>
               </u>
             </a>

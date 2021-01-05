@@ -7,9 +7,9 @@ import {
   ButtonBack,
   ButtonNext,
 } from "pure-react-carousel";
-import {ICarouselProps} from "../../interfaces/components/ICategoriesProps";
+import { ICarouselProps } from "../../interfaces/components/ICategoriesProps";
 
-const Carousel = ({ categories, categoryChange }:ICarouselProps) => (
+const Carousel = ({ categories, categoryChange }: ICarouselProps) => (
   <>
     <ButtonBack className="slider-button align-self-center">
       <MDBIcon icon="angle-double-left" />
@@ -30,7 +30,7 @@ const Carousel = ({ categories, categoryChange }:ICarouselProps) => (
                   hasMasterSpinner={false}
                 />
                 <MDBMask className="flex-center" overlay="teal-light">
-                  <p className="white-text">{category.Name}</p>
+                  <b className="white-text">{category.Name}</b>
                 </MDBMask>
               </MDBView>
             </MDBCol>

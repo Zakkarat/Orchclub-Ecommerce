@@ -15,7 +15,7 @@ import {
   MDBDropdownItem,
   MDBIcon,
 } from "mdbreact";
-import {IMainNavBarProps} from "../../interfaces/components/INavBarProps";
+import { IMainNavBarProps } from "../../interfaces/components/INavBarProps";
 
 const MainNavbar = ({
                       cartNumber,
@@ -28,7 +28,7 @@ const MainNavbar = ({
   handleFilterChange,
   secondBar,
   setSecondBar,
-}:IMainNavBarProps) => (
+}: IMainNavBarProps) => (
   <MDBNavbar color="white" light expand="md" className="pt-3 fixed-top pointer">
     <MDBNavbarBrand>
       <Link href="/">
@@ -49,6 +49,7 @@ const MainNavbar = ({
                   type="text"
                   placeholder="Search"
                   aria-label="Search"
+                  style={{ marginBottom: "10px" }}
                 />
               </div>
             </MDBFormInline>
@@ -56,15 +57,17 @@ const MainNavbar = ({
               color="dark"
               className="text-white"
               onClick={handleFilterChange}
+              style={{ marginBottom: "15px" }}
             >
-              <MDBIcon icon="search"/>
+              <MDBIcon icon="search" />
             </MDBBtn>
           </MDBNavItem>
           <MDBNavItem>
             <MDBBtn
-                color="dark"
-                onClick={() => setSecondBar(!secondBar)}
-                className="btn-nav"
+              color="dark"
+              onClick={() => setSecondBar(!secondBar)}
+              className="btn-nav"
+              style={{ marginBottom: "15px" }}
             >
               Фильтр
             </MDBBtn>
@@ -83,7 +86,7 @@ const MainNavbar = ({
           <MDBDropdown>
             <MDBDropdownToggle className="black-dropdown" nav caret>
               <span className="mr-2">
-                <MDBIcon icon="user"/>
+                <MDBIcon icon="user" />
               </span>
             </MDBDropdownToggle>
             <MDBDropdownMenu className="mr-5">

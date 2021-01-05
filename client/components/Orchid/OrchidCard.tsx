@@ -1,41 +1,37 @@
 import React from "react";
 import {
-    MDBRow,
-    MDBCol,
-    MDBCardTitle,
-    MDBCard,
-    MDBCardBody,
-    MDBBtn,
-    MDBIcon,
-  } from "mdbreact";
-  import changeCart from "../../helpers/cartManagement";
-import {IOrchidCardProps} from "../../interfaces/components/IOrchidProps";
+  MDBRow,
+  MDBCol,
+  MDBCardTitle,
+  MDBCard,
+  MDBCardBody,
+  MDBBtn,
+  MDBIcon,
+} from "mdbreact";
+import changeCart from "../../helpers/cartManagement";
+import { IOrchidCardProps } from "../../interfaces/components/IOrchidProps";
 
-const OrchidCard = ({ orchid, handleClick, items, router}:IOrchidCardProps) => (
+const OrchidCard = ({ orchid, handleClick, items, router }: IOrchidCardProps) => (
   <MDBCard>
-    <MDBCardTitle className="text-center pt-3">{orchid.Name}</MDBCardTitle>
-    <hr className="my-0"/>
+    <MDBCardTitle className="text-center pt-4">{orchid.Name}</MDBCardTitle>
     <MDBCardBody className="pt-0 p-0">
       <MDBCol className="px-0">
         <img
-    className="w-100"
-    style={{maxHeight: "500px"}}
-    src={orchid.Image}
-    />
+          className="w-100"
+          style={{ maxHeight: "500px" }}
+          src={orchid.Image}
+        />
       </MDBCol>
-      <hr/>
-      <MDBCol className="text-center d-flex align-content-center justify-content-center flex-column">
-        <h3 className="h3-responsive align-self-center">
+
+      <MDBCol className="text-center d-flex align-content-center justify-content-center flex-column" style={{ marginTop: "20px" }}>
+        <h5 className="h5-responsive align-self-center">
           {" "}
           Размер: {orchid.Size}
-        </h3>
-        <h3 className="h3-responsive align-self-center">
+        </h5>
+        <h4 className="h4-responsive align-self-center">
           {" "}
-          Цена: {orchid.Price} грн
-        </h3>
-        <h3 className="h3-responsive align-self-center">
-          В наличии: {orchid.Stock}
-        </h3>
+          Цена: <b>{orchid.Price} грн</b>
+        </h4>
         <MDBRow className="d-flex justify-content-center">
           <button
             className="btn bg-color-black text-white width-btn"
@@ -58,10 +54,14 @@ const OrchidCard = ({ orchid, handleClick, items, router}:IOrchidCardProps) => (
             +
           </button>
         </MDBRow>
+        <h6 className="h6-responsive align-self-center" style={{ color: "gray" }}>
+          В наличии: {orchid.Stock}
+        </h6>
         <MDBBtn
-          color="dark"
-          className="w-30 text-white align-self-center"
+          color="green"
+          className="w-50 text-white align-self-center"
           onClick={() => changeCart(Number(router.query.id), items, localStorage)}
+          style={{ marginBottom: "50px", marginTop: "10px", padding: "8px" }}
         >
           <MDBIcon
             icon="cart-arrow-down"
