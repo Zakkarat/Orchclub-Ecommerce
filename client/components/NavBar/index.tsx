@@ -10,6 +10,7 @@ import {IFilters, INavBarProps} from "../../interfaces/components/INavBarProps";
 const NavBar = ({filters, changeFilters}:INavBarProps) => {
   const router = useRouter();
 
+  const [cartNumber, setCartNumber] = useState(0);
   const [isLogged, setIsLogged] = useState(false);
   const [size, setSize] = useState(
     filters.size ? filters.size : ""
@@ -32,6 +33,11 @@ const NavBar = ({filters, changeFilters}:INavBarProps) => {
   };
 
   useEffect(() => {
+    const rawCart = localStorage.getItem("cart");
+    if (rawCart) {
+      setCartNumber(JSON.parse(rawCart).length)
+    }
+
     const getAuth = async () => {
       const { status } = await fetch(
           `http://localhost:9000/auth/verify`,
@@ -49,6 +55,7 @@ const NavBar = ({filters, changeFilters}:INavBarProps) => {
   return (
     <>
       <MainNavBar
+          cartNumber={cartNumber}
         router={router}
         isLogged={isLogged}
         search={search}
