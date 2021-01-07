@@ -15,7 +15,7 @@ const CartOverall = ({ cart, initStateChange }: ICartOverallProps) => (
             }
             return acc;
           }, 0)}{" "}
-          ₴{" "}
+          ₴
         </b>
       </h4>
     </MDBCol>
@@ -25,7 +25,7 @@ const CartOverall = ({ cart, initStateChange }: ICartOverallProps) => (
         onClick={initStateChange}
         disabled={!cart.length}
         className="text-white font-input"
-        style={{ padding: " 10px 20px 10px 20px" }}
+        style={{ padding: " 10px 40px 10px 40px" }}
       >
         <MDBIcon icon="dolly" className="pr-2" style={{ fontSize: "16px" }} />
         Продолжить

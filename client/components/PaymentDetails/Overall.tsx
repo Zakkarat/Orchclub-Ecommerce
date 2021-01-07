@@ -1,19 +1,21 @@
 import React from "react";
-import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
-import {IOverallProps} from "../../interfaces/components/IPaymentDetailsProps";
+import { MDBRow, MDBCol, MDBBtn, MDBIcon } from "mdbreact";
+import { IOverallProps } from "../../interfaces/components/IPaymentDetailsProps";
 
-const Overall = ({ paymentDetails, price, handlePayClick }:IOverallProps) => {
+const Overall = ({ paymentDetails, price, handlePayClick }: IOverallProps) => {
   if (paymentDetails) {
     return (
       <MDBRow style={{ width: "40rem", marginTop: "2rem" }}>
         <MDBCol className="d-flex justify-content-start pr-3">
-          <h3 className="pt-2">
+          <h4 className="pt-2">
             Всего к оплате:{" "}
-            {paymentDetails === "1"
-              ? Math.ceil(price + (price / 100) * 2.75)
-              : price}{" "}
-            грн.
-          </h3>
+            <b>
+              {paymentDetails === "1"
+                ? Math.ceil(price + (price / 100) * 2.75)
+                : price}{" "}
+              ₴
+            </b>
+          </h4>
         </MDBCol>
         <MDBCol xl="3" className="d-flex justify-content-end">
           <form
@@ -43,10 +45,16 @@ const Overall = ({ paymentDetails, price, handlePayClick }:IOverallProps) => {
             <input type="hidden" name="encoding" value="UTF-8" />
             <input type="hidden" name="exp_time" value="400" />
             <MDBBtn
-              color="dark"
+              color="green"
               type="submit"
               className="text-white font-input"
+              style={{ padding: " 10px 20px 10px 20px", width: "200px" }}
             >
+              <MDBIcon
+                icon="hand-holding-usd"
+                className="pr-2"
+                style={{ fontSize: "20px" }}
+              />
               Оплатить
             </MDBBtn>
           </form>
