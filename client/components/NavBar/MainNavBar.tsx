@@ -29,10 +29,16 @@ const MainNavbar = ({
   secondBar,
   setSecondBar,
 }: IMainNavBarProps) => (
-  <MDBNavbar color="white" light expand="md" className="pt-3 fixed-top pointer">
+  <MDBNavbar
+    color="white"
+    light
+    expand="md"
+    className="pt-3 fixed-top pointer"
+    style={{ marginBottom: "50px" }}
+  >
     <MDBNavbarBrand>
       <Link href="/">
-        <strong>OrchClub</strong>
+        <img src="orch_logo.png" style={{ width: "200px", height: "50px" }} />
       </Link>
     </MDBNavbarBrand>
     <MDBNavbarToggler onClick={() => setIsOpen(!isOpen)} right />

@@ -3,7 +3,7 @@ import { MDBRow, MDBCol, MDBBtn, MDBIcon } from "mdbreact";
 import { ICartOverallProps } from "../../interfaces/components/ICartProps";
 
 const CartOverall = ({ cart, initStateChange }: ICartOverallProps) => (
-  <MDBRow style={{ width: "40rem", marginTop: "2rem" }}>
+  <MDBRow style={{ width: "40rem", marginTop: "3rem" }}>
     <MDBCol className="d-flex justify-content-start pr-3">
       <h4 className="pt-2">
         Всего к оплате:{" "}

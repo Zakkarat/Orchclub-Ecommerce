@@ -1,4 +1,4 @@
-import React, {FormEvent, SyntheticEvent, useState} from "react";
+import React, { FormEvent, SyntheticEvent, useState } from "react";
 import { MDBCol } from "mdbreact";
 import setValue from "../../helpers/setValue";
 import { useRouter } from "next/router";
@@ -14,21 +14,23 @@ const Card = () => {
   const [phone, setPhone] = useState("+380");
   const [error, setError] = useState(false);
 
-  const handleValidPhone = (e:FormEvent<HTMLInputElement>) => {
+  const handleValidPhone = (e: FormEvent<HTMLInputElement>) => {
     const newPhone = (e.target as HTMLInputElement).value;
     if (newPhone.length < 14 && newPhone.length > 3) {
       setValue(e, setPhone);
     }
   };
 
-  const handleSubmit = async (e:SyntheticEvent<HTMLButtonElement, Event>) => {
+  const handleSubmit = async (e: SyntheticEvent<HTMLButtonElement, Event>) => {
     e.preventDefault();
     const target = e.target as HTMLButtonElement;
     target.disabled = true;
-    if([name, password, region, city, adress, phone].some(elem => elem === "") ) {
+    if (
+      [name, password, region, city, adress, phone].some((elem) => elem === "")
+    ) {
       target.disabled = false;
       setError(true);
-      return
+      return;
     }
 
     await fetch("http://localhost:9000/auth/register", {
@@ -36,12 +38,12 @@ const Card = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, password, region, city, adress, phone }),
       credentials: "include",
-    }).then(({status}) => {
-      console.log(status)
+    }).then(({ status }) => {
+      console.log(status);
       if (status === 200) {
         router.replace("/");
       } else {
-        console.log('her')
+        console.log("her");
 
         target.disabled = false;
         setError(true);
@@ -50,23 +52,23 @@ const Card = () => {
   };
 
   return (
-    <MDBCol lg="6" xl="3">
+    <MDBCol lg="10" xl="7">
       <RegisterForm
-    name={name}
-    setName={setName}
-    password={password}
-    setPassword={setPassword}
-    region={region}
-    setRegion={setRegion}
-    city={city}
-    setCity={setCity}
-    adress={adress}
-    setAdress={setAdress}
-    phone={phone}
-    handleValidPhone={handleValidPhone}
-    handleSubmit={handleSubmit}
-    error={error}
-    />
+        name={name}
+        setName={setName}
+        password={password}
+        setPassword={setPassword}
+        region={region}
+        setRegion={setRegion}
+        city={city}
+        setCity={setCity}
+        adress={adress}
+        setAdress={setAdress}
+        phone={phone}
+        handleValidPhone={handleValidPhone}
+        handleSubmit={handleSubmit}
+        error={error}
+      />
     </MDBCol>
   );
 };

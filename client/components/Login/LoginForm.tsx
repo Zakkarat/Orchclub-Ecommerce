@@ -12,7 +12,7 @@ const LoginForm = ({
   error,
   makeLogin,
 }: ILoginFormProps) => (
-  <div>
+  <div style={{ marginLeft: "35vw" }}>
     <MDBCard id="classic-card">
       <MDBCardBody className="black-text">
         <h3 className="text-center"> Войти в систему:</h3>

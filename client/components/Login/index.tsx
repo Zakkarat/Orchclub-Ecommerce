@@ -1,4 +1,4 @@
-import React, {useState, useEffect, SyntheticEvent} from "react";
+import React, { useState, useEffect, SyntheticEvent } from "react";
 import { MDBCol } from "mdbreact";
 import { useRouter } from "next/router";
 import LoginForm from "./LoginForm";
@@ -9,7 +9,7 @@ const Login = () => {
   const [error, setError] = useState(false);
 
   const router = useRouter();
-  const makeLogin = async (e:SyntheticEvent<HTMLButtonElement, Event>) => {
+  const makeLogin = async (e: SyntheticEvent<HTMLButtonElement, Event>) => {
     const btn = e.target as HTMLButtonElement;
     btn.disabled = true;
     await fetch("http://localhost:9000/auth/login", {
@@ -28,12 +28,9 @@ const Login = () => {
   };
   useEffect(() => {
     const getAuth = async () => {
-      const { status } = await fetch(
-        `http://localhost:9000/auth/verify`,
-        {
-          credentials: "include",
-        }
-      );
+      const { status } = await fetch(`http://localhost:9000/auth/verify`, {
+        credentials: "include",
+      });
       if (status === 200) {
         router.replace("/");
       }
@@ -41,16 +38,16 @@ const Login = () => {
     getAuth();
   }, []);
   return (
-      <MDBCol lg="6" xl="3">
-        <LoginForm
-            username={username}
-            password={password}
-            setPassword={setPassword}
-            setUsername={setUsername}
-            makeLogin={makeLogin}
-            error={error}
-        />
-      </MDBCol>
+    <MDBCol lg="11" xl="7">
+      <LoginForm
+        username={username}
+        password={password}
+        setPassword={setPassword}
+        setUsername={setUsername}
+        makeLogin={makeLogin}
+        error={error}
+      />
+    </MDBCol>
   );
 };
 
