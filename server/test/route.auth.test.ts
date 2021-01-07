@@ -27,7 +27,7 @@ describe("/POST auth/login", () => {
             .set("Accept", "application/json")
             .send({username: "Merilend"})
             .end((_:Error, res:koa.Response) => {
-                res.status.should.be.equal(422);
+                res.status.should.be.equal(401);
                 res.should.have.property("text").that.eql("Password required.");
                 done();
             });
@@ -39,7 +39,7 @@ describe("/POST auth/login", () => {
             .set("Accept", "application/json")
             .send({password: "Yakuza"})
             .end((_:Error, res:koa.Response) => {
-                res.status.should.be.equal(422);
+                res.status.should.be.equal(401);
                 res.should.have.property("text").that.eql("Username required.");
                 done();
             });
@@ -55,7 +55,7 @@ describe("/POST auth/login", () => {
                 res.status.should.be.equal(401);
                 res.should.have
                     .property("text")
-                    .that.eql("Incorrect username and/or password.");
+                    .that.eql("Something went wrong");
                 done();
             });
     });

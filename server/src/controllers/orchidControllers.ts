@@ -1,22 +1,30 @@
 import {Context} from "koa";
-import {storage} from "../db/config";
+import * as orchidService from '../services/orchidService'
 
 const categories = async (ctx:Context) => {
-    ctx.body = await storage.getCategories();
+    try {
+        ctx.body = await orchidService.categories();
+    } catch (error) {
+        ctx.throw(500, error);
+    }
 }
 
 const orchids = async (ctx:Context) => {
-    const { category } = ctx.request.query;
-    ctx.body = await storage.getOrchids(category);
+    try {
+        ctx.body = await orchidService.orchids(ctx.request.query);
+    } catch (error) {
+        ctx.throw(500, error)
+    }
 }
 
 const orchid = async (ctx:Context) => {
-    const query = ctx.request.query;
-    const queryCondition = query.id
-      .split(",")
-    ctx.body = await storage.getOrchid(queryCondition);
-    if(!ctx.body.length) { 
-      ctx.status = 404;
+    try {
+        ctx.body = await orchidService.orchid(ctx.request.query);
+        if (!ctx.body.length) {
+            ctx.throw(404, "Not found")
+        }
+    } catch (error) {
+        ctx.throw(500, error)
     }
 }
 

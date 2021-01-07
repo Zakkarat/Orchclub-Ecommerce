@@ -41,7 +41,7 @@ describe("/GET orchid", () => {
             .get(`/orchid?id=-1`)
             .end((_:Error, res:Response) => {
                 res.status.should.have.be.equal(404);
-                res.body.length.should.be.eql(0);
+                res.body.should.be.eql({});
                 done();
             });
     });
