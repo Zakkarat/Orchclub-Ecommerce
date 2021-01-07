@@ -3,7 +3,7 @@ import Head from "next/head";
 import NavBar from "../components/NavBar";
 import Cart from "../components/Cart";
 import { connect } from "react-redux";
-import ProtectedRoute from "../HOC/ProtectedRoute";
+import ProtectedRoute from "../WrapComponent/ProtectedRoute";
 import PaymentDetails from "../components/PaymentDetails";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "../stylesheets/orchid.css";

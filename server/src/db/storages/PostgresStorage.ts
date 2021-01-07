@@ -3,7 +3,7 @@ import ICartItem from "../../interfaces/ICartItem";
 import {IStorage} from "../../interfaces/IStorage";
 import {Pool} from "pg";
 
-const connectionString = `postgres://uxbuvhokbbocan:826a1d23fbb6b89baadb9e23d44d3f408b7ab17c513ce2b6cf1e2d5cae1bd1a8@ec2-54-246-90-10.eu-west-1.compute.amazonaws.com:5432/dbit7n0ojntpd7?ssl=false`;
+const connectionString = process.env.DATABASE_URL
 
 export default class PostgresStorage implements IStorage {
     private pool:Pool;
