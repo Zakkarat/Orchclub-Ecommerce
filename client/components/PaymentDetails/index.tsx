@@ -36,7 +36,7 @@ const PaymentDetails = ({ price }: IPaymentDetailsProps) => {
           overall: price,
         }),
         credentials: "include",
-      });
+      }).then(()  => localStorage.removeItem('cart'));
     }
   };
 
