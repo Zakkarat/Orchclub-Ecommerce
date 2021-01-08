@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
-import ProtectedRoute from "../HOC/ProtectedRoute";
+import ProtectedRoute from "../WrapComponent/ProtectedRoute";
 import Orders from "../components/Orders";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "../stylesheets/orchid.css";

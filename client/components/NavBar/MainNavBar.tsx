@@ -18,6 +18,7 @@ import {
 import {IMainNavBarProps} from "../../interfaces/components/INavBarProps";
 
 const MainNavbar = ({
+                      cartNumber,
   isLogged,
   router,
   isOpen,
@@ -71,6 +72,13 @@ const MainNavbar = ({
         </MDBNavbarNav>
       )}
       <MDBNavbarNav right>
+        <MDBNavItem className="d-flex align-items-center">
+          <Link href={"/payment"}>
+              <div className="d-flex">
+                <p className="m-0">Корзина </p> {cartNumber > 0 && <span className='circle-cart'>{cartNumber}</span>}
+              </div>
+          </Link>
+        </MDBNavItem>
         <MDBNavItem className="mr-5">
           <MDBDropdown>
             <MDBDropdownToggle className="black-dropdown" nav caret>

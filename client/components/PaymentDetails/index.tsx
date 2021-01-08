@@ -48,7 +48,7 @@ const PaymentDetails = ({ price }:IPaymentDetailsProps) => {
             <MDBCardTitle className="text-center pt-3">
               Детали заказа
             </MDBCardTitle>
-            <hr className="my-0"></hr>
+            <hr className="my-0"/>
             <MDBCardBody className="pt-0 p-0">
               <MDBCol className="text-center d-flex align-content-center justify-content-center flex-column mt-2 mb-2">
                 <DeliveryType

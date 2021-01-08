@@ -1,7 +1,7 @@
+import koa = require("koa");
 const chai = require("chai");
 const chaiHttp = require("chai-http");
-// const { pool } = require("../db/config");
-const app = require("../app");
+const app = require("../src/app");
 
 chai.use(chaiHttp);
 chai.should();
@@ -14,7 +14,7 @@ describe("/POST auth/login", () => {
             .post(`/auth/login`)
             .set("Accept", "application/json")
             .send({username: "Merilend", password: "Yakuza"})
-            .end((err, res) => {
+            .end((_:Error, res:koa.Response) => {
                 res.status.should.be.equal(200);
                 done();
             });
@@ -26,8 +26,8 @@ describe("/POST auth/login", () => {
             .post(`/auth/login`)
             .set("Accept", "application/json")
             .send({username: "Merilend"})
-            .end((err, res) => {
-                res.status.should.be.equal(422);
+            .end((_:Error, res:koa.Response) => {
+                res.status.should.be.equal(401);
                 res.should.have.property("text").that.eql("Password required.");
                 done();
             });
@@ -38,8 +38,8 @@ describe("/POST auth/login", () => {
             .post(`/auth/login`)
             .set("Accept", "application/json")
             .send({password: "Yakuza"})
-            .end((err, res) => {
-                res.status.should.be.equal(422);
+            .end((_:Error, res:koa.Response) => {
+                res.status.should.be.equal(401);
                 res.should.have.property("text").that.eql("Username required.");
                 done();
             });
@@ -51,42 +51,17 @@ describe("/POST auth/login", () => {
             .post(`/auth/login`)
             .set("Accept", "application/json")
             .send({username: "Merilend", password: "Yakuz"})
-            .end((err, res) => {
+            .end((_:Error, res:koa.Response) => {
                 res.status.should.be.equal(401);
                 res.should.have
                     .property("text")
-                    .that.eql("Incorrect username and/or password.");
+                    .that.eql("Something went wrong");
                 done();
             });
     });
 });
 
 describe("/POST auth/register", () => {
-
-    // it("Checks a success register", (done) => {
-    //     chai
-    //         .request(app)
-    //         .post(`/auth/register`)
-    //         .set("Accept", "application/json")
-    //         .send({
-    //             name: "Zakkaray5764",
-    //             password: "heh",
-    //             region: "Kirovohradska oblast",
-    //             city: "Lviv",
-    //             adress: "Darnitsa",
-    //             phone: "0623424429",
-    //         })
-    //         .end((err, res) => {
-    //             res.status.should.be.equal(200);
-    //             done();
-    //         })
-    // })
-    //
-    // after(async() => {
-    //     await pool.query(`DELETE FROM "Users" WHERE "Username"='Zakkaray5764'`)
-    // })
-
-
     it("Checks an error for non unique username", (done) => {
         chai
             .request(app)
@@ -100,7 +75,7 @@ describe("/POST auth/register", () => {
                 adress: "Darnitsa",
                 phone: "0636348229",
             })
-            .end((err, res) => {
+            .end((_:Error, res:koa.Response) => {
                 res.status.should.be.equal(401);
                 res.should.have.property("text").that.eql("Wrong data");
                 done();
@@ -120,7 +95,7 @@ describe("/POST auth/register", () => {
                 adress: "Darnitsa",
                 phone: "0636348227",
             })
-            .end((err, res) => {
+            .end((_:Error, res:koa.Response) => {
                 res.status.should.be.equal(401);
                 res.should.have.property("text").that.eql("Wrong data");
                 done();

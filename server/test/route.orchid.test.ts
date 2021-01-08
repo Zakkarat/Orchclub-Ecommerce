@@ -1,6 +1,8 @@
+import { Response } from "koa";
+
 const chai = require("chai");
 const chaiHttp = require("chai-http");
-const app = require("../app");
+const app = require("../src/app");
 
 chai.use(chaiHttp);
 
@@ -12,8 +14,8 @@ describe("/GET /orchids", () => {
         chai
             .request(app)
             .get(`/orchids`)
-            .end((err, res) => {
-                res.should.have.status(200);
+            .end((_:Error, res:Response) => {
+                res.status.should.be.equal(200);
                 res.body.should.be.a("array");
                 done();
             });
@@ -25,8 +27,8 @@ describe("/GET orchid", () => {
         chai
             .request(app)
             .get(`/orchid?id=3`)
-            .end((err, res) => {
-                res.should.have.status(200);
+            .end((_:Error, res:Response) => {
+                res.status.should.be.equal(200);
                 res.body.should.be.a("array");
                 res.body.length.should.be.eql(1);
                 expect(res.body[0]).to.have.property("Id", 3);
@@ -37,9 +39,9 @@ describe("/GET orchid", () => {
         chai
             .request(app)
             .get(`/orchid?id=-1`)
-            .end((err, res) => {
-                res.should.have.status(404);
-                res.body.length.should.be.eql(0);
+            .end((_:Error, res:Response) => {
+                res.status.should.have.be.equal(404);
+                res.body.should.be.eql({});
                 done();
             });
     });

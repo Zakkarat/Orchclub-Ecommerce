@@ -1,25 +1,30 @@
 import {Context} from "koa";
-
-const orchidQueries = require("../db/queries/orchidQueries")
+import * as orchidService from '../services/orchidService'
 
 const categories = async (ctx:Context) => {
-    ctx.body = await orchidQueries.getCategories();
+    try {
+        ctx.body = await orchidService.categories();
+    } catch (error) {
+        ctx.throw(500, error);
+    }
 }
 
 const orchids = async (ctx:Context) => {
-    const { category } = ctx.request.query;
-    ctx.body = await orchidQueries.getOrchids(category);
+    try {
+        ctx.body = await orchidService.orchids(ctx.request.query);
+    } catch (error) {
+        ctx.throw(500, error)
+    }
 }
 
 const orchid = async (ctx:Context) => {
-    const { id } = ctx.request.query;
-    const queryCondition = id
-      .split(",")
-      .map((id:string) => `"Orchids"."Id"='${id}'`)
-      .join(" or ");
-    ctx.body = await orchidQueries.getOrchid(queryCondition);
-    if(!ctx.body.length) { 
-      ctx.status = 404;
+    try {
+        ctx.body = await orchidService.orchid(ctx.request.query);
+        if (!ctx.body.length) {
+            ctx.throw(404, "Not found")
+        }
+    } catch (error) {
+        ctx.throw(500, error)
     }
 }
 

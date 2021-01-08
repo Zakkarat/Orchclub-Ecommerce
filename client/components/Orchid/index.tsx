@@ -27,7 +27,8 @@ const Orchid = () => {
   const handleClick = (e:SyntheticEvent<HTMLButtonElement, Event>) => {
     const target:HTMLButtonElement = e.target as HTMLButtonElement;
     const sign = target.innerText;
-    if (sign === "+" &&  orchid.Stock && items < orchid.Stock) {
+    console.log(sign === "+", orchid)
+    if (sign === "+" && orchid.Stock && items < orchid.Stock) {
       setItems(items + 1);
     }
     if (sign === "-" && items !== 0) {

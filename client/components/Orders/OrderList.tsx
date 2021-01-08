@@ -4,7 +4,7 @@ import {IOrder, IOrderListProps} from "../../interfaces/components/IOrderProps";
 
 const OrderList = ({ ordersData }:IOrderListProps) => (
   <>
-    {ordersData.map((elem:IOrder, i:number) => (
+    {ordersData.length > 0 && ordersData.map((elem:IOrder, i:number) => (
       <MDBCard
         className="d-flex flex-row"
         style={{ width: "45rem", marginTop: "1rem" }}

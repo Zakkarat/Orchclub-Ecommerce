@@ -52,3 +52,11 @@
 .w-275-px {
   width: 275px !important;
 }
+
+.circle-cart {
+  background-color: black;
+  padding: 1px 10px;
+  margin: 0 5px;
+  color: white;
+  border-radius: 100%;
+}
