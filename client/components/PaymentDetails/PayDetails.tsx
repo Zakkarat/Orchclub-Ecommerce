@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBRow, MDBCol } from "mdbreact";
 import setValue from "../../helpers/setValue";
-import {IPayDetailsProps} from "../../interfaces/components/IPaymentDetailsProps";
+import { IPayDetailsProps } from "../../interfaces/components/IPaymentDetailsProps";
 
 const PayDetails = ({
   deliveryType,
@@ -10,13 +10,13 @@ const PayDetails = ({
   paymentDetails,
   setPaymentDetails,
   price,
-}:IPayDetailsProps) => {
+}: IPayDetailsProps) => {
   if (
     (deliveryType === "1" && NPdepartment) ||
     (deliveryType === "2" && takeAway)
   ) {
     return (
-      <MDBRow className="mt-3">
+      <MDBRow className="mt-3" style={{ marginBottom: "10px" }}>
         {" "}
         <MDBCol className="pt-1">
           <h4 className="h4-responsive align-self-center">Способ оплаты:</h4>

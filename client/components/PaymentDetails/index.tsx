@@ -11,9 +11,9 @@ import Overall from "./Overall";
 import PayDetails from "./PayDetails";
 import DeliveryDetails from "./DeliveryDetails";
 import DeliveryType from "./DeliveryType";
-import {IPaymentDetailsProps} from "../../interfaces/components/IPaymentDetailsProps";
+import { IPaymentDetailsProps } from "../../interfaces/components/IPaymentDetailsProps";
 
-const PaymentDetails = ({ price }:IPaymentDetailsProps) => {
+const PaymentDetails = ({ price }: IPaymentDetailsProps) => {
   const [deliveryType, setDeliveryType] = useState("0");
   const [NPdepartment, setNPDepartment] = useState("0");
   const [takeAway, setTakeAway] = useState("0");
@@ -24,14 +24,19 @@ const PaymentDetails = ({ price }:IPaymentDetailsProps) => {
     if (cart) {
       await fetch("http://localhost:9000/orders/createOrder", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           cart: JSON.parse(cart),
-          deliveryInfo: {deliveryType, NPdepartment, takeAway, paymentDetails},
+          deliveryInfo: {
+            deliveryType,
+            NPdepartment,
+            takeAway,
+            paymentDetails,
+          },
           overall: price,
         }),
         credentials: "include",
-      });
+      }).then(()  => localStorage.removeItem('cart'));
     }
   };
 
@@ -44,11 +49,11 @@ const PaymentDetails = ({ price }:IPaymentDetailsProps) => {
       />
       <MDBContainer className="d-flex justify-content-center mt-2">
         <MDBCol xl="7">
-          <MDBCard style={{ marginTop: "2rem" }}>
+          <MDBCard style={{ marginTop: "3rem" }}>
             <MDBCardTitle className="text-center pt-3">
               Детали заказа
             </MDBCardTitle>
-            <hr className="my-0"/>
+            <hr className="my-0" />
             <MDBCardBody className="pt-0 p-0">
               <MDBCol className="text-center d-flex align-content-center justify-content-center flex-column mt-2 mb-2">
                 <DeliveryType

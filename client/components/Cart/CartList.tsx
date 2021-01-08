@@ -6,29 +6,32 @@ import {
   MDBCardTitle,
   MDBBtn,
   MDBIcon,
+  MDBCardBody,
 } from "mdbreact";
-import {ICartListProps} from "../../interfaces/components/ICartProps";
+import { ICartListProps } from "../../interfaces/components/ICartProps";
 
-const CartList = ({ cart, handleClick }:ICartListProps) => (
+const CartList = ({ cart, handleClick }: ICartListProps) => (
   <>
     {cart &&
       cart.map((item, i) => (
         <MDBCard
           key={i}
           className="d-flex flex-row"
-          style={{ marginTop: "1rem" }}
+          style={{ marginTop: "1rem", width: "50rem" }}
         >
-          <MDBCol xl="4" className="px-0">
+          <MDBCol xl="3" className="px-0">
             <img
-    src={item.Image}
-    className="rounded-left"
-    style={{width: "13rem", height: "230px"}}
-    alt={item.Name}
-    />
+              src={item.Image}
+              className="rounded-left"
+              style={{ width: "16rem", height: "240px", paddingRight:"60px" }}
+              alt={item.Name}
+            />
           </MDBCol>
           <MDBCol className="d-flex flex-column justify-content-center align-items-center">
-            <MDBCardTitle>{item.Name}</MDBCardTitle>
-            <MDBCardTitle>Цена: {item.quantity && item.Price * item.quantity}</MDBCardTitle>
+            <MDBCardTitle style={{ marginTop: "20px" }}>{item.Name}</MDBCardTitle>
+            <MDBCardBody style={{ margin: "-10px" }}>
+              Цена: <b>{item.quantity && item.Price * item.quantity} грн </b>
+            </MDBCardBody>
             <MDBRow className="w-100 d-flex justify-content-center">
               <button
                 className="btn bg-color-black text-white width-btn"
@@ -52,9 +55,10 @@ const CartList = ({ cart, handleClick }:ICartListProps) => (
               </button>
             </MDBRow>
             <MDBBtn
-              color="dark"
+              color="red"
               className="w-30 text-white align-self-center"
               onClick={() => handleClick(i, "del")}
+              style={{ marginBottom: "30px" }}
             >
               <MDBIcon
                 icon="trash"

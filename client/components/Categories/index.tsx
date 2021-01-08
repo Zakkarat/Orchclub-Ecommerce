@@ -27,11 +27,11 @@ const Categories = ({ categoryChange }:ICategoriesProps) => {
   }, []);
 
   return (
-    <MDBContainer style={{ marginTop: "96px" }}>
+    <MDBContainer style={{ marginTop: "110px" }}>
       <MDBRow>
         <CarouselProvider
           className="w-100 d-flex"
-          naturalSlideWidth={400}
+          naturalSlideWidth={500}
           naturalSlideHeight={200}
           visibleSlides={windowWidth < 993 ? (windowWidth < 769 ? 1 : 2) : 3}
           totalSlides={categories.length}

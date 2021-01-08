@@ -1,4 +1,4 @@
-import React, {SyntheticEvent} from "react";
+import React, { SyntheticEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -24,8 +24,8 @@ const Orchid = () => {
     getData();
   }, []);
 
-  const handleClick = (e:SyntheticEvent<HTMLButtonElement, Event>) => {
-    const target:HTMLButtonElement = e.target as HTMLButtonElement;
+  const handleClick = (e: SyntheticEvent<HTMLButtonElement, Event>) => {
+    const target: HTMLButtonElement = e.target as HTMLButtonElement;
     const sign = target.innerText;
     console.log(sign === "+", orchid)
     if (sign === "+" && orchid.Stock && items < orchid.Stock) {

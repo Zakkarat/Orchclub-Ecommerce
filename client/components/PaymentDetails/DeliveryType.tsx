@@ -5,7 +5,7 @@ import {IDeliveryTypeProps} from "../../interfaces/components/IPaymentDetailsPro
 
 const DeliveryType = ({ deliveryType, setDeliveryType }:IDeliveryTypeProps) => {
   return (
-    <MDBRow>
+    <MDBRow style={{marginTop: "8px"}}>
       <MDBCol className="pt-1">
         <h4 className="h4-responsive align-self-center"> Тип доставки:</h4>{" "}
       </MDBCol>{" "}
