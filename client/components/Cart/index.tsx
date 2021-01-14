@@ -6,7 +6,7 @@ import cartChange from "../../helpers/cartManagement";
 import { connect } from "react-redux";
 import { setOverallPrice, changePaymentState } from "../../redux/actions";
 import {ICartProps} from "../../interfaces/components/ICartProps";
-import IOrchid from "../../interfaces/IOrchid";
+import IOrchid from "../../../interfaces/IOrchid";
 
 const Cart = ({ changePaymentState, setOverallPrice }:ICartProps) => {
   const [cart, setCart] = useState([] as IOrchid[]);

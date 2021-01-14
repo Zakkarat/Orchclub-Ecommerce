@@ -1,4 +1,4 @@
-import IOrchid from "../IOrchid";
+import IOrchid from "../../../interfaces/IOrchid";
 import {NextRouter} from "next/router";
 import {SyntheticEvent} from "react";
 

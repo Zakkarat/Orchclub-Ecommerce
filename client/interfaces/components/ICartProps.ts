@@ -1,5 +1,5 @@
 import {changePaymentState, setOverallPrice} from "../../types/actions";
-import IOrchid from "../IOrchid";
+import IOrchid from "../../../interfaces/IOrchid";
 
 export interface ICartProps {
     changePaymentState:changePaymentState,

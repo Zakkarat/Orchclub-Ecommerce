@@ -1,4 +1,4 @@
-import IOrchid from "../interfaces/IOrchid";
+import IOrchid from "../../interfaces/IOrchid";
 import {IFilters} from "../interfaces/components/INavBarProps";
 
 export default (orchids:IOrchid[], filters:IFilters) => {

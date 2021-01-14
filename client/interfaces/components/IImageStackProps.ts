@@ -1,5 +1,5 @@
 import {IFilters} from "./INavBarProps";
-import IOrchid from "../IOrchid";
+import IOrchid from "../../../interfaces/IOrchid";
 
 export interface IImageStackProps {
     filters:IFilters

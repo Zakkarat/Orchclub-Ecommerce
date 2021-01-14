@@ -1,4 +1,3 @@
-
 export interface IOrderListProps {
     ordersData: IOrder[]
 }

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { MDBContainer, MDBCol, MDBIcon } from "mdbreact";
 import OrchidCard from "./OrchidCard";
-import IOrchid from "../../interfaces/IOrchid";
+import IOrchid from "../../../interfaces/IOrchid";
 
 const Orchid = () => {
   const router = useRouter();

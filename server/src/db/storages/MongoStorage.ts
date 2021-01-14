@@ -2,7 +2,7 @@ import {MongoClient} from 'mongodb';
 import {IDeliveryInfo} from "../../interfaces/IDeliveryInfo";
 import ICartItem from "../../interfaces/ICartItem";
 import {IStorage} from "../../interfaces/IStorage";
-import IOrchid from "../../interfaces/IOrchid";
+import IOrchid from "../../../../interfaces/IOrchid";
 
 export default class MongoStorage implements IStorage{
     private readonly pool;

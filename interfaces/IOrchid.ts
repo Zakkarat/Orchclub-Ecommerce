@@ -7,3 +7,9 @@ export default interface IOrchid {
     Stock?:number
     quantity?:number
 }
+
+export interface ICategory {
+    Id: number,
+    Image:string,
+    Name:string
+}
