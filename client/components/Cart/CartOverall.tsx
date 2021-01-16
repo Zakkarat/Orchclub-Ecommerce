@@ -1,11 +1,12 @@
 import React from "react";
-import { MDBRow, MDBCol, MDBBtn, MDBIcon } from "mdbreact";
+import { MDBBtn, MDBIcon } from "mdbreact";
 import { ICartOverallProps } from "../../interfaces/components/ICartProps";
+import "../../stylesheets/cardMedia.css";
 
 const CartOverall = ({ cart, initStateChange }: ICartOverallProps) => (
-  <MDBRow style={{ width: "40rem", marginTop: "3rem" }}>
-    <MDBCol className="d-flex justify-content-start pr-3">
-      <h4 className="pt-2">
+  <div className="content-fix">
+    <div className="price-fix">
+      <h4>
         Всего к оплате:{" "}
         <b>
           {" "}
@@ -18,8 +19,9 @@ const CartOverall = ({ cart, initStateChange }: ICartOverallProps) => (
           ₴
         </b>
       </h4>
-    </MDBCol>
-    <MDBCol className="d-flex justify-content-end">
+    </div>
+
+    <div className="button-fix">
       <MDBBtn
         color="green"
         onClick={initStateChange}
@@ -30,8 +32,8 @@ const CartOverall = ({ cart, initStateChange }: ICartOverallProps) => (
         <MDBIcon icon="dolly" className="pr-2" style={{ fontSize: "16px" }} />
         Продолжить
       </MDBBtn>
-    </MDBCol>
-  </MDBRow>
+    </div>
+  </div>
 );
 
 export default CartOverall;
