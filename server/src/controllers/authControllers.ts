@@ -13,6 +13,7 @@ const login = async (ctx:Context) => {
     ctx.status = 200;
     ctx.body = "ok";
   } catch(error) {
+    console.log(error);
     ctx.throw(401, error);
   }
 };

@@ -9,6 +9,8 @@ export default class PostgresStorage implements IStorage {
     private pool:Pool;
 
     constructor() {
+        console.log(connectionString)
+
         this.pool = new Pool({
             connectionString: connectionString,
             ssl: { rejectUnauthorized: false }

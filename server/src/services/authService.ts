@@ -11,7 +11,9 @@ export const login = async ({ username, password }:ILoginCredentials):Promise<{s
     if (!username) throw new Error("Username required.");
     if (!password) throw new Error("Password required.");
     const dbUser = await storage.login(username);
+    console.log(dbUser);
     if (!dbUser) throw new Error("Incorrect username and/or password.");
+    console.log(dbUser)
     if (await bcrypt.compare(password, dbUser.Password)) {
         return {sub: dbUser.Id};
     }
