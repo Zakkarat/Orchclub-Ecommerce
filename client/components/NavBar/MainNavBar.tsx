@@ -16,6 +16,7 @@ import {
   MDBIcon,
 } from "mdbreact";
 import { IMainNavBarProps } from "../../interfaces/components/INavBarProps";
+import "../../stylesheets/nav.css";
 
 const MainNavbar = ({
   cartNumber,
@@ -32,7 +33,7 @@ const MainNavbar = ({
   <MDBNavbar
     color="white"
     light
-    expand="sm"
+    expand="md"
     className="pt-3 fixed-top pointer"
     style={{ marginBottom: "50px" }}
   >
@@ -80,17 +81,38 @@ const MainNavbar = ({
           </MDBNavItem>
         </MDBNavbarNav>
       )}
+
       <MDBNavbarNav right>
-        <MDBNavItem className="d-flex align-items-center">
-          <Link href={"/payment"}>
+        <MDBNavItem className="d-flex align-items-center cart-test">
+          <MDBBtn
+            outline
+            color="light"
+            style={{ marginBottom: "15px", padding: "6px 15px 6px 16px" }}
+          >
+            <Link href={"/payment"}>
               <div className="d-flex">
-                <p className="m-0">Корзина </p> {cartNumber > 0 && <span className='circle-cart'>{cartNumber}</span>}
+                <MDBIcon
+                  icon="shopping-cart"
+                  className="pr-1"
+                  style={{ fontSize: "16px", marginTop: "2px" }}
+                />{" "}
+                {cartNumber > 0 && (
+                  <span className="circle-cart" style={{ marginLeft: "10px" }}>
+                    {cartNumber}
+                  </span>
+                )}
               </div>
-          </Link>
+            </Link>
+          </MDBBtn>
         </MDBNavItem>
-        <MDBNavItem className="mr-5">
+        <MDBNavItem className="cart-test">
           <MDBDropdown>
-            <MDBDropdownToggle className="black-dropdown" nav caret>
+            <MDBDropdownToggle
+              className="black-dropdown"
+              style={{ margin: "6px 0 0 8px" }}
+              nav
+              caret
+            >
               <span className="mr-2">
                 <MDBIcon icon="user" />
               </span>
@@ -98,7 +120,23 @@ const MainNavbar = ({
             <MDBDropdownMenu className="mr-5">
               {isLogged ? (
                 <>
-                  <MDBDropdownItem href="/payment">Корзина</MDBDropdownItem>
+                  <MDBDropdownItem href="/payment" className="flex-nav">
+                    {" "}
+                    Корзина{" "}
+                    <Link href={"/payment"}>
+                      <div className="d-flex" style={{ width: "30px" }}>
+                        {" "}
+                        {cartNumber > 0 && (
+                          <span
+                            className="circle-cart-two"
+                            style={{ marginLeft: "10px" }}
+                          >
+                            {cartNumber}
+                          </span>
+                        )}
+                      </div>
+                    </Link>{" "}
+                  </MDBDropdownItem>
                   <MDBDropdownItem href="/orders">Мои заказы</MDBDropdownItem>
                 </>
               ) : (

@@ -54,9 +54,28 @@
 }
 
 .circle-cart {
-  background-color: black;
-  padding: 1px 10px;
-  margin: 0 5px;
-  color: white;
-  border-radius: 100%;
+  background-color:darkgreen;
+  padding: 0px 8px;
+  border-radius: 20%;
+  font-size: 15px;
 }
+
+.circle-cart-two {
+  background-color: #FF5252;
+  padding: 0px 8px;
+  border-radius: 20%;
+  font-size: 15px;
+}
+
+.cart-test{
+  display: flex;
+  justify-content: center;
+}
+
+.flex-nav {
+  display: flex!important;
+}
+
+
+
+

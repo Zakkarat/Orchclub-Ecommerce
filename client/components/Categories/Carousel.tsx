@@ -30,7 +30,7 @@ const Carousel = ({ categories, categoryChange }: ICarouselProps) => (
                   hasMasterSpinner={false}
                 />
                 <MDBMask className="flex-center" overlay="teal-light">
-                  <b className="white-text">{category.Name}</b>
+                  <b className="white-text" style={{textAlign:"center"}}>{category.Name}</b>
                 </MDBMask>
               </MDBView>
             </MDBCol>
