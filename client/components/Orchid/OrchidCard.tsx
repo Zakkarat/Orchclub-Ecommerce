@@ -10,10 +10,11 @@ import {
 } from "mdbreact";
 import changeCart from "../../helpers/cartManagement";
 import { IOrchidCardProps } from "../../interfaces/components/IOrchidProps";
+import "../../stylesheets/orchCard.css";
 
 const OrchidCard = ({ orchid, handleClick, items, router }: IOrchidCardProps) => (
-  <MDBCard>
-    <MDBCardTitle className="text-center pt-4">{orchid.Name}</MDBCardTitle>
+  <MDBCard className="conteiner test">
+    <MDBCardTitle className="text-center pt-4" style={{fontSize:"18px"}}>{orchid.Name}</MDBCardTitle>
     <MDBCardBody className="pt-0 p-0">
       <MDBCol className="px-0">
         <img
@@ -45,6 +46,7 @@ const OrchidCard = ({ orchid, handleClick, items, router }: IOrchidCardProps) =>
               value={items}
               className="form-control text-center font-weight-bolder font-input"
               id="formGroupExampleInput"
+              style={{ padding: "0px" }}
             />
           </div>
           <button
@@ -59,9 +61,9 @@ const OrchidCard = ({ orchid, handleClick, items, router }: IOrchidCardProps) =>
         </h6>
         <MDBBtn
           color="green"
-          className="w-50 text-white align-self-center"
+          className="w-30 text-white align-self-center"
           onClick={() => changeCart(Number(router.query.id), items, localStorage)}
-          style={{ marginBottom: "50px", marginTop: "10px", padding: "8px" }}
+          style={{ marginBottom: "40px", marginTop: "10px", padding: "8px 16px 8px 16px" }}
         >
           <MDBIcon
             icon="cart-arrow-down"

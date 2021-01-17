@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { MDBContainer, MDBCol, MDBIcon } from "mdbreact";
 import OrchidCard from "./OrchidCard";
 import IOrchid from "../../interfaces/IOrchid";
+import "../../stylesheets/orchCard.css";
 
 const Orchid = () => {
   const router = useRouter();
@@ -37,16 +38,19 @@ const Orchid = () => {
   };
   return (
     <>
+    <div className="back-button">
       <Link href="/">
         <MDBIcon
-          style={{ fontSize: "36px", marginTop: "96px" }}
+          style={{ fontSize: "36px"}}
           className="ml-5 pointer"
           icon="chevron-circle-left"
         />
       </Link>
+    </div>
+
       <div className="orchid-cont">
         <MDBContainer className="d-flex justify-content-center">
-          <MDBCol xl="5">
+          <MDBCol xl="5" className="test">
             <OrchidCard
               orchid={orchid}
               handleClick={handleClick}

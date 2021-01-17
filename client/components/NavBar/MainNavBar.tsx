@@ -18,7 +18,7 @@ import {
 import { IMainNavBarProps } from "../../interfaces/components/INavBarProps";
 
 const MainNavbar = ({
-                      cartNumber,
+  cartNumber,
   isLogged,
   router,
   isOpen,
@@ -32,7 +32,7 @@ const MainNavbar = ({
   <MDBNavbar
     color="white"
     light
-    expand="md"
+    expand="sm"
     className="pt-3 fixed-top pointer"
     style={{ marginBottom: "50px" }}
   >

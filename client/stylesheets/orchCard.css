@@ -1,0 +1,22 @@
+.test {
+    width: 350px;
+    margin-bottom: 100px;
+    margin-top: 70px;
+    justify-content: center;
+    display: flex;
+}
+
+.back-button {
+    position: fixed;
+    margin-top: 120px;
+}
+
+@media screen and (max-width: 800px) {
+    .back-button {
+        display: none;
+    }
+    .test {
+        margin-top: 60px;
+    }
+    
+}

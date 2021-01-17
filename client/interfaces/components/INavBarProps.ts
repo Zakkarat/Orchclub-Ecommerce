@@ -20,7 +20,7 @@ export interface IFilterNavBarProps{
 }
 
 export interface IMainNavBarProps {
-    cartNumber:number
+    cartNumber:number,
     isLogged:boolean,
     router:NextRouter,
     isOpen:boolean,

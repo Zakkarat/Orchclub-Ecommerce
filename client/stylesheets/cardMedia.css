@@ -67,6 +67,9 @@
   .price-fix {
     margin: 0 0 10px 0;
   }
+  .button-fix {
+    margin-bottom: 100px;
+  }
 }
 
 @media screen and (max-width: 850px) and (min-width: 501px) {
@@ -89,5 +92,8 @@
   }
   .price-fix {
     margin: 0 0 10px 0;
+  }
+  .button-fix {
+    margin-bottom: 120px;
   }
 }
