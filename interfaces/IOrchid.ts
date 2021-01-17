@@ -1,15 +1,10 @@
 export default interface IOrchid {
-    Id: number,
-    Image: string,
-    Name: string,
+    Id:number,
+    Image:string,
+    Name:string,
     Price:number,
     Size:string
     Stock?:number
     quantity?:number
 }
 
-export interface ICategory {
-    Id: number,
-    Image:string,
-    Name:string
-}

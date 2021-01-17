@@ -8,10 +8,10 @@ export interface ICartProps {
 
 export interface ICartOverallProps {
     cart:IOrchid[],
-    initStateChange:()=>void;
+    initStateChange:() => void;
 }
 
 export interface ICartListProps {
     cart:IOrchid[],
-    handleClick: (i:number, sign:string) => void;
+    handleClick:(i:number, sign:string) => void;
 }

@@ -1,5 +1,5 @@
 export interface IOrderListProps {
-    ordersData: IOrder[]
+    ordersData:IOrder[]
 }
 
 export interface IOrder {

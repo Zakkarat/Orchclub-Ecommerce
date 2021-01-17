@@ -6,5 +6,5 @@ export interface ILoginFormProps {
     setUsername:React.Dispatch<SetStateAction<string>>,
     setPassword:React.Dispatch<SetStateAction<string>>,
     error:boolean,
-    makeLogin: (e:SyntheticEvent<HTMLButtonElement, Event>) => void,
+    makeLogin:(e:SyntheticEvent<HTMLButtonElement, Event>) => void,
 }

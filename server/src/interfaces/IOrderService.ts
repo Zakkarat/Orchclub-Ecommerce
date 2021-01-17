@@ -4,6 +4,6 @@ import ICartItem from "./ICartItem";
 export interface IOrderService {
     user:number,
     cart:ICartItem[],
-    deliveryInfo: IDeliveryInfo,
+    deliveryInfo:IDeliveryInfo,
     overall:string
 }

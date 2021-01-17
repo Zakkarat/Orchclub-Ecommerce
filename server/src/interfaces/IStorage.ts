@@ -1,6 +1,6 @@
 import {IDeliveryInfo} from "./IDeliveryInfo";
 import ICartItem from "./ICartItem";
-import {ICategory} from "../../../interfaces/IOrchid";
+import {ICategory} from "../../../interfaces/ICategory";
 import IOrchid from "../../../interfaces/IOrchid";
 import {IOrder} from "./IOrder";
 
