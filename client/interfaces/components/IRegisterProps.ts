@@ -12,7 +12,7 @@ export interface IRegisterFormProps {
     adress:string,
     setAdress:React.Dispatch<SetStateAction<string>>,
     phone:string,
-    handleValidPhone:(e:FormEvent<HTMLInputElement>)=>void,
-    handleSubmit:(e:SyntheticEvent<HTMLButtonElement, Event>)=>void,
+    handleValidPhone:(e:FormEvent<HTMLInputElement>) => void,
+    handleSubmit:(e:SyntheticEvent<HTMLButtonElement, Event>) => void,
     error:boolean,
 }

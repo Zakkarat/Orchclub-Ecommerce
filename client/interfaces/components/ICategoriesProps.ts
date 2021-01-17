@@ -1,10 +1,10 @@
 import {categoryChange} from "../../types/actions";
-import {ICategory} from "../../../interfaces/IOrchid";
+import {ICategory} from "../../../interfaces/ICategory";
 
 export interface ICategoriesProps {
-    categoryChange: categoryChange
+    categoryChange:categoryChange
 }
 
-export interface ICarouselProps extends ICategoriesProps{
+export interface ICarouselProps extends ICategoriesProps {
     categories:ICategory[],
 }

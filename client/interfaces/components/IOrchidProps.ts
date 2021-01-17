@@ -4,7 +4,7 @@ import {SyntheticEvent} from "react";
 
 export interface IOrchidCardProps {
     orchid:IOrchid,
-    handleClick: (e:SyntheticEvent<HTMLButtonElement, Event>) => void,
+    handleClick:(e:SyntheticEvent<HTMLButtonElement, Event>) => void,
     items:number,
     router:NextRouter
 }
