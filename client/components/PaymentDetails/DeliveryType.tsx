@@ -15,6 +15,7 @@ const DeliveryType = ({ deliveryType, setDeliveryType }:IDeliveryTypeProps) => {
           value={deliveryType}
           onChange={(e) => setValue(e, setDeliveryType)}
           className="browser-default custom-select"
+          id="select-type"
         >
           <option value="0">Не выбрано</option>
           <option value="1">Новая почта</option>

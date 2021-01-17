@@ -26,6 +26,7 @@ const PayDetails = ({
             value={paymentDetails}
             onChange={(e) => setValue(e, setPaymentDetails)}
             className="browser-default custom-select"
+            id="select-payment-type"
           >
             <option value="0">Не выбрано</option>
             <option value="1">Оплата картой</option>

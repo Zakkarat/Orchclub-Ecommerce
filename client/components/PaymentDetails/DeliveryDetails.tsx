@@ -22,6 +22,7 @@ const DeliveryDetails = ({
             value={NPdepartment}
             onChange={(e) => setValue(e, setNPDepartment)}
             className="browser-default custom-select"
+            id="select-NPdepartment"
           >
             <option value="0">Не выбрано</option>
             <option value="1">Отделение 1</option>
@@ -43,6 +44,7 @@ const DeliveryDetails = ({
             value={takeAway}
             onChange={(e) => setValue(e, setTakeAway)}
             className="browser-default custom-select"
+            id="select-address"
           >
             <option value="0">Не выбрано</option>
             <option value="1">Адрес 1</option>
