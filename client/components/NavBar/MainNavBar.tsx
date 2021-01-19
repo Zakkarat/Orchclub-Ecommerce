@@ -65,6 +65,7 @@ const MainNavbar = ({
               className="text-white"
               onClick={handleFilterChange}
               style={{ marginBottom: "15px" }}
+              aria-label="search"
             >
               <MDBIcon icon="search" />
             </MDBBtn>

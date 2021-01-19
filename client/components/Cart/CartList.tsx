@@ -47,6 +47,7 @@ const CartList = ({ cart, handleClick }: ICartListProps) => (
                 className="w-30 text-white align-self-center"
                 onClick={() => handleClick(i, "del")}
                 style={{ marginBottom: "30px", marginTop: "20px" }}
+                aria-label="delete item"
               >
                 <MDBIcon
                   icon="trash"

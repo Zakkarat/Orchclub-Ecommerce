@@ -64,6 +64,7 @@ const OrchidCard = ({ orchid, handleClick, items, router }: IOrchidCardProps) =>
           className="w-30 text-white align-self-center"
           onClick={() => changeCart(Number(router.query.id), items, localStorage)}
           style={{ marginBottom: "40px", marginTop: "10px", padding: "8px 16px 8px 16px" }}
+          aria-label="add to cart"
         >
           <MDBIcon
             icon="cart-arrow-down"

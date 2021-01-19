@@ -28,6 +28,7 @@ const CartOverall = ({ cart, initStateChange }: ICartOverallProps) => (
         disabled={!cart.length}
         className="text-white font-input"
         style={{ padding: " 10px 40px 10px 40px" }}
+        aria-label="continue"
       >
         <MDBIcon icon="dolly" className="pr-2" style={{ fontSize: "16px" }} />
         Продолжить

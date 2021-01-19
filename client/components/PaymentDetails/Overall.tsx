@@ -49,6 +49,7 @@ const Overall = ({ paymentDetails, price, handlePayClick }: IOverallProps) => {
               type="submit"
               className="text-white font-input"
               style={{ padding: " 10px 20px 10px 20px", width: "200px" }}
+              aria-label="pay"
             >
               <MDBIcon
                 icon="hand-holding-usd"

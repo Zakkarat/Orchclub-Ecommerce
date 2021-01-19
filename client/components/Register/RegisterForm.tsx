@@ -129,6 +129,7 @@ const RegisterForm = ({
             type="submit"
             onClick={handleSubmit}
             className="white-text"
+            aria-label="submit"
           >
             Подтвердить
           </MDBBtn>

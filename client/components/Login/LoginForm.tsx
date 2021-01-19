@@ -41,7 +41,7 @@ const LoginForm = ({
         )}
         <div className="text-center mt-4 white-text d-flex flex-column justify-content-center">
           <MDBCol className="text-center">
-            <MDBBtn color="dark" className="white-text" onClick={makeLogin}>
+            <MDBBtn color="dark" className="white-text" onClick={makeLogin} aria-label="log in">
               Войти
             </MDBBtn>
           </MDBCol>

@@ -90,6 +90,7 @@ const FilterNavBar = ({
               color='dark'
             className="text-white"
             onClick={handleFilterChange}
+            aria-label="submit"
           >
             Подтвердить
           </MDBBtn>

@@ -37,7 +37,7 @@ const Carousel = ({ categories, categoryChange }: ICarouselProps) => (
           </Slide>
         ))}
     </Slider>
-    <ButtonNext className="slider-button align-self-center">
+    <ButtonNext className="slider-button align-self-center" aria-label="arrow">
       <MDBIcon icon="angle-double-right" />
     </ButtonNext>
   </>
