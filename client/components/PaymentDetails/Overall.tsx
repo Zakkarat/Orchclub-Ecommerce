@@ -1,12 +1,13 @@
 import React from "react";
-import { MDBRow, MDBCol, MDBBtn, MDBIcon } from "mdbreact";
+import { MDBCol, MDBBtn, MDBIcon } from "mdbreact";
 import { IOverallProps } from "../../interfaces/components/IPaymentDetailsProps";
+import "../../stylesheets/cardMedia.css";
 
 const Overall = ({ paymentDetails, price, handlePayClick }: IOverallProps) => {
   if (paymentDetails) {
     return (
-      <MDBRow style={{ width: "40rem", marginTop: "2rem" }}>
-        <MDBCol className="d-flex justify-content-start pr-3">
+      <div className="content-fix">
+        <div className="price-fix">
           <h4 className="pt-2">
             Всего к оплате:{" "}
             <b>
@@ -16,8 +17,8 @@ const Overall = ({ paymentDetails, price, handlePayClick }: IOverallProps) => {
               ₴
             </b>
           </h4>
-        </MDBCol>
-        <MDBCol xl="3" className="d-flex justify-content-end">
+        </div>
+        <MDBCol xl="3" className="d-flex justify-content-center">
           <form
             onSubmit={handlePayClick}
             action="https://www.portmone.com.ua/gateway/"
@@ -61,7 +62,7 @@ const Overall = ({ paymentDetails, price, handlePayClick }: IOverallProps) => {
             </MDBBtn>
           </form>
         </MDBCol>
-      </MDBRow>
+      </div>
     );
   }
   return <></>;
