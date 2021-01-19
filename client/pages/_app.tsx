@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import withRedux from "next-redux-wrapper";
 import {createStore, Store} from "redux";
 import { Provider } from "react-redux";
@@ -15,6 +15,10 @@ const makeStore = (initialState:Object) => {
 };
 
 const MyApp = ({ Component, pageProps, store }:AppProps & Props) => {
+  useEffect(() => {
+    document.documentElement.lang = "ru";
+  }, []);
+  
   return (
     <Provider store={store}>
       <Component {...pageProps} />
