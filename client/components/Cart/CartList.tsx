@@ -7,7 +7,7 @@ const CartList = ({ cart, handleClick }: ICartListProps) => (
   <>
     {cart &&
       cart.map((item, i) => (
-        <div className="cont">
+        <div className="cont" key={i}>
           <div className="cart-item">
             <img src={item.Image} className="item-img" alt={item.Name} />
 
