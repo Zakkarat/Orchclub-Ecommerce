@@ -70,6 +70,7 @@ const OrchidCard = ({ orchid, handleClick, items, router }: IOrchidCardProps) =>
             icon="cart-arrow-down"
             className="pr-2"
             style={{ fontSize: "16px" }}
+            alt="arrow"
           />
           В корзину
         </MDBBtn>

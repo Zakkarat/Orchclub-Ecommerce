@@ -76,6 +76,7 @@ const MainNavbar = ({
               onClick={() => setSecondBar(!secondBar)}
               className="btn-nav"
               style={{ marginBottom: "15px" }}
+              aria-label="filter"
             >
               Фильтр
             </MDBBtn>
@@ -89,6 +90,7 @@ const MainNavbar = ({
             outline
             color="light"
             style={{ marginBottom: "15px", padding: "6px 15px 6px 16px" }}
+            aria-label="cart"
           >
             <Link href={"/payment"}>
               <div className="d-flex">
@@ -96,6 +98,7 @@ const MainNavbar = ({
                   icon="shopping-cart"
                   className="pr-1"
                   style={{ fontSize: "16px", marginTop: "2px" }}
+                  alt="cart"
                 />{" "}
                 {cartNumber > 0 && (
                   <span className="circle-cart" style={{ marginLeft: "10px" }}>
@@ -115,7 +118,7 @@ const MainNavbar = ({
               caret
             >
               <span className="mr-2">
-                <MDBIcon icon="user" />
+                <MDBIcon icon="user" alt="user"/>
               </span>
             </MDBDropdownToggle>
             <MDBDropdownMenu className="mr-5">

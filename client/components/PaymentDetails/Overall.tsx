@@ -55,6 +55,7 @@ const Overall = ({ paymentDetails, price, handlePayClick }: IOverallProps) => {
                 icon="hand-holding-usd"
                 className="pr-2"
                 style={{ fontSize: "20px" }}
+                aria-label="pay"
               />
               Оплатить
             </MDBBtn>

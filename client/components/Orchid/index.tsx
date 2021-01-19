@@ -44,6 +44,7 @@ const Orchid = () => {
           style={{ fontSize: "36px"}}
           className="ml-5 pointer"
           icon="chevron-circle-left"
+          alt="back"
         />
       </Link>
     </div>

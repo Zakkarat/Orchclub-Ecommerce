@@ -53,6 +53,7 @@ const CartList = ({ cart, handleClick }: ICartListProps) => (
                   icon="trash"
                   className="pr-2"
                   style={{ fontSize: "16px" }}
+                  alt="trash"
                 />
                 Удалить
               </MDBBtn>

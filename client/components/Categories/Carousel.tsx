@@ -11,8 +11,8 @@ import { ICarouselProps } from "../../interfaces/components/ICategoriesProps";
 
 const Carousel = ({ categories, categoryChange }: ICarouselProps) => (
   <>
-    <ButtonBack className="slider-button align-self-center">
-      <MDBIcon icon="angle-double-left" />
+    <ButtonBack className="slider-button align-self-center" aria-label="arrow">
+      <MDBIcon icon="angle-double-left" alt="arrow" />
     </ButtonBack>
     <Slider className="w-100">
       {categories &&

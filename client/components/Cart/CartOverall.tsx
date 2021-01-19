@@ -30,7 +30,7 @@ const CartOverall = ({ cart, initStateChange }: ICartOverallProps) => (
         style={{ padding: " 10px 40px 10px 40px" }}
         aria-label="continue"
       >
-        <MDBIcon icon="dolly" className="pr-2" style={{ fontSize: "16px" }} />
+        <MDBIcon icon="dolly" className="pr-2" style={{ fontSize: "16px" }} alt="continue" />
         Продолжить
       </MDBBtn>
     </div>
