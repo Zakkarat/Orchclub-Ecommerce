@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
+    "start-dockerized": "next start -p 80",
     "lint": "eslint ./",
     "cypress": "cypress open"
   },

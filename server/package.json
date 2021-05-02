@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
+    "build": "tsc",
     "test": "mocha -r ts-node/register './test/*.test.ts'",
     "coverage:html": "nyc --reporter=html npm run test",
     "coverage:text": "nyc --reporter=text npm run test",

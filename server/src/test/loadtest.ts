@@ -28,7 +28,7 @@ const optionsVerify = {
     cookies: ["UID=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJpYXQiOjE2MDQ1ODY1OTl9.K2uZnEpFUvfyFzdU3GkkbWBFZKSQbKtzgCfbagb_K9s"]
 };
 
-function statusCallback(err, result) {
+function statusCallback(err:any, result:any) {
     if(err) {
         throw err;
     }

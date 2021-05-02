@@ -8,7 +8,7 @@ const useAuth = (router:NextRouter) => {
         credentials: "include",
       }).then((data) => {
         if (data.status !== 200) {
-          router.replace("/auth/login");
+          router.replace("/login");
         }
       });
     };

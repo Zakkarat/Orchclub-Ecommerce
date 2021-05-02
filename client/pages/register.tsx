@@ -1,8 +1,8 @@
 import React from "react";
 import Head from "next/head";
-import Register from "../../components/Register";
+import Register from "../components/Register";
 import "bootstrap-css-only/css/bootstrap.min.css";
-import "../../stylesheets/auth.css";
+import "../stylesheets/auth.css";
 
 const Auth = () => {
   return (

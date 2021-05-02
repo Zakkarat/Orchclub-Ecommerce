@@ -94,8 +94,8 @@ const MainNavbar = ({
                 </>
               ) : (
                 <>
-                  <MDBDropdownItem href="/auth/login">Войти</MDBDropdownItem>
-                  <MDBDropdownItem href="/auth/register">
+                  <MDBDropdownItem href="/login">Войти</MDBDropdownItem>
+                  <MDBDropdownItem href="/register">
                     Зарегистрироваться
                   </MDBDropdownItem>
                 </>

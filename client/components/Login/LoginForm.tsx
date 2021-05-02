@@ -48,7 +48,7 @@ const LoginForm = ({
             Нету учетной записи?{" "}
             <a className="blue-text underline">
               <u>
-                <Link href="/auth/register">
+                <Link href="/register">
                   <a>Создайте тут!</a>
                 </Link>
               </u>
