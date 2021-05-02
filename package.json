@@ -2,9 +2,6 @@
   "name": "orchclub-ecommerce",
   "version": "1.0.0",
   "description": "- Grid-based design.\r   - Sign in/Sign up + Account managment.\r   - Cart management.\r   - Payments.",
-  "dependencies": {
-    "cypress": "^5.5.0"
-  },
   "devDependencies": {},
   "scripts": {
     "install": "cd server && npm install && cd .. && cd client && npm install",
