@@ -9,16 +9,33 @@ export default class PostgresStorage implements IStorage {
     private pool:Pool;
 
     constructor() {
-        this.pool = new Pool({
-            connectionString: connectionString,
-            ssl: { rejectUnauthorized: false }
-        });
+        console.log(process.env)
+        if (process.env.NODE_ENV === "production") {
+            this.pool = new Pool({
+                connectionString: connectionString,
+                ssl: {rejectUnauthorized: false}
+            });
+        } else {
+            this.pool = new Pool({
+                connectionString: `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.POSTGRES_SERVICE_HOST}:5432/${process.env.DB_NAME}`,
+            });
+            // this.pool = new Pool({
+            //     user: process.env.DB_USER,
+            //     database: process.env.DB_NAME,
+            //     password: process.env.DB_PASSWORD,
+            //     port: 5432,
+            //     host: process.env.POSTGRES_SERVICE_HOST,
+            //     ssl: {rejectUnauthorized: false}
+            // });
+        }
     }
 
     login = async (username:string) => {
+        console.log(this.pool);
         const {rows} = await this.pool.query(
             `SELECT "Id", "Password" FROM "Users" WHERE "Username" = '${username}'`
         );
+        console.log(rows[0]);
         return rows[0];
     };
 

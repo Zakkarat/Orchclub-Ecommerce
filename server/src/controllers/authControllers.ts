@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 
 const login = async (ctx:Context) => {
   try {
+    console.log(secret)
     const payload = await authServices.login(ctx.request.body)
     ctx.cookies.set("UID", jwt.sign(payload, secret));
     ctx.cookies.set("SameSite", 'None');

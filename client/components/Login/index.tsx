@@ -2,6 +2,7 @@ import React, {useState, useEffect, SyntheticEvent} from "react";
 import { MDBCol } from "mdbreact";
 import { useRouter } from "next/router";
 import LoginForm from "./LoginForm";
+import {HOSTNAME} from "../../constants/Constants";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -12,7 +13,8 @@ const Login = () => {
   const makeLogin = async (e:SyntheticEvent<HTMLButtonElement, Event>) => {
     const btn = e.target as HTMLButtonElement;
     btn.disabled = true;
-    await fetch("http://localhost:9000/auth/login", {
+    console.log(`http://${HOSTNAME(document)}/auth/login`);
+    await fetch(`http://${HOSTNAME(document)}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -29,7 +31,7 @@ const Login = () => {
   useEffect(() => {
     const getAuth = async () => {
       const { status } = await fetch(
-        `http://localhost:9000/auth/verify`,
+        `http://${HOSTNAME(document)}/auth/verify`,
         {
           credentials: "include",
         }

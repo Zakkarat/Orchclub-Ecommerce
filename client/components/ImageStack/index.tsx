@@ -7,7 +7,7 @@ import {IImageStackProps} from "../../interfaces/components/IImageStackProps";
 const ImageStack = ({ filters }:IImageStackProps) => {
   const [orchids, setOrchids] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  console.log(process.env);
   useEffect(() => {
     const getData = async () => {
       setLoading(true);

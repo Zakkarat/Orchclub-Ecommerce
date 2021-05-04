@@ -16,10 +16,10 @@ spec:
                 name: client-service
                 port:
                   number: 80
-          - path: /authenticate/(.+)
+          - path: /auth/(.+)
             pathType: Prefix
             backend:
               service:
-                name: server-auth-service
+                name: auth-server-service
                 port:
                   number: 80

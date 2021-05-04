@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import MainNavBar from "./MainNavBar";
 import FilterNavBar from "./FilterNavBar";
 import {IFilters, INavBarProps} from "../../interfaces/components/INavBarProps";
+import {HOSTNAME} from "../../constants/Constants";
 
 const NavBar = ({filters, changeFilters}:INavBarProps) => {
   const router = useRouter();
@@ -40,7 +41,7 @@ const NavBar = ({filters, changeFilters}:INavBarProps) => {
 
     const getAuth = async () => {
       const { status } = await fetch(
-          `http://localhost:9000/auth/verify`,
+          `http://${HOSTNAME(document)}/auth/verify`,
           {
             credentials: "include",
           }

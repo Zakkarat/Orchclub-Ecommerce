@@ -3,6 +3,7 @@ import { MDBCol } from "mdbreact";
 import setValue from "../../helpers/setValue";
 import { useRouter } from "next/router";
 import RegisterForm from "./RegisterForm";
+import {HOSTNAME} from "../../constants/Constants";
 
 const Card = () => {
   const router = useRouter();
@@ -30,8 +31,7 @@ const Card = () => {
       setError(true);
       return
     }
-
-    await fetch("http://localhost:9000/auth/register", {
+    await fetch(`http://${HOSTNAME(document)}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, password, region, city, adress, phone }),

@@ -13,3 +13,6 @@ cd ./scripts/service-yamls
 kubectl apply -f ./
 cd ..
 cd ..
+
+
+cat orchids_dump.sql | kubectl exec -i [pod-name] -- psql -U uxbuvhokbbocan -d dbit7n0ojntpd7
