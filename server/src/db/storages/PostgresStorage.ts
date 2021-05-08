@@ -2,53 +2,51 @@ import {IDeliveryInfo} from "../../interfaces/IDeliveryInfo";
 import ICartItem from "../../interfaces/ICartItem";
 import {IStorage} from "../../interfaces/IStorage";
 import {Pool} from "pg";
+import axios from "axios";
 
 const connectionString = process.env.DATABASE_URL
 
 export default class PostgresStorage implements IStorage {
     private pool:Pool;
-
+    private url:string;
     constructor() {
-        console.log(process.env)
         if (process.env.NODE_ENV === "production") {
             this.pool = new Pool({
                 connectionString: connectionString,
                 ssl: {rejectUnauthorized: false}
             });
+            this.url = 'localhost:9001';
         } else {
             this.pool = new Pool({
                 connectionString: `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.POSTGRES_SERVICE_HOST}:5432/${process.env.DB_NAME}`,
             });
-            // this.pool = new Pool({
-            //     user: process.env.DB_USER,
-            //     database: process.env.DB_NAME,
-            //     password: process.env.DB_PASSWORD,
-            //     port: 5432,
-            //     host: process.env.POSTGRES_SERVICE_HOST,
-            //     ssl: {rejectUnauthorized: false}
-            // });
+            this.url = 'db-service'
         }
     }
 
+    private async makeDbRequest(request:string) {
+        console.log(this.url);
+        return await axios.post(`http://${this.url}/db/request`
+            , {
+                request: request,
+                token: 'secret'
+            }
+        ).then(response => {
+            return response.data;
+        }).catch((err:Error) => {
+            throw err;
+        });
+    }
+
     login = async (username:string) => {
-        console.log(this.pool);
-        const {rows} = await this.pool.query(
-            `SELECT "Id", "Password" FROM "Users" WHERE "Username" = '${username}'`
-        );
-        console.log(rows[0]);
+        const {rows} = await this.makeDbRequest(`SELECT "Id", "Password" FROM "Users" WHERE "Username" = '${username}'`);
         return rows[0];
     };
 
     registerUser = async (name:string, hash:string, region:string, city:string, adress:string, phone:number) => {
-        await this.pool
-            .query(
-                `INSERT INTO "Users"
+        await this.makeDbRequest(`INSERT INTO "Users"
                 ("Username", "Password", "Type", "Region", "City", "Adress", "Phone") 
-                VALUES('${name}', '${hash}', 'User', '${region}', '${city}', '${adress}', '${phone}')`
-            )
-            .catch((err:Error) => {
-                throw err;
-            });
+                VALUES('${name}', '${hash}', 'User', '${region}', '${city}', '${adress}', '${phone}')`);
     };
 
     getCategories = async () => {
