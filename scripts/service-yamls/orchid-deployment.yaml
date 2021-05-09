@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-server-deployment
+  name: orchid-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth-server
+      app: orchid-server
   template:
     metadata:
       labels:
-        app: auth-server
+        app: orchid-server
     spec:
       containers:
-        - image: auth-server:0.1
+        - image: orchid-server:0.1
           imagePullPolicy: Never
-          name: auth-server
+          name: orchid-server
           ports:
-            - containerPort: 9000
+            - containerPort: 9002
           env:
             - name: DATABASE_URL
               value: "postgres://uxbuvhokbbocan:826a1d23fbb6b89baadb9e23d44d3f408b7ab17c513ce2b6cf1e2d5cae1bd1a8@postgres/dbit7n0ojntpd7"

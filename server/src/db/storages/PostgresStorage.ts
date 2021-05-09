@@ -15,12 +15,12 @@ export default class PostgresStorage implements IStorage {
                 connectionString: connectionString,
                 ssl: {rejectUnauthorized: false}
             });
-            this.url = 'localhost:9001';
+            this.url = 'db-service'
         } else {
             this.pool = new Pool({
                 connectionString: `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.POSTGRES_SERVICE_HOST}:5432/${process.env.DB_NAME}`,
             });
-            this.url = 'db-service'
+            this.url = 'localhost:9001';
         }
     }
 

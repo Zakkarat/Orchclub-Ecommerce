@@ -23,3 +23,10 @@ spec:
                 name: auth-server-service
                 port:
                   number: 80
+          - path: /api/(.+)
+            pathType: Prefix
+            backend:
+              service:
+                name: orchid-service
+                port:
+                  number: 80

@@ -11,6 +11,9 @@ cd ..
 cd ./server
 docker build -t auth-server:0.1 -f ./Dockerfile .
 cd ..
+cd ./orchid-service
+docker build -t orchid-server:0.1 -f ./Dockerfile .
+cd ..
 
 cd ./scripts/service-yamls
 kubectl apply -f ./
@@ -18,4 +21,4 @@ cd ..
 cd ..
 
 
-cat orchids_dump.sql | kubectl exec -i postgres-84ff4497db-7f2xf -- psql -U uxbuvhokbbocan -d dbit7n0ojntpd7
+cat orchids_dump.sql | kubectl exec -i postgres-84ff4497db-nd87p -- psql -U uxbuvhokbbocan -d dbit7n0ojntpd7
