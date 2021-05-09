@@ -12,6 +12,7 @@ import PayDetails from "./PayDetails";
 import DeliveryDetails from "./DeliveryDetails";
 import DeliveryType from "./DeliveryType";
 import {IPaymentDetailsProps} from "../../interfaces/components/IPaymentDetailsProps";
+import {HOSTNAME} from "../../constants/Constants";
 
 const PaymentDetails = ({ price }:IPaymentDetailsProps) => {
   const [deliveryType, setDeliveryType] = useState("0");
@@ -22,7 +23,7 @@ const PaymentDetails = ({ price }:IPaymentDetailsProps) => {
   const handlePayClick = async () => {
     const cart = localStorage.getItem("cart");
     if (cart) {
-      await fetch("http://localhost:9000/orders/createOrder", {
+      await fetch(`http://${HOSTNAME(document)}/users/createOrder`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({

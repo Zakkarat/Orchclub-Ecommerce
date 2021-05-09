@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { categoryChange } from "../../redux/actions";
 import {ICategoriesProps} from "../../interfaces/components/ICategoriesProps";
+import {HOSTNAME} from "../../constants/Constants";
 
 const Categories = ({ categoryChange }:ICategoriesProps) => {
   const [categories, setCategories] = useState([]);
@@ -16,7 +17,7 @@ const Categories = ({ categoryChange }:ICategoriesProps) => {
     const category = async () => {
       setCategories(
         await fetch(
-          "https://orchclub-ecommerce.herokuapp.com/orchids/categories",
+          `http://${HOSTNAME(document)}/api/orchids/categories`,
           {
             credentials: "include",
           }

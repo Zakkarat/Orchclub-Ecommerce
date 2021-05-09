@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-server
+  template:
+    metadata:
+      labels:
+        app: user-server
+    spec:
+      containers:
+        - image: user-server:0.1
+          imagePullPolicy: Never
+          name: user-server
+          ports:
+            - containerPort: 9004
+          env:
+            - name: DATABASE_URL
+              value: "postgres://uxbuvhokbbocan:826a1d23fbb6b89baadb9e23d44d3f408b7ab17c513ce2b6cf1e2d5cae1bd1a8@postgres/dbit7n0ojntpd7"
+            - name: DB_USER
+              value: "uxbuvhokbbocan"
+            - name: DB_PASSWORD
+              value: "826a1d23fbb6b89baadb9e23d44d3f408b7ab17c513ce2b6cf1e2d5cae1bd1a8"
+            - name: DB_NAME
+              value: "dbit7n0ojntpd7"
+            - name: JWT_SECRET
+              value: "secret"
+            - name: NODE_TLS_REJECT_UNAUTHORIZED
+              value: "0"
+            - name: NODE_ENV
+              value: "production"

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { MDBContainer, MDBCol, MDBIcon } from "mdbreact";
 import OrchidCard from "./OrchidCard";
 import IOrchid from "../../interfaces/IOrchid";
+import {HOSTNAME} from "../../constants/Constants";
 
 const Orchid = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const Orchid = () => {
   useEffect(() => {
     const getData = async () => {
       const data = await fetch(
-        `https://orchclub-ecommerce.herokuapp.com/${router.pathname.slice(
+        `http://${HOSTNAME(document)}/api/${router.pathname.slice(
           1
         )}?id=${router.query.id}`
       ).then(async (data) => await data.json());

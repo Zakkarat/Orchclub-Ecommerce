@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { setOverallPrice, changePaymentState } from "../../redux/actions";
 import {ICartProps} from "../../interfaces/components/ICartProps";
 import IOrchid from "../../interfaces/IOrchid";
+import {HOSTNAME} from "../../constants/Constants";
 
 const Cart = ({ changePaymentState, setOverallPrice }:ICartProps) => {
   const [cart, setCart] = useState([] as IOrchid[]);
@@ -16,7 +17,7 @@ const Cart = ({ changePaymentState, setOverallPrice }:ICartProps) => {
       const cart = JSON.parse(rawCart);
       const getData = async () => {
         const data = await fetch(
-            `http://localhost:9000/orchid?id=${cart
+            `http://${HOSTNAME(document)}/api/orchid?id=${cart
                 .map(({item}:{item:number}) => item)
                 .join(",")}`
         ).then(async (data) => await data.json());

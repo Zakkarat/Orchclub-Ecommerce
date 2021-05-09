@@ -3,6 +3,7 @@ import Masonry from "react-masonry-component";
 import { connect } from "react-redux";
 import ImageList from "./ImageList";
 import {IImageStackProps} from "../../interfaces/components/IImageStackProps";
+import {HOSTNAME} from "../../constants/Constants";
 
 const ImageStack = ({ filters }:IImageStackProps) => {
   const [orchids, setOrchids] = useState([]);
@@ -12,7 +13,7 @@ const ImageStack = ({ filters }:IImageStackProps) => {
     const getData = async () => {
       setLoading(true);
       const data = await fetch(
-        `https://orchclub-ecommerce.herokuapp.com/orchids?category=${filters.category}`,
+        `http://${HOSTNAME(document)}/api/orchids?category=${filters.category}`,
         { credentials: "include" }
       ).then(async (data) => await data.json());
       setOrchids(data);

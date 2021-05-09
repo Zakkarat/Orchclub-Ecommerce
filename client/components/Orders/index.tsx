@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react";
 import { MDBContainer } from "mdbreact";
 import OrderList from "./OrderList";
 import {IOrder} from "../../interfaces/components/IOrderProps";
+import {HOSTNAME} from "../../constants/Constants";
 
 const Orders = () => {
   const [orders, setOrders] = useState([] as IOrder[])
   useEffect(() => {
-    const load = async () => await fetch("http://localhost:9000/orders/userOrders", {credentials:"include"})
+    const load = async () => await fetch(`http://${HOSTNAME(document)}/users/userOrders`, {credentials:"include"})
         .then(async data => setOrders(await data.json()))
   load()
   }, [])
