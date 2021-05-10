@@ -12,6 +12,7 @@ spec:
       labels:
         app: user-server
     spec:
+      serviceAccountName: vault
       containers:
         - image: user-server:0.1
           imagePullPolicy: Never
@@ -19,17 +20,11 @@ spec:
           ports:
             - containerPort: 9004
           env:
-            - name: DATABASE_URL
-              value: "postgres://uxbuvhokbbocan:826a1d23fbb6b89baadb9e23d44d3f408b7ab17c513ce2b6cf1e2d5cae1bd1a8@postgres/dbit7n0ojntpd7"
-            - name: DB_USER
-              value: "uxbuvhokbbocan"
-            - name: DB_PASSWORD
-              value: "826a1d23fbb6b89baadb9e23d44d3f408b7ab17c513ce2b6cf1e2d5cae1bd1a8"
-            - name: DB_NAME
-              value: "dbit7n0ojntpd7"
-            - name: JWT_SECRET
-              value: "secret"
-            - name: NODE_TLS_REJECT_UNAUTHORIZED
-              value: "0"
             - name: NODE_ENV
               value: "production"
+            - name: VAULT_ADDR
+              value: "http://vault:8200"
+            - name: JWT_PATH
+              value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+            - name: SERVICE_PORT
+              value: "8080"

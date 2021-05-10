@@ -34,6 +34,7 @@
     "koa-session": "^5.13.1",
     "mongodb": "^3.6.3",
     "mutode": "^1.4.2",
+    "node-fetch": "^2.6.1",
     "path": "^0.12.7",
     "pg": "^8.0.0",
     "ts-node": "^9.1.1"
@@ -45,6 +46,7 @@
     "@types/mocha": "^8.2.0",
     "@types/mongodb": "^3.6.3",
     "@types/node": "^14.14.20",
+    "@types/node-fetch": "^2.5.10",
     "@types/pg": "^7.14.7",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",

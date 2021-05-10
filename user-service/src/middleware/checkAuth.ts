@@ -1,7 +1,9 @@
 import {Context, Next} from "koa";
+import getJWT from "../helpers/getJWT";
 
 const jwt = require("jsonwebtoken");
-const secret = process.env.JWT_SECRET || 'secret';
+let secret:string = '';
+getJWT().then((secretJWT => secret = secretJWT));
 
 module.exports = async (ctx:Context, next:Next) => {
   try {

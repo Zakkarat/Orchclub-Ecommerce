@@ -1,28 +1,33 @@
 import {Pool} from "pg";
+import {vault} from "../config";
 
-const connectionString = process.env.DATABASE_URL
 
 export default class PostgresStorage {
-    private pool:Pool;
+    private pool:Pool | undefined;
 
-    constructor() {
-        console.log(process.env);
-        if (process.env.NODE_ENV !== "production") {
-            this.pool = new Pool({
-                connectionString: connectionString,
+    static build() {
+        const self = new PostgresStorage();
+        if (process.env.NODE_ENV === "production") {
+            vault.then(async (vault) => {
+                const data = await vault.getSecret();
+                self.pool = new Pool({
+                    connectionString: data.DATABASE_URL,
+                });
+                console.log(self.pool);
             });
         } else {
-            this.pool = new Pool({
+            self.pool = new Pool({
                 connectionString: `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.POSTGRES_SERVICE_HOST}:5432/${process.env.DB_NAME}`,
             });
         }
+        return self;
     }
 
     makeRequest = async (request: string) => {
-        return await this.pool.query(request)
+        return this.pool ? await this.pool.query(request)
             .catch((err:Error) => {
                 console.log(err);
                 throw err;
-            });
+            }) : '';
     }
 }
