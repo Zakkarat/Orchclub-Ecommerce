@@ -24,4 +24,4 @@ cd ..
 cd ..
 
 
-cat orchids_dump.sql | kubectl exec -i postgres-84ff4497db-qzldw -- psql -U uxbuvhokbbocan -d dbit7n0ojntpd7
+cat orchids_dump.sql | kubectl exec -i postgres-84ff4497db-hh52q -- psql -U uxbuvhokbbocan -d dbit7n0ojntpd7
