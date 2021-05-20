@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notify-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notify-server
+  template:
+    metadata:
+      labels:
+        app: notify-server
+    spec:
+      serviceAccountName: vault
+      containers:
+        - image: notify-server:0.1
+          imagePullPolicy: Never
+          name: notify-server
+          ports:
+            - containerPort: 9006
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: VAULT_ADDR
+              value: "http://vault:8200"
+            - name: JWT_PATH
+              value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+            - name: SERVICE_PORT
+              value: "8080"

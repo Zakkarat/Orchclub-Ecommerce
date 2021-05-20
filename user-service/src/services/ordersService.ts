@@ -9,3 +9,7 @@ export const createOrders = async ({ user, cart, deliveryInfo, overall }:IOrderS
     const orderId = await storage.putOrder(user, deliveryInfo, overall);
     await storage.putItemsInOrder(orderId, cart);
 };
+
+export const getUserData = async (userId:number) => {
+    return await storage.getUser(userId);
+}

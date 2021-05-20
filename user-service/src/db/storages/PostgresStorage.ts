@@ -35,6 +35,13 @@ export default class PostgresStorage{
         return rows;
     };
 
+    getUser = async (userId:number) => {
+        const {rows} = await this.makeDbRequest(
+            `SELECT * FROM "Users" WHERE "Id"='${userId}'`
+        );
+        return rows;
+    }
+
     putOrder = async (user:number, deliveryInfo:IDeliveryInfo, overall:string) => {
         const result = await this.makeDbRequest(
                 `INSERT INTO "Orders"("DeliveryType", "TakeAwayId", "NPDeliveryId", "PaymentMethod", "PaymentStatus", "UserId", "Overall") VALUES('${
