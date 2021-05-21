@@ -1,11 +1,13 @@
 helm repo add hashicorp https://helm.releases.hashicorp.com
 helm repo update
+cd .\scripts\setup-minikube
 helm install consul hashicorp/consul --values helm-consul-values.yaml
 helm install vault hashicorp/vault --values helm-vault-values.yaml
 
+
 kubectl exec vault-0 -- vault operator init -key-shares=1 -key-threshold=1 -format=json > cluster-keys.json
 
-kubectl exec vault-0 -- vault operator unseal j7vwSCtts9tQZecXYIsxHICBN1W/b9/mo/66PEHf92w=
+kubectl exec vault-0 -- vault operator unseal 2puRk8rnWSJwsn63//nUCe5AhmXL7ojq82d9vsiYncE=
 
 kubectl exec --stdin=true --tty=true vault-0 -- /bin/sh
 vault login
@@ -28,3 +30,6 @@ vault write auth/kubernetes/role/webapp \
         bound_service_account_namespaces=default \
         policies=webapp \
         ttl=24h
+exit
+cd ..
+cd ..
